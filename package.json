@@ -14,9 +14,13 @@
   },
   "scripts": {
     "format:check": "prettier --check \"**/*.{js,ts,jsx,tsx,cjs,mjs,mdx}\"",
-    "format:write": "prettier --write \"**/*.{js,ts,jsx,tsx,cjs,mjs,mdx}\""
+    "format:write": "prettier --write \"**/*.{js,ts,jsx,tsx,cjs,mjs,mdx}\"",
+    "prepare": "husky"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "husky": "^9.1.6",
     "prettier": "^3.3.3"
   }
 }
