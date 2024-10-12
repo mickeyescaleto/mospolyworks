@@ -1,0 +1,22 @@
+{
+  "name": "mospolyworks",
+  "version": "1.0.0",
+  "description": "The portfolio system of students of the Moscow Polytechnic University",
+  "private": true,
+  "author": {
+    "name": "mickeyescaleto",
+    "email": "mickeyescaleto@gmail.com",
+    "url": "https://github.com/mickeyescaleto"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mickeyescaleto/mospolyworks"
+  },
+  "scripts": {
+    "format:check": "prettier --check \"**/*.{js,ts,jsx,tsx,cjs,mjs,mdx}\"",
+    "format:write": "prettier --write \"**/*.{js,ts,jsx,tsx,cjs,mjs,mdx}\""
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3"
+  }
+}
