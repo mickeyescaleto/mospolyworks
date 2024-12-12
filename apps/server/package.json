@@ -1,0 +1,24 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "bun run --watch src/main.ts",
+    "build": "bun build --compile --minify-whitespace --minify-syntax ./src/main.ts --outfile server",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@elysiajs/cors": "^1.1.1",
+    "@elysiajs/swagger": "^1.1.6",
+    "elysia": "^1.1.26"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "bun-types": "^1.1.38",
+    "eslint": "^9.16.0",
+    "typescript": "^5.7.2"
+  },
+  "main": "src/main.ts",
+  "types": "src/main.ts"
+}
