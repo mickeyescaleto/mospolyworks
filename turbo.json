@@ -1,5 +1,9 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "ui": "tui",
-  "tasks": {}
+  "tasks": {
+    "lint": {
+      "dependsOn": ["^lint"]
+    }
+  }
 }
