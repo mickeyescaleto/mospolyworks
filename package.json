@@ -16,6 +16,7 @@
     "dev": "turbo dev",
     "build": "turbo build",
     "lint": "turbo lint",
+    "db:generate": "turbo db:generate",
     "format:check": "prettier --check \"**/*.{js,ts,jsx,tsx,cjs,mjs,mdx}\"",
     "format:write": "prettier --write \"**/*.{js,ts,jsx,tsx,cjs,mjs,mdx}\"",
     "prepare": "husky"

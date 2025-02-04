@@ -1,0 +1,23 @@
+{
+  "name": "@repo/database",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "db:generate": "prisma generate",
+    "db:studio": "prisma studio",
+    "lint": "eslint ."
+  },
+  "exports": {
+    ".": "./src/client.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.3.1"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "eslint": "^9.16.0",
+    "prisma": "^6.3.1",
+    "typescript": "^5.7.2"
+  }
+}

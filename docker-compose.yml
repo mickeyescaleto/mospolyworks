@@ -33,6 +33,16 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: root
     volumes:
       - mongo_data:/data/db
+      - ./packages/database/init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh
+    entrypoint:
+      - bash
+      - -c
+      - |
+        openssl rand -base64 756 > /data/replica.key
+        chmod 400 /data/replica.key
+        chown 999:999 /data/replica.key
+        exec docker-entrypoint.sh $$@
+    command: mongod --bind_ip_all --replSet rs0 --keyFile /data/replica.key
 
 volumes:
   mongo_data:
