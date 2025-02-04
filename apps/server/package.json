@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "bun run --watch src/main.ts",
-    "build": "bun build --compile --minify-whitespace --minify-syntax ./src/main.ts --outfile server",
+    "build": "bun build --target=bun --minify-whitespace --minify-syntax ./src/main.ts --outfile server.js",
     "lint": "eslint ."
   },
   "dependencies": {
