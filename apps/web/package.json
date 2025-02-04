@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo --port 2000",
+    "dev": "next dev --turbo --port 3000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint --max-warnings 0"
