@@ -1,6 +1,6 @@
 import { treaty } from '@elysiajs/eden';
 import { type App } from 'server';
 
-export const server = treaty<App>('http://localhost:3000', {
+export const server = treaty<App>('http://localhost:3001', {
   fetch: { credentials: 'include' },
 });
