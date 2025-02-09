@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import '@/styles/tailwind.css';
+import '@repo/ui/styles/main';
 
 export const metadata: Metadata = {
   title: 'mospolyworks',
