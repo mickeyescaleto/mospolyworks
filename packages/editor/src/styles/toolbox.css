@@ -1,0 +1,8 @@
+.codex-editor--narrow .ce-toolbox {
+  @media (width >= 651px) {
+    .ce-popover {
+      right: 0;
+      left: unset;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "@repo/editor",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --mode production"
+  },
+  "main": "./dist/editor.umd.js",
+  "module": "./dist/editor.mjs",
+  "types": "./src/types/index.d.ts",
+  "dependencies": {
+    "@editorjs/caret": "^1.0.1",
+    "@tailwindcss/postcss": "^4.0.6",
+    "codex-notifier": "^1.1.2",
+    "codex-tooltip": "^1.0.5",
+    "postcss": "^8.5.2",
+    "tailwindcss": "^4.0.6"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@babel/register": "^7.21.0",
+    "@codexteam/icons": "0.3.2",
+    "@codexteam/shortcuts": "^1.1.1",
+    "@types/node": "^22.13.1",
+    "eslint": "^9.19.0",
+    "html-janitor": "^2.0.4",
+    "nanoid": "^4.0.2",
+    "postcss-nested": "4.1.2",
+    "typescript": "^5.7.3",
+    "vite": "^4.2.1",
+    "vite-plugin-css-injected-by-js": "^3.1.0"
+  }
+}

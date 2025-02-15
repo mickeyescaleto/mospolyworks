@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Editor</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Onest"
+      rel="stylesheet"
+    />
+    <link href="/assets/demo.css" rel="stylesheet" />
+    <script src="/assets/json-preview.js"></script>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+  </head>
+  <body>
+    <script>
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+    </script>
+    <div class="ce-example">
+      <div class="ce-example__content">
+        <div id="editor"></div>
+        <div class="ce-example__button" id="saveButton">Сохранить</div>
+        <div class="ce-example__statusbar">
+          <div class="ce-example__statusbar-item">
+            Readonly:
+            <b id="readonly-state"> Off </b>
+            &nbsp;
+            <div class="ce-example__statusbar-button" id="toggleReadOnlyButton">
+              toggle
+            </div>
+          </div>
+          <div
+            class="ce-example__statusbar-item ce-example__statusbar-item--right"
+          >
+            <div
+              class="ce-example__statusbar-toggler"
+              id="darkThemeToggler"
+            ></div>
+          </div>
+        </div>
+      </div>
+      <div class="ce-example__output">
+        <pre class="ce-example__output-content" id="output"></pre>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/simple-image@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/nested-list@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/quote@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/code@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/embed@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/table@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/link@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/inline-code@latest"></script>
+
+    <script type="module">
+      import EditorJS from './src/editor.ts';
+
+      window.EditorJS = EditorJS;
+
+      const editorConfig = {
+        readOnly: false,
+        holder: 'editor',
+        tools: {
+          header: {
+            class: Header,
+            inlineToolbar: ['link', 'marker'],
+            config: {
+              placeholder: 'Заголовок'
+            },
+            shortcut: 'CMD+SHIFT+H'
+          },
+          image: SimpleImage,
+          list: {
+            class: NestedList,
+            inlineToolbar: true,
+            shortcut: 'CMD+SHIFT+L'
+          },
+          quote: {
+            class: Quote,
+            inlineToolbar: true,
+            config: {
+              quotePlaceholder: 'Введите цитату',
+              captionPlaceholder: 'Введите автора'
+            },
+            shortcut: 'CMD+SHIFT+O'
+          },
+          marker: {
+            class: Marker,
+            shortcut: 'CMD+SHIFT+M'
+          },
+          code: {
+            class: CodeTool,
+            shortcut: 'CMD+SHIFT+C'
+          },
+          delimiter: Delimiter,
+          inlineCode: {
+            class: InlineCode,
+            shortcut: 'CMD+SHIFT+C'
+          },
+          linkTool: LinkTool,
+          embed: Embed,
+          table: {
+            class: Table,
+            inlineToolbar: true,
+            shortcut: 'CMD+ALT+T'
+          }
+        },
+        autofocus: true
+      };
+
+      var editor = new EditorJS(editorConfig);
+
+      const saveButton = document.getElementById('saveButton');
+
+      const toggleReadOnlyButton = document.getElementById(
+        'toggleReadOnlyButton'
+      );
+      const readOnlyIndicator = document.getElementById('readonly-state');
+
+      saveButton.addEventListener('click', function () {
+        editor
+          .save()
+          .then((savedData) => {
+            cPreview.show(savedData, document.getElementById('output'));
+          })
+          .catch((error) => {
+            console.error('Saving error', error);
+          });
+      });
+
+      toggleReadOnlyButton.addEventListener('click', async () => {
+        const readOnlyState = await editor.readOnly.toggle();
+
+        readOnlyIndicator.textContent = readOnlyState ? 'On' : 'Off';
+      });
+
+      const darkThemeToggler = document.getElementById('darkThemeToggler');
+
+      darkThemeToggler.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+
+        localStorage.setItem(
+          'theme',
+          document.body.classList.contains('dark-mode') ? 'dark' : 'default'
+        );
+      });
+
+      window.editor = editor;
+    </script>
+  </body>
+</html>

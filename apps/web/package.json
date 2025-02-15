@@ -9,9 +9,11 @@
     "lint": "next lint --max-warnings 0"
   },
   "dependencies": {
+    "@repo/editor": "workspace:*",
     "@repo/server": "workspace:*",
     "@repo/ui": "workspace:*",
     "@tailwindcss/postcss": "^4.0.3",
+    "html-react-parser": "^5.2.2",
     "next": "15.1.0",
     "postcss": "^8.5.1",
     "react": "^19.0.0",

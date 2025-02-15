@@ -1,0 +1,27 @@
+{
+  "extends": "@repo/typescript-config/default.json",
+  "compilerOptions": {
+    "lib": ["DOM", "ES2017", "ES2018", "ES2019", "ES2023"],
+    "target": "ES2017",
+    "module": "ES2022",
+    "moduleResolution": "Bundler",
+    "declaration": false,
+    "declarationMap": false,
+    "resolveJsonModule": true,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@/types": ["./types/index"],
+      "@/types/*": ["./types/*"],
+      "@/types-internal/*": ["./types-internal/*"],
+      "@/components/*": ["./components/*"],
+      "@/tools/*": ["./tools/*"],
+      "@/styles/*": ["./styles/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

@@ -1,0 +1,27 @@
+@utility placeholder {
+  pointer-events: none;
+  color: var(--grayText);
+  cursor: text;
+}
+
+.codex-editor {
+  [data-placeholder]:empty,
+  [data-placeholder][data-empty='true'] {
+    &::before {
+      @apply placeholder;
+
+      content: attr(data-placeholder);
+    }
+  }
+
+  [data-placeholder-active]:empty,
+  [data-placeholder-active][data-empty='true'] {
+    &::before {
+      @apply placeholder;
+    }
+
+    &:focus::before {
+      content: attr(data-placeholder-active);
+    }
+  }
+}
