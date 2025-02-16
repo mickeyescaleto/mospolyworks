@@ -3,11 +3,11 @@ import type {
   NotifierOptions,
   PromptNotifierOptions,
 } from 'codex-notifier';
-import Notifier from '@/components/utils/notifier';
-import Module from '@/components/__module';
+import Notifier from '@repo/editor/components/utils/notifier';
+import Module from '@repo/editor/components/__module';
 
-import type { ModuleConfig } from '@/types-internal/module-config';
-import type { Notifier as INotifier } from '@/types/api/notifier';
+import type { ModuleConfig } from '@repo/editor/types-internal/module-config';
+import type { Notifier as INotifier } from '@repo/editor/types/api/notifier';
 
 export default class NotifierAPI extends Module {
   private notifier: Notifier;

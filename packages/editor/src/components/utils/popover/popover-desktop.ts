@@ -1,24 +1,27 @@
-import Flipper from '@/components/flipper';
-import { PopoverAbstract } from '@/components/utils/popover/popover-abstract';
-import type { PopoverItem } from '@/components/utils/popover/components/popover-item';
+import Flipper from '@repo/editor/components/flipper';
+import { PopoverAbstract } from '@repo/editor/components/utils/popover/popover-abstract';
+import type { PopoverItem } from '@repo/editor/components/utils/popover/components/popover-item';
 import {
   PopoverItemSeparator,
   css as popoverItemCls,
-} from '@/components/utils/popover/components/popover-item';
-import { keyCodes } from '@/components/utilities';
-import { CSSVariables, css } from '@/components/utils/popover/popover.const';
-import type { SearchableItem } from '@/components/utils/popover/components/search-input';
+} from '@repo/editor/components/utils/popover/components/popover-item';
+import { keyCodes } from '@repo/editor/components/utilities';
+import {
+  CSSVariables,
+  css,
+} from '@repo/editor/components/utils/popover/popover.const';
+import type { SearchableItem } from '@repo/editor/components/utils/popover/components/search-input';
 import {
   SearchInput,
   SearchInputEvent,
-} from '@/components/utils/popover/components/search-input';
-import { cacheable } from '@/components/utilities';
-import { PopoverItemDefault } from '@/components/utils/popover/components/popover-item';
-import { PopoverItemHtml } from '@/components/utils/popover/components/popover-item/popover-item-html/popover-item-html';
-import { PopoverEvent } from '@/types/utils/popover/popover-event';
+} from '@repo/editor/components/utils/popover/components/search-input';
+import { cacheable } from '@repo/editor/components/utilities';
+import { PopoverItemDefault } from '@repo/editor/components/utils/popover/components/popover-item';
+import { PopoverItemHtml } from '@repo/editor/components/utils/popover/components/popover-item/popover-item-html/popover-item-html';
+import { PopoverEvent } from '@repo/editor/types/utils/popover/popover-event';
 
-import type { PopoverItemRenderParamsMap } from '@/types/utils/popover/popover-item';
-import type { PopoverParams } from '@/types/utils/popover/popover';
+import type { PopoverItemRenderParamsMap } from '@repo/editor/types/utils/popover/popover-item';
+import type { PopoverParams } from '@repo/editor/types/utils/popover/popover';
 
 export class PopoverDesktop extends PopoverAbstract {
   public flipper: Flipper | undefined;

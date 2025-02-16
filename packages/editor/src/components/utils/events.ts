@@ -1,4 +1,4 @@
-import { isEmpty } from '@/components/utilities';
+import { isEmpty } from '@repo/editor/components/utilities';
 
 type Listener<Data> = (data: Data) => void;
 

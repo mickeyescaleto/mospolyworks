@@ -1,26 +1,26 @@
-import Module from '@/components/__module';
-import * as utilities from '@/components/utilities';
-import Paragraph from '@/tools/paragraph';
-import Header from '@/tools/header';
-import Image from '@/tools/image';
-import BoldInlineTool from '@/components/inline-tools/inline-tool-bold';
-import ItalicInlineTool from '@/components/inline-tools/inline-tool-italic';
-import LinkInlineTool from '@/components/inline-tools/inline-tool-link';
-import ConvertInlineTool from '@/components/inline-tools/inline-tool-convert';
-import Stub from '@/tools/stub';
-import ToolsFactory from '@/components/tools/factory';
-import type InlineToolAdapter from '@/components/tools/inline';
-import type BlockToolAdapter from '@/components/tools/block';
-import type BlockTuneAdapter from '@/components/tools/tune';
-import MoveDownTune from '@/components/block-tunes/block-tune-move-down';
-import DeleteTune from '@/components/block-tunes/block-tune-delete';
-import MoveUpTune from '@/components/block-tunes/block-tune-move-up';
-import ToolsCollection from '@/components/tools/collection';
+import Module from '@repo/editor/components/__module';
+import * as utilities from '@repo/editor/components/utilities';
+import Paragraph from '@repo/editor/tools/paragraph';
+import Header from '@repo/editor/tools/header';
+import Image from '@repo/editor/tools/image';
+import BoldInlineTool from '@repo/editor/components/inline-tools/inline-tool-bold';
+import ItalicInlineTool from '@repo/editor/components/inline-tools/inline-tool-italic';
+import LinkInlineTool from '@repo/editor/components/inline-tools/inline-tool-link';
+import ConvertInlineTool from '@repo/editor/components/inline-tools/inline-tool-convert';
+import Stub from '@repo/editor/tools/stub';
+import ToolsFactory from '@repo/editor/components/tools/factory';
+import type InlineToolAdapter from '@repo/editor/components/tools/inline';
+import type BlockToolAdapter from '@repo/editor/components/tools/block';
+import type BlockTuneAdapter from '@repo/editor/components/tools/tune';
+import MoveDownTune from '@repo/editor/components/block-tunes/block-tune-move-down';
+import DeleteTune from '@repo/editor/components/block-tunes/block-tune-delete';
+import MoveUpTune from '@repo/editor/components/block-tunes/block-tune-move-up';
+import ToolsCollection from '@repo/editor/components/tools/collection';
 
-import type { SanitizerConfig } from '@/types/configs/sanitizer-config';
-import type { ToolConfig } from '@/types/tools/tool-config';
-import type { ToolConstructable } from '@/types/tools';
-import type { ToolSettings } from '@/types/tools/tool-settings';
+import type { SanitizerConfig } from '@repo/editor/types/configs/sanitizer-config';
+import type { ToolConfig } from '@repo/editor/types/tools/tool-config';
+import type { ToolConstructable } from '@repo/editor/types/tools';
+import type { ToolSettings } from '@repo/editor/types/tools/tool-settings';
 
 export default class Tools extends Module {
   public stubTool = 'stub';

@@ -1,11 +1,11 @@
 import '@babel/register';
-import '@/components/polyfills';
+import '@repo/editor/components/polyfills';
 
-import Core from '@/components/core';
-import * as utilities from '@/components/utilities';
-import { destroy as destroyTooltip } from '@/components/utils/tooltip';
+import Core from '@repo/editor/components/core';
+import * as utilities from '@repo/editor/components/utilities';
+import { destroy as destroyTooltip } from '@repo/editor/components/utils/tooltip';
 
-import type { EditorConfig } from '@/types/configs/editor-config';
+import type { EditorConfig } from '@repo/editor/types/configs/editor-config';
 
 export default class Editor {
   public isReady: Promise<void>;

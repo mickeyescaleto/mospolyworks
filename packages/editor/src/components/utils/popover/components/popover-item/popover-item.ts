@@ -1,8 +1,8 @@
-import * as tooltip from '@/components/utils/tooltip';
-import { Hint } from '@/components/utils/popover/components/hint';
+import * as tooltip from '@repo/editor/components/utils/tooltip';
+import { Hint } from '@repo/editor/components/utils/popover/components/hint';
 
-import { HintPosition } from '@/types/utils/popover/hint';
-import type { PopoverItemParams } from '@/types/utils/popover/popover-item';
+import { HintPosition } from '@repo/editor/types/utils/popover/hint';
+import type { PopoverItemParams } from '@repo/editor/types/utils/popover/popover-item';
 
 export abstract class PopoverItem {
   constructor(protected readonly params?: PopoverItemParams) {}

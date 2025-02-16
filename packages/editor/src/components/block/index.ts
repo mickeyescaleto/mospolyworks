@@ -1,37 +1,37 @@
-import Dom, { toggleEmptyMark } from '@/components/dom';
-import * as utilities from '@/components/utilities';
-import BlockAPI from '@/components/block/api';
-import SelectionUtils from '@/components/selection';
-import EventsDispatcher from '@/components/utils/events';
-import ApiModules from '@/components/modules/api';
-import { isMutationBelongsToElement } from '@/components/utils/mutations';
+import Dom, { toggleEmptyMark } from '@repo/editor/components/dom';
+import * as utilities from '@repo/editor/components/utilities';
+import BlockAPI from '@repo/editor/components/block/api';
+import SelectionUtils from '@repo/editor/components/selection';
+import EventsDispatcher from '@repo/editor/components/utils/events';
+import ApiModules from '@repo/editor/components/modules/api';
+import { isMutationBelongsToElement } from '@repo/editor/components/utils/mutations';
 import {
   FakeCursorAboutToBeToggled,
   FakeCursorHaveBeenSet,
   RedactorDomChanged,
-} from '@/components/events';
+} from '@repo/editor/components/events';
 import {
   convertBlockDataToString,
   isSameBlockData,
-} from '@/components/utils/blocks';
-import BlockToolAdapter from '@/components/tools/block';
-import BlockTuneAdapter from '@/components/tools/tune';
-import ToolsCollection from '@/components/tools/collection';
-import { PopoverItemType } from '@/types/utils/popover/popover-item-type';
+} from '@repo/editor/components/utils/blocks';
+import BlockToolAdapter from '@repo/editor/components/tools/block';
+import BlockTuneAdapter from '@repo/editor/components/tools/tune';
+import ToolsCollection from '@repo/editor/components/tools/collection';
+import { PopoverItemType } from '@repo/editor/types/utils/popover/popover-item-type';
 
-import type { EditorEventMap } from '@/components/events';
-import type { RedactorDomChangedPayload } from '@/components/events/redactor-dom-changed';
-import type { MenuConfigItem } from '@/types/tools/menu-config';
-import type { BlockTuneData } from '@/types/block-tunes/block-tune-data';
-import type { SavedData } from '@/types/data-formats/block-data';
-import type { PopoverItemParams } from '@/types/utils/popover/popover-item';
-import type { ToolboxConfigEntry } from '@/types/tools/tool-settings';
-import type { ToolConfig } from '@/types/tools/tool-config';
-import type { SanitizerConfig } from '@/types/configs/sanitizer-config';
-import type { BlockAPI as IBlockAPI } from '@/types/api/block';
-import type { BlockTool as IBlockTool } from '@/types/tools/block-tool';
-import type { BlockTune as IBlockTune } from '@/types/block-tunes/block-tune';
-import type { BlockToolData } from '@/types/tools/block-tool-data';
+import type { EditorEventMap } from '@repo/editor/components/events';
+import type { RedactorDomChangedPayload } from '@repo/editor/components/events/redactor-dom-changed';
+import type { MenuConfigItem } from '@repo/editor/types/tools/menu-config';
+import type { BlockTuneData } from '@repo/editor/types/block-tunes/block-tune-data';
+import type { SavedData } from '@repo/editor/types/data-formats/block-data';
+import type { PopoverItemParams } from '@repo/editor/types/utils/popover/popover-item';
+import type { ToolboxConfigEntry } from '@repo/editor/types/tools/tool-settings';
+import type { ToolConfig } from '@repo/editor/types/tools/tool-config';
+import type { SanitizerConfig } from '@repo/editor/types/configs/sanitizer-config';
+import type { BlockAPI as IBlockAPI } from '@repo/editor/types/api/block';
+import type { BlockTool as IBlockTool } from '@repo/editor/types/tools/block-tool';
+import type { BlockTune as IBlockTune } from '@repo/editor/types/block-tunes/block-tune';
+import type { BlockToolData } from '@repo/editor/types/tools/block-tool-data';
 
 type BlockConstructorOptions = {
   id?: string;
@@ -283,9 +283,9 @@ export default class Block extends EventsDispatcher<BlockEvents> {
 
       try {
         this.toolInstance[methodName].call(this.toolInstance, params);
-      } catch (e) {
+      } catch (error) {
         utilities.log(
-          `Error during '${methodName}' call: ${e.message}`,
+          `Error during '${methodName}' call: ${error.message}`,
           'error',
         );
       }

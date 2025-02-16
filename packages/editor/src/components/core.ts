@@ -1,14 +1,14 @@
-import Dom from '@/components/dom';
-import * as utilities from '@/components/utilities';
-import I18n from '@/components/i18n';
-import { CriticalError } from '@/components/errors/critical';
-import EventsDispatcher from '@/components/utils/events';
-import Modules from '@/components/modules';
+import Dom from '@repo/editor/components/dom';
+import * as utilities from '@repo/editor/components/utilities';
+import I18n from '@repo/editor/components/i18n';
+import { CriticalError } from '@repo/editor/components/errors/critical';
+import EventsDispatcher from '@repo/editor/components/utils/events';
+import Modules from '@repo/editor/components/modules';
 
-import type { EditorEventMap } from '@/components/events';
-import type { EditorModules } from '@/types-internal/editor-modules';
-import type { EditorConfig } from '@/types/configs/editor-config';
-import type { SanitizerConfig } from '@/types/configs/sanitizer-config';
+import type { EditorEventMap } from '@repo/editor/components/events';
+import type { EditorModules } from '@repo/editor/types-internal/editor-modules';
+import type { EditorConfig } from '@repo/editor/types/configs/editor-config';
+import type { SanitizerConfig } from '@repo/editor/types/configs/sanitizer-config';
 
 export default class Core {
   public config: EditorConfig;

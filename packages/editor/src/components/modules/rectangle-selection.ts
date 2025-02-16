@@ -1,8 +1,8 @@
-import Module from '@/components/__module';
-import Dom from '@/components/dom';
-import SelectionUtils from '@/components/selection';
-import Block from '@/components/block';
-import * as utilities from '@/components/utilities';
+import Module from '@repo/editor/components/__module';
+import Dom from '@repo/editor/components/dom';
+import SelectionUtils from '@repo/editor/components/selection';
+import Block from '@repo/editor/components/block';
+import * as utilities from '@repo/editor/components/utilities';
 
 export default class RectangleSelection extends Module {
   public static get CSS(): { [name: string]: string } {

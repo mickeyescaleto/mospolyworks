@@ -14,12 +14,12 @@
     "esModuleInterop": true,
     "baseUrl": "./src",
     "paths": {
-      "@/types": ["./types/index"],
-      "@/types/*": ["./types/*"],
-      "@/types-internal/*": ["./types-internal/*"],
-      "@/components/*": ["./components/*"],
-      "@/tools/*": ["./tools/*"],
-      "@/styles/*": ["./styles/*"]
+      "@repo/editor/types": ["./types/index"],
+      "@repo/editor/types/*": ["./types/*"],
+      "@repo/editor/types-internal/*": ["./types-internal/*"],
+      "@repo/editor/components/*": ["./components/*"],
+      "@repo/editor/tools/*": ["./tools/*"],
+      "@repo/editor/styles/*": ["./styles/*"]
     }
   },
   "include": ["src/**/*"],

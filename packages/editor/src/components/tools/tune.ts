@@ -1,13 +1,13 @@
-import BaseToolAdapter from '@/components/tools/base';
-import { ToolType } from '@/types/tools/adapters/tool-type';
+import BaseToolAdapter from '@repo/editor/components/tools/base';
+import { ToolType } from '@repo/editor/types/tools/adapters/tool-type';
 
-import type { BlockTuneData } from '@/types/block-tunes/block-tune-data';
-import type { BlockTuneAdapter as BlockTuneAdapterInterface } from '@/types/tools/adapters/block-tune-adapter';
-import type { BlockAPI } from '@/types/api/block';
+import type { BlockTuneData } from '@repo/editor/types/block-tunes/block-tune-data';
+import type { BlockTuneAdapter as BlockTuneAdapterInterface } from '@repo/editor/types/tools/adapters/block-tune-adapter';
+import type { BlockAPI } from '@repo/editor/types/api/block';
 import type {
   BlockTune,
   BlockTuneConstructable,
-} from '@/types/block-tunes/block-tune';
+} from '@repo/editor/types/block-tunes/block-tune';
 
 export default class BlockTuneAdapter
   extends BaseToolAdapter<ToolType.Tune, BlockTune>

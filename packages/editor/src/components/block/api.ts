@@ -1,10 +1,10 @@
-import Block from '@/components/block';
+import Block from '@repo/editor/components/block';
 
-import type { SavedData } from '@/types/data-formats/block-data';
-import type { BlockToolData } from '@/types/tools/block-tool-data';
-import type { ToolConfig } from '@/types/tools/tool-config';
-import type { ToolboxConfigEntry } from '@/types/tools/tool-settings';
-import type { BlockAPI as IBlockAPI } from '@/types/api/block';
+import type { SavedData } from '@repo/editor/types/data-formats/block-data';
+import type { BlockToolData } from '@repo/editor/types/tools/block-tool-data';
+import type { ToolConfig } from '@repo/editor/types/tools/tool-config';
+import type { ToolboxConfigEntry } from '@repo/editor/types/tools/tool-settings';
+import type { BlockAPI as IBlockAPI } from '@repo/editor/types/api/block';
 
 function BlockAPI(block: Block): void {
   const blockAPI: IBlockAPI = {

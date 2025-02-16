@@ -3,7 +3,7 @@ import type {
   PopoverItemHtmlParams,
   PopoverItemSeparatorParams,
   WithChildren,
-} from '@/types/utils/popover/popover-item';
+} from '@repo/editor/types/utils/popover/popover-item';
 
 export type MenuConfig = MenuConfigItem | MenuConfigItem[];
 

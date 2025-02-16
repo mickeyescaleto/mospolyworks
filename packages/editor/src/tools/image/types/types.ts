@@ -1,4 +1,4 @@
-import type { HTMLPasteEventDetail } from '@/types/tools/paste-events';
+import type { HTMLPasteEventDetail } from '@repo/editor/types/tools/paste-events';
 
 export type UploadOptions = {
   onPreview: (src: string) => void;

@@ -1,4 +1,4 @@
-import type { PopoverItemParams } from '@/types/utils/popover/popover-item';
+import type { PopoverItemParams } from '@repo/editor/types/utils/popover/popover-item';
 
 type PopoverStatesHistoryItem = {
   title?: string;

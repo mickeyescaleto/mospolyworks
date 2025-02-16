@@ -1,25 +1,25 @@
 import { IconReplace } from '@codexteam/icons';
-import Dom from '@/components/dom';
-import Module from '@/components/__module';
-import SelectionUtils from '@/components/selection';
-import Block from '@/components/block';
-import I18n from '@/components/i18n';
-import { I18nInternalNS } from '@/components/i18n/namespace-internal';
-import Flipper from '@/components/flipper';
-import { resolveAliases } from '@/components/utils/resolve-aliases';
+import Dom from '@repo/editor/components/dom';
+import Module from '@repo/editor/components/__module';
+import SelectionUtils from '@repo/editor/components/selection';
+import Block from '@repo/editor/components/block';
+import I18n from '@repo/editor/components/i18n';
+import { I18nInternalNS } from '@repo/editor/components/i18n/namespace-internal';
+import Flipper from '@repo/editor/components/flipper';
+import { resolveAliases } from '@repo/editor/components/utils/resolve-aliases';
 import {
   type Popover,
   PopoverDesktop,
   PopoverMobile,
-} from '@/components/utils/popover';
-import { isMobileScreen } from '@/components/utilities';
-import { EditorMobileLayoutToggled } from '@/components/events';
-import { getConvertibleToolsForBlock } from '@/components/utils/blocks';
-import { PopoverEvent } from '@/types/utils/popover/popover-event';
-import { PopoverItemType } from '@/types/utils/popover/popover-item-type';
+} from '@repo/editor/components/utils/popover';
+import { isMobileScreen } from '@repo/editor/components/utilities';
+import { EditorMobileLayoutToggled } from '@repo/editor/components/events';
+import { getConvertibleToolsForBlock } from '@repo/editor/components/utils/blocks';
+import { PopoverEvent } from '@repo/editor/types/utils/popover/popover-event';
+import { PopoverItemType } from '@repo/editor/types/utils/popover/popover-item-type';
 
-import type { MenuConfigItem } from '@/types/tools/menu-config';
-import type { PopoverItemParams } from '@/types/utils/popover/popover-item';
+import type { MenuConfigItem } from '@repo/editor/types/tools/menu-config';
+import type { PopoverItemParams } from '@repo/editor/types/utils/popover/popover-item';
 
 type BlockSettingsNodes = {
   wrapper: HTMLElement | undefined;

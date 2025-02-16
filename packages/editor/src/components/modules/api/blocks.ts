@@ -1,15 +1,15 @@
-import * as utilities from '@/components/utilities';
-import BlockAPI from '@/components/block/api';
-import Module from '@/components/__module';
-import Block from '@/components/block';
+import * as utilities from '@repo/editor/components/utilities';
+import BlockAPI from '@repo/editor/components/block/api';
+import Module from '@repo/editor/components/__module';
+import Block from '@repo/editor/components/block';
 
-import type { BlockAPI as BlockAPIInterface } from '@/types/api/block';
-import type { Blocks } from '@/types/api/blocks';
-import type { BlockToolData } from '@/types/tools/block-tool-data';
-import type { OutputBlockData } from '@/types/data-formats/output-data';
-import type { OutputData } from '@/types/data-formats/output-data';
-import type { ToolConfig } from '@/types/tools/tool-config';
-import type { BlockTuneData } from '@/types/block-tunes/block-tune-data';
+import type { BlockAPI as BlockAPIInterface } from '@repo/editor/types/api/block';
+import type { Blocks } from '@repo/editor/types/api/blocks';
+import type { BlockToolData } from '@repo/editor/types/tools/block-tool-data';
+import type { OutputBlockData } from '@repo/editor/types/data-formats/output-data';
+import type { OutputData } from '@repo/editor/types/data-formats/output-data';
+import type { ToolConfig } from '@repo/editor/types/tools/tool-config';
+import type { BlockTuneData } from '@repo/editor/types/block-tunes/block-tune-data';
 
 export default class BlocksAPI extends Module {
   public get methods(): Blocks {

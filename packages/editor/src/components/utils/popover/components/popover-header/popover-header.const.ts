@@ -1,4 +1,4 @@
-import { bem } from '@/components/utils/bem';
+import { bem } from '@repo/editor/components/utils/bem';
 
 const className = bem('ce-popover-header');
 

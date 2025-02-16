@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-import Dom from '@/components/dom';
+import Dom from '@repo/editor/components/dom';
 
 export enum LogLevels {
   VERBOSE = 'VERBOSE',

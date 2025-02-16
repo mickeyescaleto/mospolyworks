@@ -1,15 +1,18 @@
-import Module from '@/components/__module';
-import Dom from '@/components/dom';
-import * as utilities from '@/components/utilities';
-import type Block from '@/components/block';
-import { clean, sanitizeBlocks } from '@/components/utils/sanitizer';
-import type BlockToolAdapter from '@/components/tools/block';
+import Module from '@repo/editor/components/__module';
+import Dom from '@repo/editor/components/dom';
+import * as utilities from '@repo/editor/components/utilities';
+import type Block from '@repo/editor/components/block';
+import { clean, sanitizeBlocks } from '@repo/editor/components/utils/sanitizer';
+import type BlockToolAdapter from '@repo/editor/components/tools/block';
 
-import type { SavedData } from '@/types/data-formats/block-data';
-import type { SanitizerConfig } from '@/types/configs/sanitizer-config';
-import type { SanitizerRule } from '@/types/configs/sanitizer-config';
-import type { PasteEvent, PasteEventDetail } from '@/types/tools/paste-events';
-import type { BlockAPI } from '@/types/api/block';
+import type { SavedData } from '@repo/editor/types/data-formats/block-data';
+import type { SanitizerConfig } from '@repo/editor/types/configs/sanitizer-config';
+import type { SanitizerRule } from '@repo/editor/types/configs/sanitizer-config';
+import type {
+  PasteEvent,
+  PasteEventDetail,
+} from '@repo/editor/types/tools/paste-events';
+import type { BlockAPI } from '@repo/editor/types/api/block';
 
 type TagSubstitute = {
   tool: BlockToolAdapter;

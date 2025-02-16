@@ -1,15 +1,15 @@
 import {
   InternalInlineToolSettings,
   InternalTuneSettings,
-} from '@/components/tools/base';
-import InlineToolAdapter from '@/components/tools/inline';
-import BlockTuneAdapter from '@/components/tools/tune';
-import BlockToolAdapter from '@/components/tools/block';
-import ApiModule from '@/components/modules/api';
+} from '@repo/editor/components/tools/base';
+import InlineToolAdapter from '@repo/editor/components/tools/inline';
+import BlockTuneAdapter from '@repo/editor/components/tools/tune';
+import BlockToolAdapter from '@repo/editor/components/tools/block';
+import ApiModule from '@repo/editor/components/modules/api';
 
-import type { EditorConfig } from '@/types/configs/editor-config';
-import type { ToolConstructable } from '@/types/tools';
-import type { ToolSettings } from '@/types/tools/tool-settings';
+import type { EditorConfig } from '@repo/editor/types/configs/editor-config';
+import type { ToolConstructable } from '@repo/editor/types/tools';
+import type { ToolSettings } from '@repo/editor/types/tools/tool-settings';
 
 type ToolConstructor =
   | typeof InlineToolAdapter

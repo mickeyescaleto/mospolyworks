@@ -1,19 +1,19 @@
-import Module from '@/components/__module';
-import { modificationsObserverBatchTimeout } from '@/components/constants';
+import Module from '@repo/editor/components/__module';
+import { modificationsObserverBatchTimeout } from '@repo/editor/components/constants';
 import {
   BlockChanged,
   FakeCursorAboutToBeToggled,
   FakeCursorHaveBeenSet,
   RedactorDomChanged,
-} from '@/components/events';
-import * as utilities from '@/components/utilities';
+} from '@repo/editor/components/events';
+import * as utilities from '@repo/editor/components/utilities';
 
-import type { ModuleConfig } from '@/types-internal/module-config';
-import type { BlockId } from '@/types/data-formats/block-id';
+import type { ModuleConfig } from '@repo/editor/types-internal/module-config';
+import type { BlockId } from '@repo/editor/types/data-formats/block-id';
 import type {
   BlockMutationEvent,
   BlockMutationType,
-} from '@/types/events/block';
+} from '@repo/editor/types/events/block';
 
 type UniqueBlockMutationKey = `block:${BlockId}:event:${BlockMutationType}`;
 

@@ -1,8 +1,8 @@
 import { IconBold } from '@codexteam/icons';
 
-import type { MenuConfig } from '@/types/tools/menu-config';
-import type { InlineTool } from '@/types/tools/inline-tool';
-import type { SanitizerConfig } from '@/types/configs/sanitizer-config';
+import type { MenuConfig } from '@repo/editor/types/tools/menu-config';
+import type { InlineTool } from '@repo/editor/types/tools/inline-tool';
+import type { SanitizerConfig } from '@repo/editor/types/configs/sanitizer-config';
 
 export default class BoldInlineTool implements InlineTool {
   public static isInline = true;

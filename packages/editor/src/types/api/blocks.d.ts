@@ -1,11 +1,11 @@
 import type {
   OutputBlockData,
   OutputData,
-} from '@/types/data-formats/output-data';
-import type { BlockToolData } from '@/types/tools/block-tool-data';
-import type { ToolConfig } from '@/types/tools/tool-config';
-import type { BlockAPI } from '@/types/api/block';
-import type { BlockTuneData } from '@/types/block-tunes/block-tune-data';
+} from '@repo/editor/types/data-formats/output-data';
+import type { BlockToolData } from '@repo/editor/types/tools/block-tool-data';
+import type { ToolConfig } from '@repo/editor/types/tools/tool-config';
+import type { BlockAPI } from '@repo/editor/types/api/block';
+import type { BlockTuneData } from '@repo/editor/types/block-tunes/block-tune-data';
 
 export type Blocks = {
   clear(): Promise<void>;

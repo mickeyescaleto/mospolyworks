@@ -1,6 +1,6 @@
-import Module from '@/components/__module';
+import Module from '@repo/editor/components/__module';
 
-import type { Ui, UiNodes } from '@/types/api/ui';
+import type { Ui, UiNodes } from '@repo/editor/types/api/ui';
 
 export default class UiAPI extends Module {
   public get methods(): Ui {

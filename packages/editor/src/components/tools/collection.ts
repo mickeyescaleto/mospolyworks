@@ -1,8 +1,8 @@
-import type BlockToolAdapter from '@/components/tools/block';
-import type InlineToolAdapter from '@/components/tools/inline';
-import type BlockTuneAdapter from '@/components/tools/tune';
+import type BlockToolAdapter from '@repo/editor/components/tools/block';
+import type InlineToolAdapter from '@repo/editor/components/tools/inline';
+import type BlockTuneAdapter from '@repo/editor/components/tools/tune';
 
-import type { ToolsCollection as ToolsCollectionInterface } from '@/types/tools/adapters/tools-collection';
+import type { ToolsCollection as ToolsCollectionInterface } from '@repo/editor/types/tools/adapters/tools-collection';
 
 export type ToolClass = BlockToolAdapter | InlineToolAdapter | BlockTuneAdapter;
 

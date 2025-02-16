@@ -1,8 +1,8 @@
-import Module from '@/components/__module';
-import { clean } from '@/components/utils/sanitizer';
+import Module from '@repo/editor/components/__module';
+import { clean } from '@repo/editor/components/utils/sanitizer';
 
-import type { Sanitizer as ISanitizer } from '@/types/api/sanitizer';
-import type { SanitizerConfig } from '@/types/configs/sanitizer-config';
+import type { Sanitizer as ISanitizer } from '@repo/editor/types/api/sanitizer';
+import type { SanitizerConfig } from '@repo/editor/types/configs/sanitizer-config';
 
 export default class SanitizerAPI extends Module {
   public get methods(): ISanitizer {

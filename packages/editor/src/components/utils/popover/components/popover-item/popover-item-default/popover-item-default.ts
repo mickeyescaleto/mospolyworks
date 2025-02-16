@@ -1,13 +1,13 @@
 import { IconDotCircle, IconChevronRight } from '@codexteam/icons';
-import Dom from '@/components/dom';
-import { PopoverItem } from '@/components/utils/popover/components/popover-item/popover-item';
-import { css } from '@/components/utils/popover/components/popover-item/popover-item-default/popover-item-default.const';
-import { PopoverItemType } from '@/types/utils/popover/popover-item-type';
+import Dom from '@repo/editor/components/dom';
+import { PopoverItem } from '@repo/editor/components/utils/popover/components/popover-item/popover-item';
+import { css } from '@repo/editor/components/utils/popover/components/popover-item/popover-item-default/popover-item-default.const';
+import { PopoverItemType } from '@repo/editor/types/utils/popover/popover-item-type';
 
 import type {
   PopoverItemDefaultParams as PopoverItemDefaultParams,
   PopoverItemRenderParamsMap,
-} from '@/types/utils/popover/popover-item';
+} from '@repo/editor/types/utils/popover/popover-item';
 
 export class PopoverItemDefault extends PopoverItem {
   public get isDisabled(): boolean {

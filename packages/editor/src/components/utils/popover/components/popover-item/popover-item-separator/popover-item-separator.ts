@@ -1,6 +1,6 @@
-import Dom from '@/components/dom';
-import { PopoverItem } from '@/components/utils/popover/components/popover-item';
-import { css } from '@/components/utils/popover/components/popover-item/popover-item-separator/popover-item-separator.const';
+import Dom from '@repo/editor/components/dom';
+import { PopoverItem } from '@repo/editor/components/utils/popover/components/popover-item';
+import { css } from '@repo/editor/components/utils/popover/components/popover-item/popover-item-separator/popover-item-separator.const';
 
 export class PopoverItemSeparator extends PopoverItem {
   private nodes: { root: HTMLElement; line: HTMLElement };

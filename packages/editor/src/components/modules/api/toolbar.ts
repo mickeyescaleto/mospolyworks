@@ -1,7 +1,7 @@
-import Module from '@/components/__module';
-import * as utilities from '@/components/utilities';
+import Module from '@repo/editor/components/__module';
+import * as utilities from '@repo/editor/components/utilities';
 
-import type { Toolbar } from '@/types/api/toolbar';
+import type { Toolbar } from '@repo/editor/types/api/toolbar';
 
 export default class ToolbarAPI extends Module {
   public get methods(): Toolbar {

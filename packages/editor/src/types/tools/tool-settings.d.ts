@@ -1,7 +1,10 @@
-import type { ToolConfig } from '@/types/tools/tool-config';
-import type { BlockToolData } from '@/types/tools/block-tool-data';
-import type { MenuConfig, MenuConfigItem } from '@/types/tools/menu-config';
-import type { ToolConstructable } from '@/types/tools';
+import type { ToolConfig } from '@repo/editor/types/tools/tool-config';
+import type { BlockToolData } from '@repo/editor/types/tools/block-tool-data';
+import type {
+  MenuConfig,
+  MenuConfigItem,
+} from '@repo/editor/types/tools/menu-config';
+import type { ToolConstructable } from '@repo/editor/types/tools';
 
 export type ToolboxConfig = ToolboxConfigEntry | ToolboxConfigEntry[];
 

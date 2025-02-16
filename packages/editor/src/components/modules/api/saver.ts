@@ -1,8 +1,8 @@
-import * as utilities from '@/components/utilities';
-import Module from '@/components/__module';
+import * as utilities from '@repo/editor/components/utilities';
+import Module from '@repo/editor/components/__module';
 
-import type { Saver } from '@/types/api/saver';
-import type { OutputData } from '@/types/data-formats/output-data';
+import type { Saver } from '@repo/editor/types/api/saver';
+import type { OutputData } from '@repo/editor/types/data-formats/output-data';
 
 export default class SaverAPI extends Module {
   public get methods(): Saver {

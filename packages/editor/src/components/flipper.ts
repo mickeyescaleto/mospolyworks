@@ -1,5 +1,5 @@
-import DomIterator from '@/components/dom-iterator';
-import * as utilities from '@/components/utilities';
+import DomIterator from '@repo/editor/components/dom-iterator';
+import * as utilities from '@repo/editor/components/utilities';
 
 export type FlipperOptions = {
   focusedItemClass?: string;

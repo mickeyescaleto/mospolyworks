@@ -1,9 +1,9 @@
-import type { API } from '@/types';
-import type { ToolConfig } from '@/types/tools/tool-config';
-import type { BlockTuneData } from '@/types/block-tunes/block-tune-data';
-import type { MenuConfig } from '@/types/tools/menu-config';
-import type { BlockAPI } from '@/types/api/block';
-import type { SanitizerConfig } from '@/types/configs/sanitizer-config';
+import type { API } from '@repo/editor/types';
+import type { ToolConfig } from '@repo/editor/types/tools/tool-config';
+import type { BlockTuneData } from '@repo/editor/types/block-tunes/block-tune-data';
+import type { MenuConfig } from '@repo/editor/types/tools/menu-config';
+import type { BlockAPI } from '@repo/editor/types/api/block';
+import type { SanitizerConfig } from '@repo/editor/types/configs/sanitizer-config';
 
 export type BlockTune = {
   render(): HTMLElement | MenuConfig;

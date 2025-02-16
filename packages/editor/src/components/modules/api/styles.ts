@@ -1,6 +1,6 @@
-import Module from '@/components/__module';
+import Module from '@repo/editor/components/__module';
 
-import type { Styles } from '@/types/api/styles';
+import type { Styles } from '@repo/editor/types/api/styles';
 
 export default class StylesAPI extends Module {
   public get classes(): Styles {

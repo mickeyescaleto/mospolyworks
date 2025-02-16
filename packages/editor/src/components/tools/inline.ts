@@ -1,13 +1,13 @@
 import BaseToolAdapter, {
   InternalInlineToolSettings,
-} from '@/components/tools/base';
-import { ToolType } from '@/types/tools/adapters/tool-type';
+} from '@repo/editor/components/tools/base';
+import { ToolType } from '@repo/editor/types/tools/adapters/tool-type';
 
-import type { InlineToolAdapter as InlineToolAdapterInterface } from '@/types/tools/adapters/inline-tool-adapter';
+import type { InlineToolAdapter as InlineToolAdapterInterface } from '@repo/editor/types/tools/adapters/inline-tool-adapter';
 import type {
   InlineTool,
   InlineToolConstructable,
-} from '@/types/tools/inline-tool';
+} from '@repo/editor/types/tools/inline-tool';
 
 export default class InlineToolAdapter
   extends BaseToolAdapter<ToolType.Inline, InlineTool>

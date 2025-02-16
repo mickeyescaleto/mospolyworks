@@ -1,17 +1,17 @@
-import { PopoverAbstract } from '@/components/utils/popover/popover-abstract';
-import ScrollLocker from '@/components/utils/scroll-locker';
-import { PopoverHeader } from '@/components/utils/popover/components/popover-header';
-import { PopoverStatesHistory } from '@/components/utils/popover/utils/popover-states-history';
-import type { PopoverItemDefault } from '@/components/utils/popover/components/popover-item';
-import { css } from '@/components/utils/popover/popover.const';
-import Dom from '@/components/dom';
-import { PopoverItemType } from '@/types/utils/popover/popover-item-type';
+import { PopoverAbstract } from '@repo/editor/components/utils/popover/popover-abstract';
+import ScrollLocker from '@repo/editor/components/utils/scroll-locker';
+import { PopoverHeader } from '@repo/editor/components/utils/popover/components/popover-header';
+import { PopoverStatesHistory } from '@repo/editor/components/utils/popover/utils/popover-states-history';
+import type { PopoverItemDefault } from '@repo/editor/components/utils/popover/components/popover-item';
+import { css } from '@repo/editor/components/utils/popover/popover.const';
+import Dom from '@repo/editor/components/dom';
+import { PopoverItemType } from '@repo/editor/types/utils/popover/popover-item-type';
 
-import type { PopoverItemParams } from '@/types/utils/popover/popover-item';
+import type { PopoverItemParams } from '@repo/editor/types/utils/popover/popover-item';
 import type {
   PopoverMobileNodes,
   PopoverParams,
-} from '@/types/utils/popover/popover';
+} from '@repo/editor/types/utils/popover/popover';
 
 export class PopoverMobile extends PopoverAbstract<PopoverMobileNodes> {
   private scrollLocker = new ScrollLocker();

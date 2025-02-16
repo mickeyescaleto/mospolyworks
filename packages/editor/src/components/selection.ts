@@ -1,5 +1,5 @@
-import * as utilities from '@/components/utilities';
-import Dom from '@/components/dom';
+import * as utilities from '@repo/editor/components/utilities';
+import Dom from '@repo/editor/components/dom';
 
 type TextRange = {
   boundingTop: number;

@@ -1,6 +1,6 @@
-import Module from '@/components/__module';
+import Module from '@repo/editor/components/__module';
 
-import type { Events } from '@/types/api/events';
+import type { Events } from '@repo/editor/types/api/events';
 
 export default class EventsAPI extends Module {
   public get methods(): Events {

@@ -1,14 +1,14 @@
 import { IconLink, IconUnlink } from '@codexteam/icons';
-import * as utilities from '@/components/utilities';
-import SelectionUtils from '@/components/selection';
+import * as utilities from '@repo/editor/components/utilities';
+import SelectionUtils from '@repo/editor/components/selection';
 
-import type { Notifier } from '@/types/api/notifier';
-import type { Toolbar } from '@/types/api/toolbar';
-import type { I18n } from '@/types/api/i18n';
-import type { InlineToolbar } from '@/types/api/inline-toolbar';
-import type { API } from '@/types';
-import type { SanitizerConfig } from '@/types/configs/sanitizer-config';
-import type { InlineTool } from '@/types/tools/inline-tool';
+import type { Notifier } from '@repo/editor/types/api/notifier';
+import type { Toolbar } from '@repo/editor/types/api/toolbar';
+import type { I18n } from '@repo/editor/types/api/i18n';
+import type { InlineToolbar } from '@repo/editor/types/api/inline-toolbar';
+import type { API } from '@repo/editor/types';
+import type { SanitizerConfig } from '@repo/editor/types/configs/sanitizer-config';
+import type { InlineTool } from '@repo/editor/types/tools/inline-tool';
 
 export default class LinkInlineTool implements InlineTool {
   public static isInline = true;

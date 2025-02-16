@@ -1,4 +1,4 @@
-import Dom, { isCollapsedWhitespaces } from '@/components/dom';
+import Dom, { isCollapsedWhitespaces } from '@repo/editor/components/dom';
 
 export function getCaretNodeAndOffset(): [Node | null, number] {
   const selection = window.getSelection();

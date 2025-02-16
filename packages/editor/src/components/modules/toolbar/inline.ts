@@ -1,23 +1,23 @@
-import Module from '@/components/__module';
-import Dom from '@/components/dom';
-import SelectionUtils from '@/components/selection';
-import * as utilities from '@/components/utilities';
-import I18n from '@/components/i18n';
-import { I18nInternalNS } from '@/components/i18n/namespace-internal';
-import Shortcuts from '@/components/utils/shortcuts';
-import { CommonInternalSettings } from '@/components/tools/base';
-import { PopoverInline } from '@/components/utils/popover/popover-inline';
-import InlineToolAdapter from '@/components/tools/inline';
-import { PopoverItemType } from '@/types/utils/popover/popover-item-type';
+import Module from '@repo/editor/components/__module';
+import Dom from '@repo/editor/components/dom';
+import SelectionUtils from '@repo/editor/components/selection';
+import * as utilities from '@repo/editor/components/utilities';
+import I18n from '@repo/editor/components/i18n';
+import { I18nInternalNS } from '@repo/editor/components/i18n/namespace-internal';
+import Shortcuts from '@repo/editor/components/utils/shortcuts';
+import { CommonInternalSettings } from '@repo/editor/components/tools/base';
+import { PopoverInline } from '@repo/editor/components/utils/popover/popover-inline';
+import InlineToolAdapter from '@repo/editor/components/tools/inline';
+import { PopoverItemType } from '@repo/editor/types/utils/popover/popover-item-type';
 
-import type { ModuleConfig } from '@/types-internal/module-config';
-import type { Popover } from '@/components/utils/popover';
+import type { ModuleConfig } from '@repo/editor/types-internal/module-config';
+import type { Popover } from '@repo/editor/components/utils/popover';
 import type {
   PopoverItemHtmlParams,
   PopoverItemParams,
   WithChildren,
-} from '@/types/utils/popover/popover-item';
-import type { InlineTool as IInlineTool } from '@/types/tools/inline-tool';
+} from '@repo/editor/types/utils/popover/popover-item';
+import type { InlineTool as IInlineTool } from '@repo/editor/types/tools/inline-tool';
 
 type InlineToolbarNodes = {
   wrapper: HTMLElement | undefined;

@@ -1,17 +1,17 @@
 import { IconMenu, IconPlus } from '@codexteam/icons';
-import Dom, { calculateBaseline } from '@/components/dom';
-import * as utilities from '@/components/utilities';
-import Module from '@/components/__module';
-import I18n from '@/components/i18n';
-import { I18nInternalNS } from '@/components/i18n/namespace-internal';
-import * as tooltip from '@/components/utils/tooltip';
-import Block from '@/components/block';
-import Toolbox, { ToolboxEvent } from '@/components/ui/toolbox';
-import { BlockHovered } from '@/components/events/block-hovered';
-import { beautifyShortcut } from '@/components/utilities';
-import { getKeyboardKeyForCode } from '@/components/utils/keyboard';
+import Dom, { calculateBaseline } from '@repo/editor/components/dom';
+import * as utilities from '@repo/editor/components/utilities';
+import Module from '@repo/editor/components/__module';
+import I18n from '@repo/editor/components/i18n';
+import { I18nInternalNS } from '@repo/editor/components/i18n/namespace-internal';
+import * as tooltip from '@repo/editor/components/utils/tooltip';
+import Block from '@repo/editor/components/block';
+import Toolbox, { ToolboxEvent } from '@repo/editor/components/ui/toolbox';
+import { BlockHovered } from '@repo/editor/components/events/block-hovered';
+import { beautifyShortcut } from '@repo/editor/components/utilities';
+import { getKeyboardKeyForCode } from '@repo/editor/components/utils/keyboard';
 
-import type { ModuleConfig } from '@/types-internal/module-config';
+import type { ModuleConfig } from '@repo/editor/types-internal/module-config';
 
 type ToolbarNodes = {
   wrapper: HTMLElement | undefined;

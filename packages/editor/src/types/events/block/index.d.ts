@@ -1,19 +1,19 @@
 import {
   type BlockAddedEvent,
   BlockAddedMutationType,
-} from '@/types/events/block/block-added';
+} from '@repo/editor/types/events/block/block-added';
 import {
   type BlockChangedEvent,
   BlockChangedMutationType,
-} from '@/types/events/block/block-changed';
+} from '@repo/editor/types/events/block/block-changed';
 import {
   type BlockMovedEvent,
   BlockMovedMutationType,
-} from '@/types/events/block/block-moved';
+} from '@repo/editor/types/events/block/block-moved';
 import {
   type BlockRemovedEvent,
   BlockRemovedMutationType,
-} from '@/types/events/block/block-removed';
+} from '@repo/editor/types/events/block/block-removed';
 
 export type BlockMutationEventMap = {
   [BlockAddedMutationType]: BlockAddedEvent;

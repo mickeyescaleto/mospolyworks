@@ -1,25 +1,25 @@
-import * as utilities from '@/components/utilities';
-import InlineToolAdapter from '@/components/tools/inline';
-import BlockTuneAdapter from '@/components/tools/tune';
-import ToolsCollection from '@/components/tools/collection';
+import * as utilities from '@repo/editor/components/utilities';
+import InlineToolAdapter from '@repo/editor/components/tools/inline';
+import BlockTuneAdapter from '@repo/editor/components/tools/tune';
+import ToolsCollection from '@repo/editor/components/tools/collection';
 import BaseToolAdapter, {
   InternalBlockToolSettings,
   UserSettings,
-} from '@/components/tools/base';
-import { ToolType } from '@/types/tools/adapters/tool-type';
+} from '@repo/editor/components/tools/base';
+import { ToolType } from '@repo/editor/types/tools/adapters/tool-type';
 
-import type { BlockToolAdapter as BlockToolAdapterInterface } from '@/types/tools/adapters/block-tool-adapter';
-import type { BlockAPI } from '@/types/api/block';
+import type { BlockToolAdapter as BlockToolAdapterInterface } from '@repo/editor/types/tools/adapters/block-tool-adapter';
+import type { BlockAPI } from '@repo/editor/types/api/block';
 import type {
   BlockTool as IBlockTool,
   BlockToolConstructable,
-} from '@/types/tools/block-tool';
-import type { BlockToolData } from '@/types/tools/block-tool-data';
-import type { ConversionConfig } from '@/types/configs/conversion-config';
-import type { PasteConfig } from '@/types/configs/paste-config';
-import type { SanitizerConfig } from '@/types/configs/sanitizer-config';
-import type { ToolboxConfig } from '@/types/tools/tool-settings';
-import type { ToolboxConfigEntry } from '@/types/tools/tool-settings';
+} from '@repo/editor/types/tools/block-tool';
+import type { BlockToolData } from '@repo/editor/types/tools/block-tool-data';
+import type { ConversionConfig } from '@repo/editor/types/configs/conversion-config';
+import type { PasteConfig } from '@repo/editor/types/configs/paste-config';
+import type { SanitizerConfig } from '@repo/editor/types/configs/sanitizer-config';
+import type { ToolboxConfig } from '@repo/editor/types/tools/tool-settings';
+import type { ToolboxConfigEntry } from '@repo/editor/types/tools/tool-settings';
 
 export default class BlockToolAdapter
   extends BaseToolAdapter<ToolType.Block, IBlockTool>

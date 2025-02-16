@@ -1,9 +1,9 @@
-import { PopoverItemType } from '@/types/utils/popover/popover-item-type';
+import { PopoverItemType } from '@repo/editor/types/utils/popover/popover-item-type';
 import type {
   HintParams,
   HintPosition,
   HintTextAlignment,
-} from '@/types/utils/popover/hint';
+} from '@repo/editor/types/utils/popover/hint';
 
 export type PopoverItemChildren = {
   searchable?: boolean;

@@ -1,10 +1,10 @@
-import Listeners from '@/components/utils/listeners';
-import EventsDispatcher from '@/components/utils/events';
+import Listeners from '@repo/editor/components/utils/listeners';
+import EventsDispatcher from '@repo/editor/components/utils/events';
 
-import type { EditorEventMap } from '@/components/events';
-import type { EditorModules } from '@/types-internal/editor-modules';
-import type { ModuleConfig } from '@/types-internal/module-config';
-import type { EditorConfig } from '@/types/configs/editor-config';
+import type { EditorEventMap } from '@repo/editor/components/events';
+import type { EditorModules } from '@repo/editor/types-internal/editor-modules';
+import type { ModuleConfig } from '@repo/editor/types-internal/module-config';
+import type { EditorConfig } from '@repo/editor/types/configs/editor-config';
 
 export type ModuleNodes = object;
 

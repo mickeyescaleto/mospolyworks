@@ -1,6 +1,6 @@
-import Module from '@/components/__module';
+import Module from '@repo/editor/components/__module';
 
-import type { ReadOnly } from '@/types/api/readonly';
+import type { ReadOnly } from '@repo/editor/types/api/readonly';
 
 export default class ReadOnlyAPI extends Module {
   public get methods(): ReadOnly {

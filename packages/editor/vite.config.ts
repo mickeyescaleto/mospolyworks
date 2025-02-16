@@ -13,11 +13,15 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@/types': path.resolve(__dirname, 'src', 'types'),
-      '@/types-internal': path.resolve(__dirname, 'src', 'types-internal'),
-      '@/components': path.resolve(__dirname, 'src', 'components'),
-      '@/tools': path.resolve(__dirname, 'src', 'tools'),
-      '@/styles': path.resolve(__dirname, 'src', 'styles'),
+      '@repo/editor/types': path.resolve(__dirname, 'src', 'types'),
+      '@repo/editor/types-internal': path.resolve(
+        __dirname,
+        'src',
+        'types-internal',
+      ),
+      '@repo/editor/components': path.resolve(__dirname, 'src', 'components'),
+      '@repo/editor/tools': path.resolve(__dirname, 'src', 'tools'),
+      '@repo/editor/styles': path.resolve(__dirname, 'src', 'styles'),
     },
   },
   server: {

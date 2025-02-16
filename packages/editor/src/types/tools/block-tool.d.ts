@@ -1,17 +1,17 @@
-import type { ConversionConfig } from '@/types/configs/conversion-config';
-import type { SanitizerConfig } from '@/types/configs/sanitizer-config';
-import type { PasteConfig } from '@/types/configs/paste-config';
-import type { BlockToolData } from '@/types/tools/block-tool-data';
+import type { ConversionConfig } from '@repo/editor/types/configs/conversion-config';
+import type { SanitizerConfig } from '@repo/editor/types/configs/sanitizer-config';
+import type { PasteConfig } from '@repo/editor/types/configs/paste-config';
+import type { BlockToolData } from '@repo/editor/types/tools/block-tool-data';
 import type {
   BaseTool,
   BaseToolConstructable,
   BaseToolConstructorOptions,
-} from '@/types/tools/tool';
-import type { BlockAPI } from '@/types/api/block';
-import type { ToolboxConfig } from '@/types/tools/tool-settings';
-import type { PasteEvent } from '@/types/tools/paste-events';
-import type { MoveEvent } from '@/types/tools/hook-events';
-import type { MenuConfig } from '@/types/tools/menu-config';
+} from '@repo/editor/types/tools/tool';
+import type { BlockAPI } from '@repo/editor/types/api/block';
+import type { ToolboxConfig } from '@repo/editor/types/tools/tool-settings';
+import type { PasteEvent } from '@repo/editor/types/tools/paste-events';
+import type { MoveEvent } from '@repo/editor/types/tools/hook-events';
+import type { MenuConfig } from '@repo/editor/types/tools/menu-config';
 
 export type BlockTool = BaseTool & {
   sanitize?: SanitizerConfig;

@@ -1,7 +1,7 @@
 import { IconPicture } from '@codexteam/icons';
 import { make } from './utils/dom';
 
-import type { API } from '@/types';
+import type { API } from '@repo/editor/types';
 import type { ImageConfig } from './types/types';
 
 export enum UiState {

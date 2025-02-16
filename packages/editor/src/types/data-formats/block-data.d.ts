@@ -1,5 +1,5 @@
-import type { BlockToolData } from '@/types/tools/block-tool-data';
-import type { BlockId } from '@/types/data-formats/block-id';
+import type { BlockToolData } from '@repo/editor/types/tools/block-tool-data';
+import type { BlockId } from '@repo/editor/types/data-formats/block-id';
 
 export type SavedData = {
   id: BlockId;

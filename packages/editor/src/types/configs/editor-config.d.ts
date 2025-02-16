@@ -1,11 +1,11 @@
-import type { ToolConstructable } from '@/types/tools';
-import type { ToolSettings } from '@/types/tools/tool-settings';
-import type { API } from '@/types';
-import type { SanitizerConfig } from '@/types/configs/sanitizer-config';
-import type { I18nConfig } from '@/types/configs/i18n-config';
-import type { BlockMutationEvent } from '@/types/events/block';
-import type { OutputData } from '@/types/data-formats/output-data';
-import { LogLevels } from '@/types/configs/log-levels';
+import type { ToolConstructable } from '@repo/editor/types/tools';
+import type { ToolSettings } from '@repo/editor/types/tools/tool-settings';
+import type { API } from '@repo/editor/types';
+import type { SanitizerConfig } from '@repo/editor/types/configs/sanitizer-config';
+import type { I18nConfig } from '@repo/editor/types/configs/i18n-config';
+import type { BlockMutationEvent } from '@repo/editor/types/events/block';
+import type { OutputData } from '@repo/editor/types/data-formats/output-data';
+import { LogLevels } from '@repo/editor/types/configs/log-levels';
 
 export type EditorConfig = {
   holderId?: string | HTMLElement;

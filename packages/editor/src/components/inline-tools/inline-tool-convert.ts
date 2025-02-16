@@ -1,18 +1,21 @@
 import { IconReplace } from '@codexteam/icons';
-import * as utilities from '@/components/utilities';
-import SelectionUtils from '@/components/selection';
-import { getConvertibleToolsForBlock } from '@/components/utils/blocks';
-import I18nInternal from '@/components/i18n';
-import { I18nInternalNS } from '@/components/i18n/namespace-internal';
+import * as utilities from '@repo/editor/components/utilities';
+import SelectionUtils from '@repo/editor/components/selection';
+import { getConvertibleToolsForBlock } from '@repo/editor/components/utils/blocks';
+import I18nInternal from '@repo/editor/components/i18n';
+import { I18nInternalNS } from '@repo/editor/components/i18n/namespace-internal';
 
-import type { Blocks } from '@/types/api/blocks';
-import type { Selection } from '@/types/api/selection';
-import type { Tools } from '@/types/api/tools';
-import type { Caret } from '@/types/api/caret';
-import type { I18n } from '@/types/api/i18n';
-import type { MenuConfig, MenuConfigItem } from '@/types/tools/menu-config';
-import type { API } from '@/types';
-import type { InlineTool } from '@/types/tools/inline-tool';
+import type { Blocks } from '@repo/editor/types/api/blocks';
+import type { Selection } from '@repo/editor/types/api/selection';
+import type { Tools } from '@repo/editor/types/api/tools';
+import type { Caret } from '@repo/editor/types/api/caret';
+import type { I18n } from '@repo/editor/types/api/i18n';
+import type {
+  MenuConfig,
+  MenuConfigItem,
+} from '@repo/editor/types/tools/menu-config';
+import type { API } from '@repo/editor/types';
+import type { InlineTool } from '@repo/editor/types/tools/inline-tool';
 
 export default class ConvertInlineTool implements InlineTool {
   public static isInline = true;

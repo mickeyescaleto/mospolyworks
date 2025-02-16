@@ -1,6 +1,6 @@
-import type { API } from '@/types';
-import type { ToolConfig } from '@/types/tools/tool-config';
-import type { SanitizerConfig } from '@/types/configs/sanitizer-config';
+import type { API } from '@repo/editor/types';
+import type { ToolConfig } from '@repo/editor/types/tools/tool-config';
+import type { SanitizerConfig } from '@repo/editor/types/configs/sanitizer-config';
 
 export type BaseTool<RenderReturnType = HTMLElement> = {
   render(): RenderReturnType | Promise<RenderReturnType>;

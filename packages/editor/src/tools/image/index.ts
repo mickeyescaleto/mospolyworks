@@ -9,18 +9,18 @@ import Ui from './ui';
 import Uploader from './uploader';
 import './styles.css';
 
-import type { TunesMenuConfig } from '@/types/tools/tool-settings';
-import type { API } from '@/types';
-import type { ToolboxConfig } from '@/types/tools/tool-settings';
-import type { PasteConfig } from '@/types/configs/paste-config';
+import type { TunesMenuConfig } from '@repo/editor/types/tools/tool-settings';
+import type { API } from '@repo/editor/types';
+import type { ToolboxConfig } from '@repo/editor/types/tools/tool-settings';
+import type { PasteConfig } from '@repo/editor/types/configs/paste-config';
 import type {
   BlockTool,
   BlockToolConstructorOptions,
-} from '@/types/tools/block-tool';
-import type { BlockAPI } from '@/types/api/block';
-import type { PasteEvent } from '@/types/tools/paste-events';
-import type { PatternPasteEventDetail } from '@/types/tools/paste-events';
-import type { FilePasteEventDetail } from '@/types/tools/paste-events';
+} from '@repo/editor/types/tools/block-tool';
+import type { BlockAPI } from '@repo/editor/types/api/block';
+import type { PasteEvent } from '@repo/editor/types/tools/paste-events';
+import type { PatternPasteEventDetail } from '@repo/editor/types/tools/paste-events';
+import type { FilePasteEventDetail } from '@repo/editor/types/tools/paste-events';
 import type {
   ActionConfig,
   UploadResponseFormat,

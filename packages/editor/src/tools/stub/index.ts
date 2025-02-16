@@ -1,12 +1,12 @@
 import { IconWarning } from '@codexteam/icons';
-import Dom from '@/components/dom';
+import Dom from '@repo/editor/components/dom';
 
 import type {
   BlockTool,
   BlockToolConstructorOptions,
-} from '@/types/tools/block-tool';
-import type { BlockToolData } from '@/types/tools/block-tool-data';
-import type { API } from '@/types';
+} from '@repo/editor/types/tools/block-tool';
+import type { BlockToolData } from '@repo/editor/types/tools/block-tool-data';
+import type { API } from '@repo/editor/types';
 
 export type StubData = BlockToolData & {
   title: string;

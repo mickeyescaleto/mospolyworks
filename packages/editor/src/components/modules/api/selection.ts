@@ -1,7 +1,7 @@
-import SelectionUtils from '@/components/selection';
-import Module from '@/components/__module';
+import SelectionUtils from '@repo/editor/components/selection';
+import Module from '@repo/editor/components/__module';
 
-import type { Selection as SelectionAPIInterface } from '@/types/api/selection';
+import type { Selection as SelectionAPIInterface } from '@repo/editor/types/api/selection';
 
 export default class SelectionAPI extends Module {
   private selectionUtils = new SelectionUtils();

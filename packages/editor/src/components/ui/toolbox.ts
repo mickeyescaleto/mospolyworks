@@ -1,23 +1,26 @@
-import Dom from '@/components/dom';
-import * as utilities from '@/components/utilities';
-import { BlockToolAPI } from '@/components/block';
-import Shortcuts from '@/components/utils/shortcuts';
-import EventsDispatcher from '@/components/utils/events';
-import I18n from '@/components/i18n';
-import { I18nInternalNS } from '@/components/i18n/namespace-internal';
-import Listeners from '@/components/utils/listeners';
-import { PopoverDesktop, PopoverMobile } from '@/components/utils/popover';
-import { EditorMobileLayoutToggled } from '@/components/events';
-import BlockToolAdapter from '@/components/tools/block';
-import ToolsCollection from '@/components/tools/collection';
-import { PopoverEvent } from '@/types/utils/popover/popover-event';
+import Dom from '@repo/editor/components/dom';
+import * as utilities from '@repo/editor/components/utilities';
+import { BlockToolAPI } from '@repo/editor/components/block';
+import Shortcuts from '@repo/editor/components/utils/shortcuts';
+import EventsDispatcher from '@repo/editor/components/utils/events';
+import I18n from '@repo/editor/components/i18n';
+import { I18nInternalNS } from '@repo/editor/components/i18n/namespace-internal';
+import Listeners from '@repo/editor/components/utils/listeners';
+import {
+  PopoverDesktop,
+  PopoverMobile,
+} from '@repo/editor/components/utils/popover';
+import { EditorMobileLayoutToggled } from '@repo/editor/components/events';
+import BlockToolAdapter from '@repo/editor/components/tools/block';
+import ToolsCollection from '@repo/editor/components/tools/collection';
+import { PopoverEvent } from '@repo/editor/types/utils/popover/popover-event';
 
-import type { Popover } from '@/components/utils/popover';
-import type { API } from '@/types';
-import type { BlockToolData } from '@/types/tools/block-tool-data';
-import type { ToolboxConfigEntry } from '@/types/tools/tool-settings';
-import type { PopoverItemParams } from '@/types/utils/popover/popover-item';
-import type { BlockAPI } from '@/types/api/block';
+import type { Popover } from '@repo/editor/components/utils/popover';
+import type { API } from '@repo/editor/types';
+import type { BlockToolData } from '@repo/editor/types/tools/block-tool-data';
+import type { ToolboxConfigEntry } from '@repo/editor/types/tools/tool-settings';
+import type { PopoverItemParams } from '@repo/editor/types/utils/popover/popover-item';
+import type { BlockAPI } from '@repo/editor/types/api/block';
 
 export enum ToolboxEvent {
   Opened = 'toolbox-opened',

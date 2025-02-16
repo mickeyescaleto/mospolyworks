@@ -1,5 +1,5 @@
-import { PopoverEvent } from '@/types/utils/popover/popover-event';
-import type { PopoverItemParams } from '@/types/utils/popover/popover-item';
+import { PopoverEvent } from '@repo/editor/types/utils/popover/popover-event';
+import type { PopoverItemParams } from '@repo/editor/types/utils/popover/popover-item';
 
 export type PopoverParams = {
   items: PopoverItemParams[];

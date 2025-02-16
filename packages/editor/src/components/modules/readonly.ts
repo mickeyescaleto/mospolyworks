@@ -1,5 +1,5 @@
-import Module from '@/components/__module';
-import { CriticalError } from '@/components/errors/critical';
+import Module from '@repo/editor/components/__module';
+import { CriticalError } from '@repo/editor/components/errors/critical';
 
 export default class ReadOnly extends Module {
   private toolsDontSupportReadOnly: string[] = [];

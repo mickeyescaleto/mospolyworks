@@ -1,9 +1,9 @@
 import HTMLJanitor from 'html-janitor';
-import * as utilities from '@/components/utilities';
+import * as utilities from '@repo/editor/components/utilities';
 
-import type { SavedData } from '@/types/data-formats/block-data';
-import type { SanitizerConfig } from '@/types/configs/sanitizer-config';
-import type { BlockToolData } from '@/types/tools/block-tool-data';
+import type { SavedData } from '@repo/editor/types/data-formats/block-data';
+import type { SanitizerConfig } from '@repo/editor/types/configs/sanitizer-config';
+import type { BlockToolData } from '@repo/editor/types/tools/block-tool-data';
 
 export function sanitizeBlocks(
   blocksData: Array<Pick<SavedData, 'data' | 'tool'>>,

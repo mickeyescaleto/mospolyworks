@@ -1,8 +1,8 @@
-import Selection from '@/components/selection';
-import Module from '@/components/__module';
-import Block from '@/components/block';
-import * as caretUtils from '@/components/utils/caret';
-import Dom from '@/components/dom';
+import Selection from '@repo/editor/components/selection';
+import Module from '@repo/editor/components/__module';
+import Block from '@repo/editor/components/block';
+import * as caretUtils from '@repo/editor/components/utils/caret';
+import Dom from '@repo/editor/components/dom';
 
 export default class Caret extends Module {
   public get positions(): { START: string; END: string; DEFAULT: string } {

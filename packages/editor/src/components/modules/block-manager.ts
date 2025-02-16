@@ -1,28 +1,28 @@
-import Block, { BlockToolAPI } from '@/components/block';
-import Module from '@/components/__module';
-import Dom from '@/components/dom';
-import * as utilities from '@/components/utilities';
-import Blocks from '@/components/blocks';
-import BlockAPI from '@/components/block/api';
-import { BlockChanged } from '@/components/events';
-import { clean, sanitizeBlocks } from '@/components/utils/sanitizer';
+import Block, { BlockToolAPI } from '@repo/editor/components/block';
+import Module from '@repo/editor/components/__module';
+import Dom from '@repo/editor/components/dom';
+import * as utilities from '@repo/editor/components/utilities';
+import Blocks from '@repo/editor/components/blocks';
+import BlockAPI from '@repo/editor/components/block/api';
+import { BlockChanged } from '@repo/editor/components/events';
+import { clean, sanitizeBlocks } from '@repo/editor/components/utils/sanitizer';
 import {
   convertStringToBlockData,
   isBlockConvertable,
-} from '@/components/utils/blocks';
-import PromiseQueue from '@/components/utils/promise-queue';
+} from '@repo/editor/components/utils/blocks';
+import PromiseQueue from '@repo/editor/components/utils/promise-queue';
 
 import type {
   BlockMutationEventMap,
   BlockMutationType,
-} from '@/types/events/block';
-import { BlockRemovedMutationType } from '@/types/events/block/block-removed';
-import { BlockAddedMutationType } from '@/types/events/block/block-added';
-import { BlockMovedMutationType } from '@/types/events/block/block-moved';
-import { BlockChangedMutationType } from '@/types/events/block/block-changed';
-import type { BlockToolData } from '@/types/tools/block-tool-data';
-import type { PasteEvent } from '@/types/tools/paste-events';
-import type { BlockTuneData } from '@/types/block-tunes/block-tune-data';
+} from '@repo/editor/types/events/block';
+import { BlockRemovedMutationType } from '@repo/editor/types/events/block/block-removed';
+import { BlockAddedMutationType } from '@repo/editor/types/events/block/block-added';
+import { BlockMovedMutationType } from '@repo/editor/types/events/block/block-moved';
+import { BlockChangedMutationType } from '@repo/editor/types/events/block/block-changed';
+import type { BlockToolData } from '@repo/editor/types/tools/block-tool-data';
+import type { PasteEvent } from '@repo/editor/types/tools/paste-events';
+import type { BlockTuneData } from '@repo/editor/types/block-tunes/block-tune-data';
 
 export default class BlockManager extends Module {
   public get currentBlockIndex(): number {

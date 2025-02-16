@@ -1,5 +1,5 @@
-import { isFunction, isString } from '@/components/utilities';
-import BlockToolAdapter from '@/components/tools/block';
+import { isFunction, isString } from '@repo/editor/components/utilities';
+import BlockToolAdapter from '@repo/editor/components/tools/block';
 
 export function isToolConvertable(
   tool: BlockToolAdapter,

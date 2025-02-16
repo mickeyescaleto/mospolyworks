@@ -1,10 +1,10 @@
-import Module from '@/components/__module';
-import * as utilities from '@/components/utilities';
-import SelectionUtils from '@/components/selection';
-import Flipper from '@/components/flipper';
-import Block from '@/components/block';
-import { areBlocksMergeable } from '@/components/utils/blocks';
-import * as caretUtils from '@/components/utils/caret';
+import Module from '@repo/editor/components/__module';
+import * as utilities from '@repo/editor/components/utilities';
+import SelectionUtils from '@repo/editor/components/selection';
+import Flipper from '@repo/editor/components/flipper';
+import Block from '@repo/editor/components/block';
+import { areBlocksMergeable } from '@repo/editor/components/utils/blocks';
+import * as caretUtils from '@repo/editor/components/utils/caret';
 import { focus } from '@editorjs/caret';
 
 export default class BlockEvents extends Module {

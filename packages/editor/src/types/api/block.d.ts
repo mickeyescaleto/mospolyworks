@@ -1,7 +1,7 @@
-import type { SavedData } from '@/types/data-formats/block-data';
-import type { BlockToolData } from '@/types/tools/block-tool-data';
-import type { ToolConfig } from '@/types/tools/tool-config';
-import type { ToolboxConfigEntry } from '@/types/tools/tool-settings';
+import type { SavedData } from '@repo/editor/types/data-formats/block-data';
+import type { BlockToolData } from '@repo/editor/types/tools/block-tool-data';
+import type { ToolConfig } from '@repo/editor/types/tools/tool-config';
+import type { ToolboxConfigEntry } from '@repo/editor/types/tools/tool-settings';
 
 export type BlockAPI = {
   readonly id: string;

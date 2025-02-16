@@ -1,14 +1,14 @@
-import * as utilities from '@/components/utilities';
-import { ToolType } from '@/types/tools/adapters/tool-type';
+import * as utilities from '@repo/editor/components/utilities';
+import { ToolType } from '@repo/editor/types/tools/adapters/tool-type';
 
-import type { BaseToolAdapter as BaseToolAdapterInterface } from '@/types/tools/adapters/base-tool-adapter';
-import type { InlineToolAdapter as InlineToolAdapterInterface } from '@/types/tools/adapters/inline-tool-adapter';
-import type { BlockToolAdapter as BlockToolAdapterInterface } from '@/types/tools/adapters/block-tool-adapter';
-import type { BlockTuneAdapter as BlockTuneAdapterInterface } from '@/types/tools/adapters/block-tune-adapter';
-import type { API as ApiMethods } from '@/types';
-import type { SanitizerConfig } from '@/types/configs/sanitizer-config';
-import type { ToolSettings } from '@/types/tools/tool-settings';
-import type { Tool, ToolConstructable } from '@/types/tools';
+import type { BaseToolAdapter as BaseToolAdapterInterface } from '@repo/editor/types/tools/adapters/base-tool-adapter';
+import type { InlineToolAdapter as InlineToolAdapterInterface } from '@repo/editor/types/tools/adapters/inline-tool-adapter';
+import type { BlockToolAdapter as BlockToolAdapterInterface } from '@repo/editor/types/tools/adapters/block-tool-adapter';
+import type { BlockTuneAdapter as BlockTuneAdapterInterface } from '@repo/editor/types/tools/adapters/block-tune-adapter';
+import type { API as ApiMethods } from '@repo/editor/types';
+import type { SanitizerConfig } from '@repo/editor/types/configs/sanitizer-config';
+import type { ToolSettings } from '@repo/editor/types/tools/tool-settings';
+import type { Tool, ToolConstructable } from '@repo/editor/types/tools';
 
 export enum UserSettings {
   Shortcut = 'shortcut',

@@ -1,4 +1,4 @@
-import Block from '@/components/block';
+import Block from '@repo/editor/components/block';
 
 export const BlockHovered = 'block hovered';
 

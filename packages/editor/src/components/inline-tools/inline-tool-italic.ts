@@ -1,7 +1,7 @@
 import { IconItalic } from '@codexteam/icons';
 
-import type { InlineTool } from '@/types/tools/inline-tool';
-import type { SanitizerConfig } from '@/types/configs/sanitizer-config';
+import type { InlineTool } from '@repo/editor/types/tools/inline-tool';
+import type { SanitizerConfig } from '@repo/editor/types/configs/sanitizer-config';
 
 export default class ItalicInlineTool implements InlineTool {
   public static isInline = true;

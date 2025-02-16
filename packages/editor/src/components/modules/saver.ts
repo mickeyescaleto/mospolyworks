@@ -1,10 +1,13 @@
-import Module from '@/components/__module';
-import Block from '@/components/block';
-import * as utilities from '@/components/utilities';
-import { sanitizeBlocks } from '@/components/utils/sanitizer';
+import Module from '@repo/editor/components/__module';
+import Block from '@repo/editor/components/block';
+import * as utilities from '@repo/editor/components/utilities';
+import { sanitizeBlocks } from '@repo/editor/components/utils/sanitizer';
 
-import type { OutputData } from '@/types/data-formats/output-data';
-import type { SavedData, ValidatedData } from '@/types/data-formats/block-data';
+import type { OutputData } from '@repo/editor/types/data-formats/output-data';
+import type {
+  SavedData,
+  ValidatedData,
+} from '@repo/editor/types/data-formats/block-data';
 
 export default class Saver extends Module {
   public async save(): Promise<OutputData> {

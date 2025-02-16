@@ -1,14 +1,14 @@
-import Module from '@/components/__module';
-import Dom, { toggleEmptyMark } from '@/components/dom';
-import * as utilities from '@/components/utilities';
-import Selection from '@/components/selection';
-import Block from '@/components/block';
-import Flipper from '@/components/flipper';
-import { mobileScreenBreakpoint } from '@/components/utilities';
-import { BlockHovered } from '@/components/events/block-hovered';
-import { selectionChangeDebounceTimeout } from '@/components/constants';
-import { EditorMobileLayoutToggled } from '@/components/events';
-import styles from '@/styles/main.css?inline';
+import Module from '@repo/editor/components/__module';
+import Dom, { toggleEmptyMark } from '@repo/editor/components/dom';
+import * as utilities from '@repo/editor/components/utilities';
+import Selection from '@repo/editor/components/selection';
+import Block from '@repo/editor/components/block';
+import Flipper from '@repo/editor/components/flipper';
+import { mobileScreenBreakpoint } from '@repo/editor/components/utilities';
+import { BlockHovered } from '@repo/editor/components/events/block-hovered';
+import { selectionChangeDebounceTimeout } from '@repo/editor/components/constants';
+import { EditorMobileLayoutToggled } from '@repo/editor/components/events';
+import styles from '@repo/editor/styles/main.css?inline';
 
 type UINodes = {
   holder: HTMLElement;

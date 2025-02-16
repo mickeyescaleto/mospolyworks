@@ -1,4 +1,4 @@
-import type { BlockToolAdapter } from '@/types/tools/adapters/block-tool-adapter';
+import type { BlockToolAdapter } from '@repo/editor/types/tools/adapters/block-tool-adapter';
 
 export type Tools = {
   getBlockTools(): BlockToolAdapter[];

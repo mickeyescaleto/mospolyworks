@@ -1,4 +1,4 @@
-import type { BlockAPI } from '@/types/api/block';
+import type { BlockAPI } from '@repo/editor/types/api/block';
 
 export type Caret = {
   setToFirstBlock(

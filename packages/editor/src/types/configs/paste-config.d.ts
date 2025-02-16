@@ -1,4 +1,4 @@
-import type { SanitizerConfig } from '@/types/configs/sanitizer-config';
+import type { SanitizerConfig } from '@repo/editor/types/configs/sanitizer-config';
 
 type PasteConfigSpecified = {
   tags?: (string | SanitizerConfig)[];

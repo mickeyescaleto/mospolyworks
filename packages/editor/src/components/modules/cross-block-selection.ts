@@ -1,7 +1,7 @@
-import Module from '@/components/__module';
-import type Block from '@/components/block';
-import SelectionUtils from '@/components/selection';
-import * as utilities from '@/components/utilities';
+import Module from '@repo/editor/components/__module';
+import type Block from '@repo/editor/components/block';
+import SelectionUtils from '@repo/editor/components/selection';
+import * as utilities from '@repo/editor/components/utilities';
 
 export default class CrossBlockSelection extends Module {
   private firstSelectedBlock: Block;

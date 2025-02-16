@@ -1,8 +1,8 @@
 import { IconChevronUp } from '@codexteam/icons';
 
-import type { MenuConfig } from '@/types/tools/menu-config';
-import type { API } from '@/types';
-import type { BlockTune } from '@/types/block-tunes/block-tune';
+import type { MenuConfig } from '@repo/editor/types/tools/menu-config';
+import type { API } from '@repo/editor/types';
+import type { BlockTune } from '@repo/editor/types/block-tunes/block-tune';
 
 export default class MoveUpTune implements BlockTune {
   public static readonly isTune = true;

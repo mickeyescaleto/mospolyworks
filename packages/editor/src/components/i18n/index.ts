@@ -1,10 +1,10 @@
-import defaultDictionary from '@/components/i18n/locales/ru/messages.json';
+import defaultDictionary from '@repo/editor/components/i18n/locales/ru/messages.json';
 
-import type { LeavesDictKeys } from '@/types-internal/i18n-internal-namespace';
+import type { LeavesDictKeys } from '@repo/editor/types-internal/i18n-internal-namespace';
 import type {
   I18nDictionary,
   Dictionary,
-} from '@/types/configs/i18n-dictionary';
+} from '@repo/editor/types/configs/i18n-dictionary';
 
 type DictKeys = LeavesDictKeys<typeof defaultDictionary>;
 

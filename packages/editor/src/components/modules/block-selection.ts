@@ -1,12 +1,12 @@
-import Module from '@/components/__module';
-import Block from '@/components/block';
-import * as utilities from '@/components/utilities';
-import Dom from '@/components/dom';
-import Shortcuts from '@/components/utils/shortcuts';
-import SelectionUtils from '@/components/selection';
-import { clean } from '@/components/utils/sanitizer';
+import Module from '@repo/editor/components/__module';
+import Block from '@repo/editor/components/block';
+import * as utilities from '@repo/editor/components/utilities';
+import Dom from '@repo/editor/components/dom';
+import Shortcuts from '@repo/editor/components/utils/shortcuts';
+import SelectionUtils from '@repo/editor/components/selection';
+import { clean } from '@repo/editor/components/utils/sanitizer';
 
-import type { SanitizerConfig } from '@/types/configs/sanitizer-config';
+import type { SanitizerConfig } from '@repo/editor/types/configs/sanitizer-config';
 
 export default class BlockSelection extends Module {
   private anyBlockSelectedCache: boolean | null = null;

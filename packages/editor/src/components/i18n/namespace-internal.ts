@@ -1,7 +1,7 @@
-import { isObject, isString } from '@/components/utilities';
-import defaultDictionary from '@/components/i18n/locales/ru/messages.json';
+import { isObject, isString } from '@repo/editor/components/utilities';
+import defaultDictionary from '@repo/editor/components/i18n/locales/ru/messages.json';
 
-import type { DictNamespaces } from '@/types-internal/i18n-internal-namespace';
+import type { DictNamespaces } from '@repo/editor/types-internal/i18n-internal-namespace';
 
 function getNamespaces(
   dict: object,

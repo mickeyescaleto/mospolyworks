@@ -1,12 +1,12 @@
-import Module from '@/components/__module';
-import * as utilities from '@/components/utilities';
-import BlockToolAdapter from '@/components/tools/block';
-import type { StubData } from '@/tools/stub';
-import Block from '@/components/block';
+import Module from '@repo/editor/components/__module';
+import * as utilities from '@repo/editor/components/utilities';
+import BlockToolAdapter from '@repo/editor/components/tools/block';
+import type { StubData } from '@repo/editor/tools/stub';
+import Block from '@repo/editor/components/block';
 
-import type { BlockId } from '@/types/data-formats/block-id';
-import type { OutputBlockData } from '@/types/data-formats/output-data';
-import type { BlockToolData } from '@/types/tools/block-tool-data';
+import type { BlockId } from '@repo/editor/types/data-formats/block-id';
+import type { OutputBlockData } from '@repo/editor/types/data-formats/output-data';
+import type { BlockToolData } from '@repo/editor/types/tools/block-tool-data';
 
 export default class Renderer extends Module {
   public async render(blocksData: OutputBlockData[]): Promise<void> {

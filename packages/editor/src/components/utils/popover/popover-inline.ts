@@ -1,12 +1,15 @@
-import { isMobileScreen } from '@/components/utilities';
-import { PopoverItem } from '@/components/utils/popover/components/popover-item';
-import { PopoverItemDefault } from '@/components/utils/popover/components/popover-item';
-import { PopoverItemHtml } from '@/components/utils/popover/components/popover-item/popover-item-html/popover-item-html';
-import { PopoverDesktop } from '@/components/utils/popover/popover-desktop';
-import { CSSVariables, css } from '@/components/utils/popover/popover.const';
-import { PopoverItemType } from '@/types/utils/popover/popover-item-type';
+import { isMobileScreen } from '@repo/editor/components/utilities';
+import { PopoverItem } from '@repo/editor/components/utils/popover/components/popover-item';
+import { PopoverItemDefault } from '@repo/editor/components/utils/popover/components/popover-item';
+import { PopoverItemHtml } from '@repo/editor/components/utils/popover/components/popover-item/popover-item-html/popover-item-html';
+import { PopoverDesktop } from '@repo/editor/components/utils/popover/popover-desktop';
+import {
+  CSSVariables,
+  css,
+} from '@repo/editor/components/utils/popover/popover.const';
+import { PopoverItemType } from '@repo/editor/types/utils/popover/popover-item-type';
 
-import type { PopoverParams } from '@/types/utils/popover/popover';
+import type { PopoverParams } from '@repo/editor/types/utils/popover/popover';
 
 export class PopoverInline extends PopoverDesktop {
   constructor(params: PopoverParams) {

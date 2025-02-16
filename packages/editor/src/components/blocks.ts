@@ -1,8 +1,8 @@
-import * as utilities from '@/components/utilities';
-import Dom from '@/components/dom';
-import Block, { BlockToolAPI } from '@/components/block';
+import * as utilities from '@repo/editor/components/utilities';
+import Dom from '@repo/editor/components/dom';
+import Block, { BlockToolAPI } from '@repo/editor/components/block';
 
-import type { MoveEvent } from '@/types/tools/hook-events';
+import type { MoveEvent } from '@repo/editor/types/tools/hook-events';
 
 export default class Blocks {
   public blocks: Block[];

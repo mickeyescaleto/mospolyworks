@@ -1,13 +1,13 @@
 import { IconSearch } from '@codexteam/icons';
-import Dom from '@/components/dom';
-import Listeners from '@/components/utils/listeners';
+import Dom from '@repo/editor/components/dom';
+import Listeners from '@repo/editor/components/utils/listeners';
 import type {
   SearchInputEventMap,
   SearchableItem,
-} from '@/components/utils/popover/components/search-input/search-input.types';
-import { SearchInputEvent } from '@/components/utils/popover/components/search-input/search-input.types';
-import { css } from '@/components/utils/popover/components/search-input/search-input.const';
-import EventsDispatcher from '@/components/utils/events';
+} from '@repo/editor/components/utils/popover/components/search-input/search-input.types';
+import { SearchInputEvent } from '@repo/editor/components/utils/popover/components/search-input/search-input.types';
+import { css } from '@repo/editor/components/utils/popover/components/search-input/search-input.const';
+import EventsDispatcher from '@repo/editor/components/utils/events';
 
 export class SearchInput extends EventsDispatcher<SearchInputEventMap> {
   private wrapper: HTMLElement;

@@ -1,8 +1,8 @@
-import Dom from '@/components/dom';
-import { css } from '@/components/utils/popover/components/hint/hint.const';
+import Dom from '@repo/editor/components/dom';
+import { css } from '@repo/editor/components/utils/popover/components/hint/hint.const';
 import './hint.css';
 
-import type { HintParams } from '@/types/utils/popover/hint';
+import type { HintParams } from '@repo/editor/types/utils/popover/hint';
 
 export class Hint {
   private nodes: {

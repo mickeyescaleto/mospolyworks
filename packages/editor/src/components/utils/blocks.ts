@@ -4,16 +4,16 @@ import {
   log,
   equals,
   isEmpty,
-} from '@/components/utilities';
-import Block from '@/components/block';
-import BlockToolAdapter from '@/components/tools/block';
-import { isToolConvertable } from '@/components/utils/tools';
+} from '@repo/editor/components/utilities';
+import Block from '@repo/editor/components/block';
+import BlockToolAdapter from '@repo/editor/components/tools/block';
+import { isToolConvertable } from '@repo/editor/components/utils/tools';
 
-import type { SavedData } from '@/types/data-formats/block-data';
-import type { BlockAPI } from '@/types/api/block';
-import type { ToolConfig } from '@/types/tools/tool-config';
-import type { ConversionConfig } from '@/types/configs/conversion-config';
-import type { BlockToolData } from '@/types/tools/block-tool-data';
+import type { SavedData } from '@repo/editor/types/data-formats/block-data';
+import type { BlockAPI } from '@repo/editor/types/api/block';
+import type { ToolConfig } from '@repo/editor/types/tools/tool-config';
+import type { ConversionConfig } from '@repo/editor/types/configs/conversion-config';
+import type { BlockToolData } from '@repo/editor/types/tools/block-tool-data';
 
 export function isBlockConvertable(
   block: Block,

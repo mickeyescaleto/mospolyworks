@@ -1,6 +1,6 @@
-import type { BlockToolData } from '@/types/tools/block-tool-data';
-import type { BlockTuneData } from '@/types/block-tunes/block-tune-data';
-import type { BlockId } from '@/types/data-formats/block-id';
+import type { BlockToolData } from '@repo/editor/types/tools/block-tool-data';
+import type { BlockTuneData } from '@repo/editor/types/block-tunes/block-tune-data';
+import type { BlockId } from '@repo/editor/types/data-formats/block-id';
 
 export type OutputBlockData<
   Type extends string = string,

@@ -1,6 +1,6 @@
-import Dom from '@/components/dom';
-import * as utilities from '@/components/utilities';
-import SelectionUtils from '@/components/selection';
+import Dom from '@repo/editor/components/dom';
+import * as utilities from '@repo/editor/components/utilities';
+import SelectionUtils from '@repo/editor/components/selection';
 
 export default class DomIterator {
   public static directions = {

@@ -1,4 +1,4 @@
-import { isIosDevice } from '@/components/utilities';
+import { isIosDevice } from '@repo/editor/components/utilities';
 
 export default class ScrollLocker {
   private static CSS = {

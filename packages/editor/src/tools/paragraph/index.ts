@@ -1,13 +1,13 @@
 import { IconText } from '@codexteam/icons';
 import './styles.css';
 
-import type { API } from '@/types';
-import type { ConversionConfig } from '@/types/configs/conversion-config';
-import type { HTMLPasteEvent } from '@/types/tools/paste-events';
-import type { PasteConfig } from '@/types/configs/paste-config';
-import type { SanitizerConfig } from '@/types/configs/sanitizer-config';
-import type { ToolConfig } from '@/types/tools/tool-config';
-import type { ToolboxConfig } from '@/types/tools/tool-settings';
+import type { API } from '@repo/editor/types';
+import type { ConversionConfig } from '@repo/editor/types/configs/conversion-config';
+import type { HTMLPasteEvent } from '@repo/editor/types/tools/paste-events';
+import type { PasteConfig } from '@repo/editor/types/configs/paste-config';
+import type { SanitizerConfig } from '@repo/editor/types/configs/sanitizer-config';
+import type { ToolConfig } from '@repo/editor/types/tools/tool-config';
+import type { ToolboxConfig } from '@repo/editor/types/tools/tool-settings';
 
 export type ParagraphConfig = ToolConfig & {
   placeholder?: string;

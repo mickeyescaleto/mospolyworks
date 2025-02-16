@@ -1,25 +1,25 @@
-import type { PopoverItem } from '@/components/utils/popover/components/popover-item';
+import type { PopoverItem } from '@repo/editor/components/utils/popover/components/popover-item';
 import {
   PopoverItemDefault,
   PopoverItemSeparator,
-} from '@/components/utils/popover/components/popover-item';
-import Dom from '@/components/dom';
-import type { SearchInput } from '@/components/utils/popover/components/search-input';
-import EventsDispatcher from '@/components/utils/events';
-import Listeners from '@/components/utils/listeners';
-import { css } from '@/components/utils/popover/popover.const';
-import { PopoverItemHtml } from '@/components/utils/popover/components/popover-item/popover-item-html/popover-item-html';
-import { PopoverEvent } from '@/types/utils/popover/popover-event';
-import { PopoverItemType } from '@/types/utils/popover/popover-item-type';
+} from '@repo/editor/components/utils/popover/components/popover-item';
+import Dom from '@repo/editor/components/dom';
+import type { SearchInput } from '@repo/editor/components/utils/popover/components/search-input';
+import EventsDispatcher from '@repo/editor/components/utils/events';
+import Listeners from '@repo/editor/components/utils/listeners';
+import { css } from '@repo/editor/components/utils/popover/popover.const';
+import { PopoverItemHtml } from '@repo/editor/components/utils/popover/components/popover-item/popover-item-html/popover-item-html';
+import { PopoverEvent } from '@repo/editor/types/utils/popover/popover-event';
+import { PopoverItemType } from '@repo/editor/types/utils/popover/popover-item-type';
 
 import type {
   PopoverEventMap,
   PopoverMessages,
   PopoverParams,
   PopoverNodes,
-} from '@/types/utils/popover/popover';
-import type { PopoverItemRenderParamsMap } from '@/types/utils/popover/popover-item';
-import type { PopoverItemParams } from '@/types/utils/popover/popover-item';
+} from '@repo/editor/types/utils/popover/popover';
+import type { PopoverItemRenderParamsMap } from '@repo/editor/types/utils/popover/popover-item';
+import type { PopoverItemParams } from '@repo/editor/types/utils/popover/popover-item';
 
 export abstract class PopoverAbstract<
   Nodes extends PopoverNodes = PopoverNodes,

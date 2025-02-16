@@ -1,6 +1,6 @@
-import Module from '@/components/__module';
+import Module from '@repo/editor/components/__module';
 
-import type { API as APIInterfaces } from '@/types';
+import type { API as APIInterfaces } from '@repo/editor/types';
 
 export default class API extends Module {
   public get methods(): APIInterfaces {

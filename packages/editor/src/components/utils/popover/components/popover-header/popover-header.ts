@@ -1,9 +1,9 @@
 import { IconChevronLeft } from '@codexteam/icons';
-import Dom from '@/components/dom';
-import { css } from '@/components/utils/popover/components/popover-header/popover-header.const';
-import Listeners from '@/components/utils/listeners';
+import Dom from '@repo/editor/components/dom';
+import { css } from '@repo/editor/components/utils/popover/components/popover-header/popover-header.const';
+import Listeners from '@repo/editor/components/utils/listeners';
 
-import type { PopoverHeaderParams } from '@/components/utils/popover/components/popover-header/popover-header.types';
+import type { PopoverHeaderParams } from '@repo/editor/components/utils/popover/components/popover-header/popover-header.types';
 
 export class PopoverHeader {
   private listeners = new Listeners();

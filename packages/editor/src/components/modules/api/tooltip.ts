@@ -1,9 +1,9 @@
 import type { TooltipOptions, TooltipContent } from 'codex-tooltip/types';
-import Module from '@/components/__module';
-import * as tooltip from '@/components/utils/tooltip';
+import Module from '@repo/editor/components/__module';
+import * as tooltip from '@repo/editor/components/utils/tooltip';
 
-import type { ModuleConfig } from '@/types-internal/module-config';
-import type { Tooltip as ITooltip } from '@/types/api/tooltip';
+import type { ModuleConfig } from '@repo/editor/types-internal/module-config';
+import type { Tooltip as ITooltip } from '@repo/editor/types/api/tooltip';
 
 export default class TooltipAPI extends Module {
   constructor({ config, eventsDispatcher }: ModuleConfig) {

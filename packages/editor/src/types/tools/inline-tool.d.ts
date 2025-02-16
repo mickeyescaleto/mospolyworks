@@ -1,7 +1,10 @@
-import type { API } from '@/types';
-import type { BaseTool, BaseToolConstructable } from '@/types/tools/tool';
-import type { ToolConfig } from '@/types/tools/tool-config';
-import type { MenuConfig } from '@/types/tools/menu-config';
+import type { API } from '@repo/editor/types';
+import type {
+  BaseTool,
+  BaseToolConstructable,
+} from '@repo/editor/types/tools/tool';
+import type { ToolConfig } from '@repo/editor/types/tools/tool-config';
+import type { MenuConfig } from '@repo/editor/types/tools/menu-config';
 
 export type InlineTool = BaseTool<HTMLElement | MenuConfig> & {
   shortcut?: string;

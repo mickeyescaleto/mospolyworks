@@ -9,9 +9,9 @@ import {
 } from '@codexteam/icons';
 import './styles.css';
 
-import type { API } from '@/types';
-import type { BlockTune } from '@/types/block-tunes/block-tune';
-import type { PasteEvent } from '@/types/tools/paste-events';
+import type { API } from '@repo/editor/types';
+import type { BlockTune } from '@repo/editor/types/block-tunes/block-tune';
+import type { PasteEvent } from '@repo/editor/types/tools/paste-events';
 
 type HeaderData = {
   text: string;

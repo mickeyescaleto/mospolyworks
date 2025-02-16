@@ -1,5 +1,5 @@
-import SelectionUtils from '@/components/selection';
-import Module from '@/components/__module';
+import SelectionUtils from '@repo/editor/components/selection';
+import Module from '@repo/editor/components/__module';
 
 export default class DragNDrop extends Module {
   private isStartedAtEditor = false;

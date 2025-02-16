@@ -1,6 +1,6 @@
-import Module from '@/components/__module';
+import Module from '@repo/editor/components/__module';
 
-import type { Listeners } from '@/types/api/listeners';
+import type { Listeners } from '@repo/editor/types/api/listeners';
 
 export default class ListenersAPI extends Module {
   public get methods(): Listeners {

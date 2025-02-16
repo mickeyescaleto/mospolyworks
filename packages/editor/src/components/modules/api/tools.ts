@@ -1,6 +1,6 @@
-import Module from '@/components/__module';
+import Module from '@repo/editor/components/__module';
 
-import type { Tools } from '@/types/api/tools';
+import type { Tools } from '@repo/editor/types/api/tools';
 
 export default class ToolsAPI extends Module {
   public get methods(): Tools {

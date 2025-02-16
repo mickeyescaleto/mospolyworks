@@ -1,4 +1,4 @@
-import * as utilities from '@/components/utilities';
+import * as utilities from '@repo/editor/components/utilities';
 
 export default class Dom {
   public static isSingleTag(tag: HTMLElement): boolean {

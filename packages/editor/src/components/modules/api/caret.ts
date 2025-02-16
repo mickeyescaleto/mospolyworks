@@ -1,8 +1,8 @@
-import Module from '@/components/__module';
-import { resolveBlock } from '@/components/utils/api';
+import Module from '@repo/editor/components/__module';
+import { resolveBlock } from '@repo/editor/components/utils/api';
 
-import type { BlockAPI } from '@/types/api/block';
-import type { Caret } from '@/types/api/caret';
+import type { BlockAPI } from '@repo/editor/types/api/block';
+import type { Caret } from '@repo/editor/types/api/caret';
 
 export default class CaretAPI extends Module {
   public get methods(): Caret {

@@ -1,12 +1,12 @@
-import { PopoverItem } from '@/components/utils/popover/components/popover-item/popover-item';
-import { css } from '@/components/utils/popover/components/popover-item/popover-item-html/popover-item-html.const';
-import Dom from '@/components/dom';
-import { PopoverItemType } from '@/types/utils/popover/popover-item-type';
+import { PopoverItem } from '@repo/editor/components/utils/popover/components/popover-item/popover-item';
+import { css } from '@repo/editor/components/utils/popover/components/popover-item/popover-item-html/popover-item-html.const';
+import Dom from '@repo/editor/components/dom';
+import { PopoverItemType } from '@repo/editor/types/utils/popover/popover-item-type';
 
 import type {
   PopoverItemHtmlParams,
   PopoverItemRenderParamsMap,
-} from '@/types/utils/popover/popover-item';
+} from '@repo/editor/types/utils/popover/popover-item';
 
 export class PopoverItemHtml extends PopoverItem {
   private nodes: { root: HTMLElement };

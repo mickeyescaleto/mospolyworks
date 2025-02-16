@@ -1,8 +1,8 @@
-import I18nInternal from '@/components/i18n';
-import { logLabeled } from '@/components/utilities';
-import Module from '@/components/__module';
+import I18nInternal from '@repo/editor/components/i18n';
+import { logLabeled } from '@repo/editor/components/utilities';
+import Module from '@repo/editor/components/__module';
 
-import type { I18n } from '@/types/api/i18n';
+import type { I18n } from '@repo/editor/types/api/i18n';
 
 export default class I18nAPI extends Module {
   private static getNamespace(toolName, isTune): string {
