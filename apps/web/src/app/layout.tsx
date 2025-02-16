@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { gilroy } from '@/styles/fonts';
+import { ThemeProvider } from '@/components/theme-provider';
 import '@/styles/main.css';
 
 export const metadata: Metadata = {
@@ -12,9 +13,9 @@ type RootLayoutProps = {
 
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
-    <html lang="ru">
+    <html lang="ru" suppressHydrationWarning>
       <body className={`${gilroy.variable} font-sans antialiased`}>
-        {children}
+        <ThemeProvider attribute="class">{children}</ThemeProvider>
       </body>
     </html>
   );
