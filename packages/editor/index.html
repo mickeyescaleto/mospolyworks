@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <title>Editor</title>
@@ -60,9 +60,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/inline-code@latest"></script>
 
     <script type="module">
-      import EditorJS from './src/editor.ts';
+      import Editor from './src/editor.ts';
 
-      window.EditorJS = EditorJS;
+      window.Editor = Editor;
 
       const editorConfig = {
         readOnly: false,
@@ -72,55 +72,55 @@
             class: Header,
             inlineToolbar: ['link', 'marker'],
             config: {
-              placeholder: 'Заголовок'
+              placeholder: 'Заголовок',
             },
-            shortcut: 'CMD+SHIFT+H'
+            shortcut: 'CMD+SHIFT+H',
           },
           image: SimpleImage,
           list: {
             class: NestedList,
             inlineToolbar: true,
-            shortcut: 'CMD+SHIFT+L'
+            shortcut: 'CMD+SHIFT+L',
           },
           quote: {
             class: Quote,
             inlineToolbar: true,
             config: {
               quotePlaceholder: 'Введите цитату',
-              captionPlaceholder: 'Введите автора'
+              captionPlaceholder: 'Введите автора',
             },
-            shortcut: 'CMD+SHIFT+O'
+            shortcut: 'CMD+SHIFT+O',
           },
           marker: {
             class: Marker,
-            shortcut: 'CMD+SHIFT+M'
+            shortcut: 'CMD+SHIFT+M',
           },
           code: {
             class: CodeTool,
-            shortcut: 'CMD+SHIFT+C'
+            shortcut: 'CMD+SHIFT+C',
           },
           delimiter: Delimiter,
           inlineCode: {
             class: InlineCode,
-            shortcut: 'CMD+SHIFT+C'
+            shortcut: 'CMD+SHIFT+C',
           },
           linkTool: LinkTool,
           embed: Embed,
           table: {
             class: Table,
             inlineToolbar: true,
-            shortcut: 'CMD+ALT+T'
-          }
+            shortcut: 'CMD+ALT+T',
+          },
         },
-        autofocus: true
+        autofocus: true,
       };
 
-      var editor = new EditorJS(editorConfig);
+      var editor = new Editor(editorConfig);
 
       const saveButton = document.getElementById('saveButton');
 
       const toggleReadOnlyButton = document.getElementById(
-        'toggleReadOnlyButton'
+        'toggleReadOnlyButton',
       );
       const readOnlyIndicator = document.getElementById('readonly-state');
 
@@ -148,7 +148,7 @@
 
         localStorage.setItem(
           'theme',
-          document.body.classList.contains('dark-mode') ? 'dark' : 'default'
+          document.body.classList.contains('dark-mode') ? 'dark' : 'default',
         );
       });
 

@@ -2,6 +2,7 @@ import Module from '@/components/__module';
 import * as utilities from '@/components/utilities';
 import Paragraph from '@/tools/paragraph';
 import Header from '@/tools/header';
+import Image from '@/tools/image';
 import BoldInlineTool from '@/components/inline-tools/inline-tool-bold';
 import ItalicInlineTool from '@/components/inline-tools/inline-tool-italic';
 import LinkInlineTool from '@/components/inline-tools/inline-tool-link';
@@ -154,6 +155,16 @@ export default class Tools extends Module {
           placeholder: 'Заголовок',
           levels: [2, 3, 4, 5, 6],
           defaultLevel: 2,
+        },
+      },
+      image: {
+        class: Image,
+        isInternal: true,
+        config: {
+          endpoints: {
+            byFile: 'http://localhost:3001/upload-by-file',
+            byUrl: 'http://localhost:3001/upload-by-url',
+          },
         },
       },
       stub: {
