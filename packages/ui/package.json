@@ -8,7 +8,8 @@
   "exports": {
     "./core/*": "./src/components/core/*.tsx",
     "./utilities/cn": "./src/utilities/cn.ts",
-    "./styles/main": "./src/styles/main.css"
+    "./styles/main": "./src/styles/main.css",
+    "./styles/editor": "./src/styles/editor.css"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.0.3",
