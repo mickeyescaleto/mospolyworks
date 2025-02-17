@@ -5,6 +5,12 @@
 @custom-variant dark (&:is(.dark *));
 
 @layer base {
+  html {
+    font-size: 16px;
+    font-weight: medium;
+    font-style: normal;
+  }
+
   button:not(:disabled),
   [role='button']:not(:disabled) {
     cursor: pointer;
