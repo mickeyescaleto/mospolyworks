@@ -1,0 +1,133 @@
+@import './main.css';
+
+@utility a {
+  @apply cursor-pointer text-zinc-900 underline dark:text-white;
+}
+
+@utility b {
+  @apply font-bold;
+}
+
+@utility i {
+  @apply italic;
+}
+
+@utility o-block {
+  @apply first:mt-0 last:mb-0;
+
+  a {
+    @apply a;
+  }
+
+  b {
+    @apply b;
+  }
+
+  i {
+    @apply i;
+  }
+}
+
+@utility paragraph {
+  @apply text-base font-medium text-zinc-700 dark:text-zinc-300;
+}
+
+@utility paragraph-margin {
+  @apply my-2;
+}
+
+@utility o-paragraph {
+  @apply paragraph paragraph-margin o-block;
+}
+
+@utility header {
+  @apply text-zinc-900 dark:text-white;
+}
+
+@utility header-h1 {
+  @apply text-3xl font-black;
+}
+
+@utility header-h1-margin {
+  @apply mt-7 mb-5;
+}
+
+@utility header-h2 {
+  @apply text-2xl font-extrabold;
+}
+
+@utility header-h2-margin {
+  @apply mt-6 mb-4;
+}
+
+@utility header-h3 {
+  @apply text-xl font-bold;
+}
+
+@utility header-h3-margin {
+  @apply mt-5 mb-3;
+}
+
+@utility header-other {
+  @apply text-base font-semibold;
+}
+
+@utility header-other-margin {
+  @apply mt-4 mb-2;
+}
+
+@utility o-header {
+  @apply header o-block;
+
+  &:is(h1) {
+    @apply header-h1 header-h1-margin;
+  }
+
+  &:is(h2) {
+    @apply header-h2 header-h2-margin;
+  }
+
+  &:is(h3) {
+    @apply header-h3 header-h3-margin;
+  }
+
+  &:is(h4, h5, h6) {
+    @apply header-other header-other-margin;
+  }
+}
+
+@utility image {
+  @apply h-auto max-w-full;
+}
+
+@utility image-margin {
+  @apply my-4;
+}
+
+@utility image-with-border {
+  @apply border border-zinc-200 dark:border-zinc-700;
+}
+
+@utility image-with-background {
+  @apply bg-zinc-100 px-24 py-8 dark:bg-zinc-800;
+}
+
+@utility image-rounded-corners {
+  @apply rounded-lg;
+}
+
+@utility o-image {
+  @apply image image-margin o-block;
+
+  &:where(.with-border) {
+    @apply image-with-border;
+  }
+
+  &:where(.with-background) {
+    @apply image-with-background;
+  }
+
+  &:where(.rounded-corners) {
+    @apply image-rounded-corners;
+  }
+}
