@@ -15,7 +15,9 @@ type RootLayoutProps = {
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang="ru" suppressHydrationWarning>
-      <body className={cn('font-sans antialiased', gilroy.variable)}>
+      <body
+        className={cn('font-sans font-medium antialiased', gilroy.variable)}
+      >
         <ThemeProvider attribute="class">{children}</ThemeProvider>
       </body>
     </html>
