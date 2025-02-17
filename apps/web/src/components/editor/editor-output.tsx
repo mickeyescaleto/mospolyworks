@@ -1,6 +1,7 @@
 import { JSX } from 'react';
-import { Paragraph } from '@/components/editor/blocks/paragraph';
-import { Header } from '@/components/editor/blocks/header';
+import { ParagraphBlock } from '@/components/editor/blocks/paragraph';
+import { HeaderBlock } from '@/components/editor/blocks/header';
+import { ImageBlock } from '@/components/editor/blocks/image';
 
 export type ConfigProp = Record<string, RenderConfig>;
 
@@ -41,8 +42,9 @@ export const EditorOutput = ({
   renderers?: RenderersProp;
 }) => {
   const defaultRenderers = {
-    paragraph: Paragraph,
-    header: Header,
+    paragraph: ParagraphBlock,
+    header: HeaderBlock,
+    image: ImageBlock,
   };
 
   const availableRenderers = {

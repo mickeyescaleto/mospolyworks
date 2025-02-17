@@ -5,9 +5,9 @@ export type ParagraphBlockData = {
   text: string;
 };
 
-export const Paragraph: RenderFn<ParagraphBlockData> = ({
+export const ParagraphBlock: RenderFn<ParagraphBlockData> = ({
   data,
-  className = '',
+  className = 'o-paragraph',
 }) => {
   const props: {
     [s: string]: string;

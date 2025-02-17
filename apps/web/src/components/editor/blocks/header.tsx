@@ -7,7 +7,10 @@ export type HeaderBlockData = {
   level: number;
 };
 
-export const Header: RenderFn<HeaderBlockData> = ({ data, className = '' }) => {
+export const HeaderBlock: RenderFn<HeaderBlockData> = ({
+  data,
+  className = 'o-header',
+}) => {
   const props: {
     [s: string]: string;
   } = {};

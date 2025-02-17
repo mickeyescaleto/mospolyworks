@@ -1,35 +1,25 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import { Editor, EditorOutput } from '@/components/editor';
+import { DataProp } from '@/components/editor/editor-output';
 
 const RootPage = () => {
+  const [data, setData] = useState<DataProp>({ blocks: [] });
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
   return (
-    <>
-      <section>
-        <Editor />
+    <div className="px-4">
+      <section className="mx-auto max-w-2xl py-8">
+        <Editor data={data} onChange={setData} />
       </section>
-      <section>
-        <EditorOutput
-          data={{
-            blocks: [
-              {
-                id: 'mhTl6ghSkV',
-                type: 'paragraph',
-                data: {
-                  text: 'Hey. Meet the new Editor. On this picture you can see it in action. Then, try a demo 🤓',
-                },
-              },
-              {
-                id: 'mhTl6ghSkF',
-                type: 'header',
-                data: {
-                  text: 'Header 2',
-                  level: 2,
-                },
-              },
-            ],
-          }}
-        />
+      <section className="mx-auto max-w-2xl py-8">
+        <EditorOutput data={data} />
       </section>
-    </>
+    </div>
   );
 };
 
