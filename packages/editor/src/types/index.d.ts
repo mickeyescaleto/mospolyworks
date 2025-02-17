@@ -17,6 +17,8 @@ import type { I18n } from '@repo/editor/types/api/i18n';
 import type { Ui } from '@repo/editor/types/api/ui';
 import type { Tools } from '@repo/editor/types/api/tools';
 
+export { OutputData };
+
 export type API = {
   blocks: Blocks;
   caret: Caret;

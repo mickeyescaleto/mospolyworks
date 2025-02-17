@@ -26,7 +26,6 @@ type ParagraphParams = {
 };
 
 type ParagraphCSS = {
-  block: string;
   wrapper: string;
 };
 
@@ -54,8 +53,7 @@ export default class Paragraph {
     this.readOnly = readOnly;
 
     this._CSS = {
-      block: this.api.styles.block,
-      wrapper: 'ce-paragraph',
+      wrapper: 'e-paragraph',
     };
 
     if (!this.readOnly) {
@@ -87,9 +85,9 @@ export default class Paragraph {
   }
 
   drawView(): HTMLDivElement {
-    const div = document.createElement('DIV');
+    const div = document.createElement('p');
 
-    div.classList.add(this._CSS.wrapper, this._CSS.block);
+    div.classList.add(this._CSS.wrapper);
     div.contentEditable = 'false';
     div.dataset.placeholderActive = this.api.i18n.t(this._placeholder);
 

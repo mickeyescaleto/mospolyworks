@@ -1,3 +1,5 @@
+@import '@repo/ui/styles/editor';
+
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -12,9 +14,7 @@
   animation: fade-in 300ms ease;
   animation-fill-mode: initial;
 
-  &:first-of-type {
-    margin-top: 0;
-  }
+  @apply first:mt-0! last:mb-0!;
 
   &--selected &__content {
     background: var(--selectionColor);
@@ -35,10 +35,7 @@
   }
 
   &__content {
-    position: relative;
-    max-width: var(--content-width);
-    margin: 0 auto;
-    transition: background-color 150ms ease;
+    @apply relative mx-auto max-w-[var(--content-width)] transition-colors duration-150;
   }
 
   &--drop-target &__content {
@@ -73,16 +70,45 @@
     }
   }
 
+  &:has(.ce-block__content) {
+    &:has(.e-stub) {
+      @apply my-4;
+    }
+
+    &:has(.e-paragraph) {
+      @apply paragraph-margin;
+    }
+
+    &:has(.e-header:is(h1)) {
+      @apply header-h1-margin;
+    }
+
+    &:has(.e-header:is(h2)) {
+      @apply header-h2-margin;
+    }
+
+    &:has(.e-header:is(h3)) {
+      @apply header-h3-margin;
+    }
+
+    &:has(.e-header:is(h4, h5, h6)) {
+      @apply header-other-margin;
+    }
+
+    &:has(.e-image) {
+      @apply image-margin;
+    }
+  }
+
   a {
-    cursor: pointer;
-    text-decoration: underline;
+    @apply a;
   }
 
   b {
-    font-weight: bold;
+    @apply b;
   }
 
   i {
-    font-style: italic;
+    @apply i;
   }
 }

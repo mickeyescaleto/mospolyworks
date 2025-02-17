@@ -1,9 +1,7 @@
 import {
   IconAddBorder,
-  IconStretch,
   IconAddBackground,
   IconPicture,
-  IconText,
 } from '@codexteam/icons';
 import Ui from './ui';
 import Uploader from './uploader';
@@ -49,8 +47,6 @@ export default class Image implements BlockTool {
 
   private _data: ImageToolData;
 
-  private isCaptionEnabled: boolean | null = null;
-
   constructor({
     data,
     config,
@@ -67,9 +63,6 @@ export default class Image implements BlockTool {
       additionalRequestHeaders: config.additionalRequestHeaders,
       field: config.field,
       types: config.types,
-      captionPlaceholder: this.api.i18n.t(
-        config.captionPlaceholder ?? 'Caption',
-      ),
       buttonContent: config.buttonContent,
       uploader: config.uploader,
       actions: config.actions,
@@ -96,10 +89,9 @@ export default class Image implements BlockTool {
     });
 
     this._data = {
-      caption: '',
       withBorder: false,
       withBackground: false,
-      stretched: false,
+      roundedCorners: false,
       file: {
         url: '',
       },
@@ -127,29 +119,21 @@ export default class Image implements BlockTool {
         toggle: true,
       },
       {
-        name: 'stretched',
-        icon: IconStretch,
-        title: 'Stretch image',
-        toggle: true,
-      },
-      {
         name: 'withBackground',
         icon: IconAddBackground,
         title: 'With background',
+        toggle: true,
+      },
+      {
+        name: 'roundedCorners',
+        icon: IconPicture,
+        title: 'Round off the corners',
         toggle: true,
       },
     ];
   }
 
   public render(): HTMLDivElement {
-    if (
-      this.config.features?.caption === true ||
-      this.config.features?.caption === undefined ||
-      (this.config.features?.caption === 'optional' && this.data.caption)
-    ) {
-      this.isCaptionEnabled = true;
-    }
-
     return this.ui.render() as HTMLDivElement;
   }
 
@@ -158,10 +142,6 @@ export default class Image implements BlockTool {
   }
 
   public save(): ImageToolData {
-    const caption = this.ui.nodes.caption;
-
-    this._data.caption = caption.innerHTML;
-
     return this.data;
   }
 
@@ -170,27 +150,13 @@ export default class Image implements BlockTool {
     const featureTuneMap: Record<string, string> = {
       border: 'withBorder',
       background: 'withBackground',
-      stretch: 'stretched',
-      caption: 'caption',
+      round: 'roundedCorners',
     };
-
-    if (this.config.features?.caption === 'optional') {
-      tunes.push({
-        name: 'caption',
-        icon: IconText,
-        title: 'With caption',
-        toggle: true,
-      });
-    }
 
     const availableTunes = tunes.filter((tune) => {
       const featureKey = Object.keys(featureTuneMap).find(
         (key) => featureTuneMap[key] === tune.name,
       );
-
-      if (featureKey === 'caption') {
-        return this.config.features?.caption !== false;
-      }
 
       return (
         featureKey == null ||
@@ -200,10 +166,6 @@ export default class Image implements BlockTool {
 
     const isActive = (tune: ActionConfig): boolean => {
       let currentState = this.data[tune.name as keyof ImageToolData] as boolean;
-
-      if (tune.name === 'caption') {
-        currentState = this.isCaptionEnabled ?? currentState;
-      }
 
       return currentState;
     };
@@ -217,17 +179,10 @@ export default class Image implements BlockTool {
       onActivate: () => {
         if (typeof tune.action === 'function') {
           tune.action(tune.name);
-
           return;
         }
-        let newState = !isActive(tune);
 
-        if (tune.name === 'caption') {
-          this.isCaptionEnabled = !(this.isCaptionEnabled ?? false);
-          newState = this.isCaptionEnabled;
-        }
-
-        this.tuneToggled(tune.name as keyof ImageToolData, newState);
+        this.tuneToggled(tune.name as keyof ImageToolData, !isActive(tune));
       },
     }));
   }
@@ -287,9 +242,6 @@ export default class Image implements BlockTool {
   private set data(data: ImageToolData) {
     this.image = data.file;
 
-    this._data.caption = data.caption || '';
-    this.ui.fillCaption(this._data.caption);
-
     Image.tunes.forEach(({ name: tune }) => {
       const value =
         typeof data[tune as keyof ImageToolData] !== 'undefined'
@@ -299,10 +251,6 @@ export default class Image implements BlockTool {
 
       this.setTune(tune as keyof ImageToolData, value);
     });
-
-    if (data.caption) {
-      this.setTune('caption', true);
-    }
   }
 
   private get data(): ImageToolData {
@@ -336,31 +284,13 @@ export default class Image implements BlockTool {
   }
 
   private tuneToggled(tuneName: keyof ImageToolData, state: boolean): void {
-    if (tuneName === 'caption') {
-      this.ui.applyTune(tuneName, state);
-
-      if (state == false) {
-        this._data.caption = '';
-        this.ui.fillCaption('');
-      }
-    } else {
-      this.setTune(tuneName, state);
-    }
+    this.setTune(tuneName, state);
   }
 
   private setTune(tuneName: keyof ImageToolData, value: boolean): void {
     (this._data[tuneName] as boolean) = value;
 
     this.ui.applyTune(tuneName, value);
-    if (tuneName === 'stretched') {
-      Promise.resolve()
-        .then(() => {
-          this.block.stretched = value;
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    }
   }
 
   private uploadFile(file: Blob): void {

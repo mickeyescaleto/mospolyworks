@@ -55,8 +55,8 @@
       "Caption": "Подпись",
       "Select an Image": "Выберите файл",
       "With border": "Добавить рамку",
-      "Stretch image": "Растянуть",
-      "With background": "Добавить подложку"
+      "With background": "Добавить подложку",
+      "Round off the corners": "Закруглить углы"
     },
     "code": {
       "Enter a code": "Код"

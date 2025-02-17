@@ -1,149 +1,73 @@
-.image-tool {
-  --bg-color: #cdd1e0;
-  --front-color: #388ae5;
-  --border-color: #e8e8eb;
-}
+@import '@repo/ui/styles/editor';
 
-.image-tool__image {
-  border-radius: 3px;
-  overflow: hidden;
-  margin-bottom: 10px;
-  padding-bottom: 0;
-}
-
-.image-tool__image-picture {
-  max-width: 100%;
-  vertical-align: bottom;
-  display: block;
-}
-
-.image-tool__image-preloader {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-size: cover;
-  margin: auto;
-  position: relative;
-  background-color: var(--bg-color);
-  background-position: center center;
-}
-
-.image-tool__image-preloader::after {
-  content: '';
-  position: absolute;
-  z-index: 3;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: 2px solid var(--bg-color);
-  border-top-color: var(--front-color);
-  left: 50%;
-  top: 50%;
-  margin-top: -30px;
-  margin-left: -30px;
-  animation: image-preloader-spin 2s infinite linear;
-  box-sizing: border-box;
-}
-
-.image-tool__caption {
-  visibility: hidden;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  margin-bottom: 10px;
-}
-
-.image-tool__caption[contentEditable='true'][data-placeholder]::before {
-  position: absolute !important;
-  content: attr(data-placeholder);
-  color: #707684;
-  font-weight: normal;
-  display: none;
-}
-
-.image-tool__caption[contentEditable='true'][data-placeholder]:empty::before {
-  display: block;
-}
-
-.image-tool__caption[contentEditable='true'][data-placeholder]:empty:focus::before {
-  display: none;
-}
-
-.image-tool--empty .image-tool__image,
-.image-tool--empty .image-tool__image-preloader {
-  display: none;
-}
-
-.image-tool--empty .image-tool__caption,
-.image-tool--uploading .image-tool__caption {
-  visibility: hidden !important;
-}
-
-.image-tool .cdx-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.image-tool .cdx-button svg {
-  height: auto;
-  margin: 0 6px 0 0;
-}
-
-.image-tool--filled .cdx-button {
-  display: none;
-}
-
-.image-tool--filled .image-tool__image-preloader {
-  display: none;
-}
-
-.image-tool--uploading .image-tool__image {
-  min-height: 200px;
-  display: flex;
-  border: 1px solid var(--border-color);
-  background-color: #fff;
-}
-
-.image-tool--uploading .image-tool__image-picture {
-  display: none;
-}
-
-.image-tool--uploading .cdx-button {
-  display: none;
-}
-
-.image-tool--withBorder .image-tool__image {
-  border: 1px solid var(--border-color);
-}
-
-.image-tool--withBackground .image-tool__image {
-  padding: 15px;
-  background: var(--bg-color);
-}
-
-.image-tool--withBackground .image-tool__image-picture {
-  max-width: 60%;
-  margin: 0 auto;
-}
-
-.image-tool--stretched .image-tool__image-picture {
-  width: 100%;
-}
-
-.image-tool--caption .image-tool__caption {
-  visibility: visible;
-}
-
-.image-tool--caption {
-  padding-bottom: 50px;
-}
-
-@keyframes image-preloader-spin {
-  0% {
-    transform: rotate(0deg);
+.e-image {
+  .cdx-button {
+    @apply flex items-center justify-center;
   }
-  100% {
-    transform: rotate(360deg);
+
+  &__image {
+    @apply overflow-hidden rounded-lg;
+
+    &-picture {
+      @apply block max-w-full;
+    }
+  }
+
+  &__image-preloader {
+    @apply relative m-auto size-12 rounded-full bg-zinc-100 bg-cover bg-center after:absolute after:top-1/2 after:left-1/2 after:z-10 after:size-14 after:-translate-x-1/2 after:-translate-y-1/2 after:transform after:animate-spin after:rounded-full after:border-2 after:border-zinc-100 after:border-t-zinc-600 dark:bg-zinc-700 dark:after:border-zinc-700 dark:after:border-t-zinc-400;
+  }
+
+  &--uploading {
+    .e-image__image {
+      @apply flex min-h-52 border border-zinc-200 bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800;
+
+      &-picture {
+        @apply hidden;
+      }
+    }
+
+    .cdx-button {
+      @apply hidden;
+    }
+  }
+
+  &--filled {
+    .e-image__image {
+      @apply rounded-none;
+    }
+
+    .e-image__image-preloader {
+      @apply hidden;
+    }
+
+    .cdx-button {
+      @apply hidden;
+    }
+  }
+
+  &--empty {
+    .e-image__image {
+      @apply hidden;
+    }
+
+    .e-image__image-preloader {
+      @apply hidden;
+    }
+  }
+
+  &--withBorder .e-image__image {
+    @apply image-with-border;
+  }
+
+  &--withBackground {
+    .e-image__image-picture {
+      @apply image-with-background;
+    }
+  }
+
+  &--roundedCorners {
+    .e-image__image {
+      @apply image-rounded-corners;
+    }
   }
 }

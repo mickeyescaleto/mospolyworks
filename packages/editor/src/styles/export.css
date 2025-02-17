@@ -105,26 +105,9 @@
 }
 
 .cdx-button {
-  padding: 13px;
-  border-radius: 3px;
-  border: 1px solid var(--color-gray-border);
-  font-size: 14.9px;
-  background: #fff;
-  box-shadow: 0 2px 2px 0 rgba(18, 30, 57, 0.04);
-  color: var(--grayText);
-  text-align: center;
-  cursor: pointer;
-
-  @media (hover: hover) {
-    &:hover {
-      background: #fbfcfe;
-      box-shadow: 0 1px 3px 0 rgba(18, 30, 57, 0.08);
-    }
-  }
+  @apply cursor-pointer rounded-lg border border-zinc-200 bg-zinc-100 px-5 py-4 text-center text-base font-medium text-zinc-600 hover:opacity-90 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400;
 
   svg {
-    height: 20px;
-    margin-right: 0.2em;
-    margin-top: -2px;
+    @apply mr-2 size-6;
   }
 }

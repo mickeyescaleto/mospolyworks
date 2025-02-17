@@ -1,0 +1,17 @@
+@import '@repo/ui/styles/editor';
+
+.e-stub {
+  @apply flex items-center rounded-lg border border-zinc-200 bg-zinc-100 px-5 py-4 text-base text-zinc-600 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400;
+
+  svg {
+    @apply size-6;
+  }
+
+  &__info {
+    @apply ml-5;
+  }
+
+  &__title {
+    @apply font-medium capitalize;
+  }
+}

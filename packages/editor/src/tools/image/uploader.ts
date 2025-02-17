@@ -68,7 +68,7 @@ export default class Uploader {
           beforeSend: (files: File[]) => {
             preparePreview(files[0]);
           },
-          fieldName: this.config.field ?? 'image',
+          fieldName: this.config.field ?? 'file',
         })
         .then(
           (response: AjaxResponse) => response.body as UploadResponseFormat,
@@ -152,7 +152,7 @@ export default class Uploader {
     } else {
       const formData = new FormData();
 
-      formData.append(this.config.field ?? 'image', file);
+      formData.append(this.config.field ?? 'file', file);
 
       if (
         this.config.additionalRequestData &&

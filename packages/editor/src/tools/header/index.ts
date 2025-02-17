@@ -61,8 +61,7 @@ export default class Header {
 
   private get _CSS() {
     return {
-      block: this.api.styles.block,
-      wrapper: 'ce-header',
+      wrapper: 'e-header',
     };
   }
 

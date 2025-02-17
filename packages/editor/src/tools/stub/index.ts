@@ -1,5 +1,6 @@
 import { IconWarning } from '@codexteam/icons';
 import Dom from '@repo/editor/components/dom';
+import './styles.css';
 
 import type {
   BlockTool,
@@ -17,10 +18,10 @@ export default class Stub implements BlockTool {
   public static isReadOnlySupported = true;
 
   private CSS = {
-    wrapper: 'ce-stub',
-    info: 'ce-stub__info',
-    title: 'ce-stub__title',
-    subtitle: 'ce-stub__subtitle',
+    wrapper: 'e-stub',
+    info: 'e-stub__info',
+    title: 'e-stub__title',
+    subtitle: 'e-stub__subtitle',
   };
 
   private readonly wrapper: HTMLElement;

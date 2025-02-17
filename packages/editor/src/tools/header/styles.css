@@ -1,12 +1,21 @@
-.ce-header {
-  padding: 0.6em 0 3px;
-  margin: 0;
-  line-height: 1.25em;
-  outline: none;
-}
+@import '@repo/ui/styles/editor';
 
-.ce-header p,
-.ce-header div {
-  padding: 0 !important;
-  margin: 0 !important;
+.e-header {
+  @apply header outline-hidden;
+
+  &:is(h1) {
+    @apply header-h1;
+  }
+
+  &:is(h2) {
+    @apply header-h2;
+  }
+
+  &:is(h3) {
+    @apply header-h3;
+  }
+
+  &:is(h4, h5, h6) {
+    @apply header-other;
+  }
 }

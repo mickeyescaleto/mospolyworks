@@ -10,6 +10,7 @@
   "module": "./dist/editor.mjs",
   "types": "./src/types/index.d.ts",
   "dependencies": {
+    "@repo/ui": "workspace:*",
     "@codexteam/ajax": "^4.2.0",
     "@editorjs/caret": "^1.0.1",
     "@tailwindcss/postcss": "^4.0.6",

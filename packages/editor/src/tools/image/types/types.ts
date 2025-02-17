@@ -20,10 +20,9 @@ export type UploadResponseFormat<AdditionalFileData = {}> = {
 };
 
 export type ImageToolData<Actions = {}, AdditionalFileData = {}> = {
-  caption: string;
   withBorder: boolean;
   withBackground: boolean;
-  stretched: boolean;
+  roundedCorners: boolean;
   file: {
     url: string;
   } & AdditionalFileData;
@@ -32,8 +31,7 @@ export type ImageToolData<Actions = {}, AdditionalFileData = {}> = {
 export type FeaturesConfig = {
   background?: boolean;
   border?: boolean;
-  caption?: boolean | 'optional';
-  stretch?: boolean;
+  round?: boolean;
 };
 
 export type ImageConfig = {
@@ -43,7 +41,6 @@ export type ImageConfig = {
   };
   field?: string;
   types?: string;
-  captionPlaceholder?: string;
   additionalRequestData?: object;
   additionalRequestHeaders?: object;
   buttonContent?: string;

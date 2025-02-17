@@ -16,7 +16,6 @@ type Nodes = {
   fileButton: HTMLElement;
   imageEl?: HTMLElement;
   imagePreloader: HTMLElement;
-  caption: HTMLElement;
 };
 
 type ConstructorParams = {
@@ -43,20 +42,15 @@ export default class Ui {
     this.onSelectFile = onSelectFile;
     this.readOnly = readOnly;
     this.nodes = {
-      wrapper: make('div', [this.CSS.baseClass, this.CSS.wrapper]),
-      imageContainer: make('div', [this.CSS.imageContainer]),
+      wrapper: make('div', this.CSS.wrapper),
+      imageContainer: make('div', this.CSS.imageContainer),
       fileButton: this.createFileButton(),
       imageEl: undefined,
       imagePreloader: make('div', this.CSS.imagePreloader),
-      caption: make('div', [this.CSS.input, this.CSS.caption], {
-        contentEditable: !this.readOnly,
-      }),
     };
 
-    this.nodes.caption.dataset.placeholder = this.config.captionPlaceholder;
     this.nodes.imageContainer.appendChild(this.nodes.imagePreloader);
     this.nodes.wrapper.appendChild(this.nodes.imageContainer);
-    this.nodes.wrapper.appendChild(this.nodes.caption);
     this.nodes.wrapper.appendChild(this.nodes.fileButton);
   }
 
@@ -115,12 +109,6 @@ export default class Ui {
     this.nodes.imageContainer.appendChild(this.nodes.imageEl);
   }
 
-  public fillCaption(text: string): void {
-    if (this.nodes.caption !== undefined) {
-      this.nodes.caption.innerHTML = text;
-    }
-  }
-
   public toggleStatus(status: UiState): void {
     for (const statusType in UiState) {
       if (Object.prototype.hasOwnProperty.call(UiState, statusType)) {
@@ -136,20 +124,16 @@ export default class Ui {
 
   private get CSS(): Record<string, string> {
     return {
-      baseClass: this.api.styles.block,
-      loading: this.api.styles.loader,
-      input: this.api.styles.input,
       button: this.api.styles.button,
-      wrapper: 'image-tool',
-      imageContainer: 'image-tool__image',
-      imagePreloader: 'image-tool__image-preloader',
-      imageEl: 'image-tool__image-picture',
-      caption: 'image-tool__caption',
+      wrapper: 'e-image',
+      imageContainer: 'e-image__image',
+      imagePreloader: 'e-image__image-preloader',
+      imageEl: 'e-image__image-picture',
     };
   }
 
   private createFileButton(): HTMLElement {
-    const button = make('div', [this.CSS.button]);
+    const button = make('div', this.CSS.button);
 
     button.innerHTML =
       this.config.buttonContent ??
