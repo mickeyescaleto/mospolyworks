@@ -1,5 +1,12 @@
 @import './main.css';
 
+@custom-variant not-mobile (@media (width >= 50rem));
+@custom-variant mobile (@media (width < 50rem));
+
+@utility placeholder {
+  @apply pointer-events-none cursor-text text-zinc-400/75;
+}
+
 @utility a {
   @apply cursor-pointer text-zinc-900 underline dark:text-white;
 }
@@ -37,7 +44,7 @@
 }
 
 @utility o-paragraph {
-  @apply paragraph paragraph-margin o-block;
+  @apply paragraph paragraph-margin o-block break-words;
 }
 
 @utility header {
@@ -77,7 +84,7 @@
 }
 
 @utility o-header {
-  @apply header o-block;
+  @apply header o-block break-words;
 
   &:is(h1) {
     @apply header-h1 header-h1-margin;
@@ -97,7 +104,7 @@
 }
 
 @utility image {
-  @apply h-auto max-w-full;
+  @apply h-auto w-full;
 }
 
 @utility image-margin {
