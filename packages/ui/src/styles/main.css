@@ -5,11 +5,11 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --scrollbar: var(--color-zinc-200);
+  --scrollbar: oklch(0.92 0.004 286.32);
 }
 
 .dark {
-  --scrollbar: var(--color-zinc-800);
+  --scrollbar: oklch(0.274 0.006 286.033);
 }
 
 @theme {
