@@ -5,15 +5,50 @@
 @custom-variant dark (&:is(.dark *));
 
 @layer base {
+  :root {
+    --scrollbar-color: var(--color-zinc-200);
+  }
+
+  .dark {
+    --scrollbar-color: var(--color-zinc-800);
+  }
+}
+
+@layer base {
   html {
     font-size: 16px;
     font-weight: medium;
     font-style: normal;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    overscroll-behavior: none;
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
   }
 
   button:not(:disabled),
   [role='button']:not(:disabled) {
     cursor: pointer;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-color);
+    border-radius: 50%;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-color) transparent;
   }
 }
 
