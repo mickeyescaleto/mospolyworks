@@ -4,14 +4,19 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@layer base {
-  :root {
-    --scrollbar-color: var(--color-zinc-200);
-  }
+:root {
+  --scrollbar: var(--color-zinc-200);
+}
 
-  .dark {
-    --scrollbar-color: var(--color-zinc-800);
-  }
+.dark {
+  --scrollbar: var(--color-zinc-800);
+}
+
+@theme {
+  --font-*: initial;
+  --font-sans: 'Gilroy', ui-sans-serif, system-ui, sans-serif;
+
+  --color-scrollbar: var(--scrollbar);
 }
 
 @layer base {
@@ -42,17 +47,12 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--scrollbar-color);
+    background: var(--color-scrollbar);
     border-radius: 50%;
   }
 
   * {
     scrollbar-width: thin;
-    scrollbar-color: var(--scrollbar-color) transparent;
+    scrollbar-color: var(--color-scrollbar) transparent;
   }
-}
-
-@theme {
-  --font-*: initial;
-  --font-sans: 'Gilroy', ui-sans-serif, system-ui, sans-serif;
 }
