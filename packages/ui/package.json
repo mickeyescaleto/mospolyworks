@@ -12,8 +12,12 @@
     "./styles/editor": "./src/styles/editor.css"
   },
   "dependencies": {
+    "@radix-ui/react-label": "^2.1.2",
+    "@radix-ui/react-slot": "^1.1.2",
     "@tailwindcss/postcss": "^4.0.3",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "lucide-react": "^0.475.0",
     "postcss": "^8.5.1",
     "tailwind-merge": "^3.0.1",
     "tailwindcss": "^4.0.3"
