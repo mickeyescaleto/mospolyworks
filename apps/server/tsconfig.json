@@ -6,7 +6,9 @@
     "target": "ES2021",
     "module": "ES2022",
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
+    "noEmit": false,
+    "composite": true,
+    "incremental": true,
     "paths": {
       "@/*": ["./src/*"]
     }
