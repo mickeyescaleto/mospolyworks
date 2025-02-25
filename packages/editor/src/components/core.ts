@@ -60,28 +60,12 @@ export default class Core {
       });
   }
 
-  public set configuration(config: EditorConfig | string) {
-    if (utilities.isObject(config)) {
-      this.config = {
-        ...config,
-      };
-    } else {
-      this.config = {
-        holder: config,
-      };
-    }
+  public set configuration(config: EditorConfig) {
+    this.config = {
+      ...config,
+    };
 
-    utilities.deprecationAssert(
-      !!this.config.holderId,
-      'config.holderId',
-      'config.holder',
-    );
-    if (this.config.holderId && !this.config.holder) {
-      this.config.holder = this.config.holderId;
-      this.config.holderId = null;
-    }
-
-    if (this.config.holder == null) {
+    if (this.config.holder === null) {
       this.config.holder = 'editor';
     }
 
@@ -91,16 +75,7 @@ export default class Core {
 
     utilities.setLogLevel(this.config.logLevel);
 
-    utilities.deprecationAssert(
-      Boolean(this.config.initialBlock),
-      'config.initialBlock',
-      'config.defaultBlock',
-    );
-    this.config.defaultBlock =
-      this.config.defaultBlock || this.config.initialBlock || 'paragraph';
-
-    this.config.minHeight =
-      this.config.minHeight !== undefined ? this.config.minHeight : 300;
+    this.config.defaultBlock = this.config.defaultBlock || 'paragraph';
 
     const defaultBlockData = {
       type: this.config.defaultBlock,
@@ -151,13 +126,7 @@ export default class Core {
   }
 
   public validate(): void {
-    const { holderId, holder } = this.config;
-
-    if (holderId && holder) {
-      throw Error(
-        "«holderId» and «holder» param can't assign at the same time.",
-      );
-    }
+    const { holder } = this.config;
 
     if (utilities.isString(holder) && !Dom.get(holder)) {
       throw Error(

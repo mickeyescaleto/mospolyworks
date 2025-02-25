@@ -2,78 +2,46 @@
   direction: rtl;
 
   .cdx-list {
-    padding-left: 0;
-    padding-right: 40px;
+    @apply pr-10 pl-0;
   }
 
   .ce-toolbar {
     &__plus {
-      right: calc(var(--toolbox-buttons-size) * -1);
-      left: auto;
+      @apply -right-6 left-auto;
     }
 
     &__actions {
-      right: auto;
-      left: calc(var(--toolbox-buttons-size) * -1);
+      @apply right-auto -left-6;
 
-      @media (width <= 650px) {
-        margin-left: 0;
-        margin-right: auto;
-        padding-right: 0;
-        padding-left: 10px;
+      @variant mobile {
+        @apply mr-auto ml-0 pr-0 pl-2.5;
       }
     }
   }
 
   .ce-settings {
-    left: 5px;
-    right: auto;
-
-    &::before {
-      right: auto;
-      left: 25px;
-    }
+    @apply right-auto left-1.5 before:right-auto before:left-6;
 
     &__button {
       &:not(:nth-child(3n + 3)) {
-        margin-left: 3px;
-        margin-right: 0;
+        @apply mr-0 ml-1;
       }
     }
   }
 
   .ce-conversion-tool {
     &__icon {
-      margin-right: 0px;
-      margin-left: 10px;
+      @apply mr-0 ml-2.5;
     }
   }
 
   .ce-inline-toolbar {
     &__dropdown {
-      border-right: 0px solid transparent;
-      border-left: 1px solid var(--color-gray-border);
-      margin: 0 -6px 0 6px;
+      @apply -mr-1.5 ml-1.5 border-r-0 border-l-1 border-[rgba(201,201,204,0.48)];
 
       .icon--toggler-down {
-        margin-left: 0px;
-        margin-right: 4px;
+        @apply mr-1 ml-0;
       }
-    }
-  }
-}
-
-.codex-editor--narrow.codex-editor--rtl {
-  .ce-toolbar__plus {
-    @media (width >= 651px) {
-      left: 0px;
-      right: 5px;
-    }
-  }
-
-  .ce-toolbar__actions {
-    @media (width >= 651px) {
-      left: -5px;
     }
   }
 }

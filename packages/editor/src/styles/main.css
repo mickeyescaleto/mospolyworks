@@ -1,7 +1,10 @@
+@import '@repo/ui/styles/editor';
+
 @import './variables.css';
 @import './ui.css';
 @import './toolbar.css';
-@import './toolbox.css';
+@import './tooltip.css';
+@import './notifier.css';
 @import './inline-toolbar.css';
 @import './block.css';
 @import './animations.css';

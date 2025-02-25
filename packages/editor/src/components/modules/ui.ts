@@ -19,7 +19,6 @@ type UINodes = {
 export default class UI extends Module<UINodes> {
   public get CSS(): {
     editorWrapper: string;
-    editorWrapperNarrow: string;
     editorZone: string;
     editorZoneHidden: string;
     editorEmpty: string;
@@ -27,7 +26,6 @@ export default class UI extends Module<UINodes> {
   } {
     return {
       editorWrapper: 'codex-editor',
-      editorWrapperNarrow: 'codex-editor--narrow',
       editorZone: 'codex-editor__redactor',
       editorZoneHidden: 'codex-editor__redactor--hidden',
       editorEmpty: 'codex-editor--empty',
@@ -44,7 +42,7 @@ export default class UI extends Module<UINodes> {
 
     if (!someBlock) {
       return {
-        width: 650,
+        width: 800,
         left: 0,
         right: 0,
       } as DOMRect;
@@ -157,12 +155,6 @@ export default class UI extends Module<UINodes> {
       ...(this.isRtl ? [this.CSS.editorRtlFix] : []),
     ]);
     this.nodes.redactor = Dom.make('div', this.CSS.editorZone);
-
-    if (this.nodes.holder.offsetWidth < this.contentRect.width) {
-      this.nodes.wrapper.classList.add(this.CSS.editorWrapperNarrow);
-    }
-
-    this.nodes.redactor.style.paddingBottom = this.config.minHeight + 'px';
 
     this.nodes.wrapper.appendChild(this.nodes.redactor);
     this.nodes.holder.appendChild(this.nodes.wrapper);

@@ -153,7 +153,7 @@ export default class Tools extends Module {
         inlineToolbar: ['link', 'italic'],
         config: {
           placeholder: 'Заголовок',
-          levels: [2, 3, 4, 5, 6],
+          levels: [2, 3, 4],
           defaultLevel: 2,
         },
       },

@@ -1,5 +1,3 @@
-@import '@repo/ui/styles/editor';
-
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -11,63 +9,27 @@
 }
 
 .ce-block {
-  animation: fade-in 300ms ease;
-  animation-fill-mode: initial;
-
-  @apply first:mt-0! last:mb-0!;
+  @apply animate-[fade-in_0.75s_ease] first:mt-0! last:mb-0!;
 
   &--selected &__content {
-    background: var(--selectionColor);
+    @apply bg-zinc-100/50! dark:bg-zinc-900/40!;
 
     & [contenteditable] {
-      -webkit-user-select: none;
-      user-select: none;
+      @apply select-none;
     }
 
     img,
     .ce-stub {
-      opacity: 0.55;
+      @apply opacity-60;
     }
   }
 
   &--stretched &__content {
-    max-width: none;
+    @apply max-w-none;
   }
 
   &__content {
-    @apply relative mx-auto max-w-[var(--content-width)] transition-colors duration-150;
-  }
-
-  &--drop-target &__content {
-    &:before {
-      content: '';
-      position: absolute;
-      top: 100%;
-      left: -20px;
-      margin-top: -1px;
-      height: 8px;
-      width: 8px;
-      border: solid var(--color-active-icon);
-      border-width: 1px 1px 0 0;
-      transform-origin: right;
-      transform: rotate(45deg);
-    }
-
-    &:after {
-      content: '';
-      position: absolute;
-      top: 100%;
-      height: 1px;
-      width: 100%;
-      color: var(--color-active-icon);
-      background: repeating-linear-gradient(
-        90deg,
-        var(--color-active-icon),
-        var(--color-active-icon) 1px,
-        #fff 1px,
-        #fff 6px
-      );
-    }
+    @apply relative mx-auto max-w-full transition-colors duration-150;
   }
 
   &:has(.ce-block__content) {

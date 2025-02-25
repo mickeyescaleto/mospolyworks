@@ -19,6 +19,13 @@
     display: none !important;
   }
 
+  .ce-popover--inline
+    .ce-popover--nested
+    .ce-popover__container
+    .ce-popover__items {
+    @apply overflow-y-visible;
+  }
+
   &__toggler-and-button-wrapper {
     display: flex;
     width: 100%;
@@ -66,91 +73,50 @@
 }
 
 .ce-inline-tool {
-  color: var(--color-text-primary);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @apply flex cursor-pointer items-center justify-center rounded-lg bg-transparent text-zinc-900 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800/75;
 
   border: 0;
-  border-radius: 4px;
   line-height: normal;
   height: 100%;
   padding: 0;
   width: 28px;
-  background-color: transparent;
-  cursor: pointer;
 
-  @media (width <= 650px) {
-    width: 36px;
-    height: 36px;
-  }
-
-  @media (hover: hover) {
-    &:hover {
-      background-color: #f8f8f8;
-    }
+  @variant mobile {
+    @apply size-9;
   }
 
   svg {
-    display: block;
-    width: var(--icon-size);
-    height: var(--icon-size);
+    @apply block size-5;
 
-    @media (width <= 650px) {
-      width: var(--icon-size--mobile);
-      height: var(--icon-size--mobile);
+    @variant mobile {
+      @apply size-7;
     }
   }
 
   &--link {
     .icon--unlink {
-      display: none;
+      @apply hidden;
     }
   }
 
   &--unlink {
     .icon--link {
-      display: none;
+      @apply hidden;
     }
     .icon--unlink {
-      display: inline-block;
-      margin-bottom: -1px;
+      @apply -mb-px inline-block;
     }
   }
 
   &-input {
-    background: #f8f8f8;
-    border: 1px solid rgba(226, 226, 229, 0.2);
-    border-radius: 6px;
-    padding: 4px 8px;
-    font-size: 14px;
-    line-height: 22px;
-
-    outline: none;
-    margin: 0;
-    width: 100%;
-    box-sizing: border-box;
-    display: none;
-    font-weight: 500;
-    -webkit-appearance: none;
-    font-family: inherit;
-
-    @media (width <= 650px) {
-      font-size: 15px;
-      font-weight: 500;
-    }
-
-    &::placeholder {
-      color: var(--grayText);
-    }
+    @apply hidden h-8.5 w-full appearance-none rounded-lg border border-zinc-200 bg-white px-2 py-1 text-sm font-medium text-zinc-900 outline-hidden transition-colors focus-within:ring-2 focus-within:ring-black/5 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white dark:focus-within:ring-white/5;
 
     &--showed {
-      display: block;
+      @apply block;
     }
   }
 
   &--active {
-    background: var(--color-background-icon-active);
-    color: var(--color-text-icon-active);
+    @apply bg-zinc-100! hover:bg-zinc-100/80! dark:bg-zinc-800! dark:hover:bg-zinc-800/80!;
   }
 }

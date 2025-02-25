@@ -51,6 +51,12 @@ export default class Ui {
 
     this.nodes.imageContainer.appendChild(this.nodes.imagePreloader);
     this.nodes.wrapper.appendChild(this.nodes.imageContainer);
+    this.nodes.wrapper.appendChild(
+      make('div', 'invisible-block', {
+        contentEditable: true,
+        tabIndex: '-1',
+      }),
+    );
     this.nodes.wrapper.appendChild(this.nodes.fileButton);
   }
 
@@ -69,7 +75,6 @@ export default class Ui {
 
   public showPreloader(src: string): void {
     this.nodes.imagePreloader.style.backgroundImage = `url(${src})`;
-
     this.toggleStatus(UiState.Uploading);
   }
 

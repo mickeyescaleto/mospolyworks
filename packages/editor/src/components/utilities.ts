@@ -477,10 +477,11 @@ export function cacheable<
   return descriptor;
 }
 
-export const mobileScreenBreakpoint = 650;
+export const mobileScreenBreakpoint = 800;
 
 export function isMobileScreen(): boolean {
-  return window.matchMedia(`(max-width: ${mobileScreenBreakpoint}px)`).matches;
+  return window.matchMedia(`(max-width: ${mobileScreenBreakpoint / 16}rem)`)
+    .matches;
 }
 
 export const isIosDevice =

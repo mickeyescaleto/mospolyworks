@@ -2,7 +2,7 @@
   "ui": {
     "blockTunes": {
       "toggler": {
-        "Click to tune": "Нажмите, чтобы настроить",
+        "Click to tune": "Настроить",
         "or drag to move": "или перетащите"
       }
     },
@@ -46,7 +46,8 @@
       "Message": "Сообщение"
     },
     "link": {
-      "Add a link": "Вставьте ссылку"
+      "Add a link": "Вставьте ссылку",
+      "Pasted link is not valid": "Вставленная ссылка недействительна"
     },
     "stub": {
       "The block can not be displayed correctly": "Блок не может быть отображен"
@@ -56,7 +57,8 @@
       "Select an Image": "Выберите файл",
       "With border": "Добавить рамку",
       "With background": "Добавить подложку",
-      "Round off the corners": "Закруглить углы"
+      "Round off the corners": "Закруглить углы",
+      "Couldn’t upload image": "Не удалось загрузить изображение"
     },
     "code": {
       "Enter a code": "Код"
@@ -90,7 +92,7 @@
   "blockTunes": {
     "delete": {
       "Delete": "Удалить",
-      "Click to delete": "Нажмите, чтобы удалить"
+      "Click to delete": "Подтвердить"
     },
     "moveUp": {
       "Move up": "Переместить вверх"

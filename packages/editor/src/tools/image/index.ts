@@ -245,8 +245,7 @@ export default class Image implements BlockTool {
     Image.tunes.forEach(({ name: tune }) => {
       const value =
         typeof data[tune as keyof ImageToolData] !== 'undefined'
-          ? data[tune as keyof ImageToolData] === true ||
-            data[tune as keyof ImageToolData] === 'true'
+          ? data[tune as keyof ImageToolData] === true
           : false;
 
       this.setTune(tune as keyof ImageToolData, value);
@@ -269,17 +268,15 @@ export default class Image implements BlockTool {
     if (response.success && Boolean(response.file)) {
       this.image = response.file;
     } else {
-      this.uploadingFailed('incorrect response: ' + JSON.stringify(response));
+      this.uploadingFailed();
     }
   }
 
-  private uploadingFailed(errorText: string): void {
-    console.log('Image Tool: uploading failed because of', errorText);
-
+  private uploadingFailed(): void {
     this.api.notifier.show({
-      message: this.api.i18n.t('Couldn’t upload image. Please try another.'),
-      style: 'error',
+      message: this.api.i18n.t('Couldn’t upload image'),
     });
+
     this.ui.hidePreloader();
   }
 

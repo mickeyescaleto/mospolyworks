@@ -27,39 +27,23 @@
   --item-height: calc(var(--icon-size) + 2 * var(--item-padding));
 
   &__container {
+    @apply pointer-events-none absolute z-4 flex flex-col overflow-hidden rounded-xl bg-white p-0 opacity-0 shadow-sm dark:bg-zinc-900;
+
     min-width: var(--width);
     width: var(--width);
     max-height: var(--max-height);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-sizing: border-box;
-    box-shadow: 0px 3px 15px -3px var(--color-shadow);
-    position: absolute;
     left: var(--popover-left);
     top: var(--popover-top);
-
-    background: var(--color-background);
-    display: flex;
-    flex-direction: column;
-    z-index: 4;
-
-    opacity: 0;
-    max-height: 0;
-    pointer-events: none;
-    padding: 0;
-    border: none;
   }
 
   &--opened {
     & > .ce-popover__container {
-      opacity: 1;
-      padding: var(--padding);
-      max-height: var(--max-height);
-      pointer-events: auto;
-      animation: panelShowing 100ms ease;
-      border: 1px solid var(--color-border);
+      @apply pointer-events-auto border border-zinc-200 p-1 opacity-100 dark:border-zinc-700;
 
-      @media (width <= 650px) {
+      max-height: var(--max-height);
+      animation: panelShowing 100ms ease;
+
+      @variant mobile {
         animation: panelShowingMobile 250ms ease;
       }
     }
@@ -80,63 +64,45 @@
   }
 
   &__items {
-    overflow-y: auto;
-    overscroll-behavior: contain;
+    @apply overflow-y-auto overscroll-contain;
   }
 
   &__overlay {
-    @media (width <= 650px) {
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: var(--color-dark);
-      z-index: 3;
-      opacity: 0.5;
+    @variant mobile {
+      @apply fixed inset-0 z-3 bg-zinc-900 opacity-50;
+
       transition: opacity 0.12s ease-in;
       will-change: opacity;
       visibility: visible;
     }
 
     &--hidden {
-      display: none;
+      @apply hidden;
     }
   }
 
-  @media (width <= 650px) {
+  @variant mobile {
     .ce-popover__container {
       --offset: 5px;
 
-      position: fixed;
-      max-width: none;
+      @apply fixed top-auto max-w-none rounded-xl;
+
       min-width: calc(100% - var(--offset) * 2);
       left: var(--offset);
       right: var(--offset);
       bottom: calc(var(--offset) + env(safe-area-inset-bottom));
-      top: auto;
-      border-radius: 10px;
     }
   }
 
   &__search {
-    margin-bottom: 5px;
+    @apply mb-1;
   }
 
   &__nothing-found-message {
-    color: var(--grayText);
-    display: none;
-    cursor: default;
-    padding: 3px;
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: 500;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    @apply hidden overflow-hidden px-1 py-2 text-center text-sm font-medium overflow-ellipsis whitespace-nowrap text-zinc-900 select-none dark:text-zinc-300;
 
     &--displayed {
-      display: block;
+      @apply block;
     }
   }
 
@@ -171,151 +137,107 @@
 }
 
 .ce-popover-item-separator {
-  padding: 4px 3px;
+  @apply p-1;
 
   &--hidden {
-    display: none;
+    @apply hidden;
   }
 
   &__line {
-    height: 1px;
-    background: var(--color-border);
-    width: 100%;
+    @apply h-px w-full bg-zinc-200 dark:bg-zinc-700;
   }
 }
 
 .ce-popover-item-html {
   &--hidden {
-    display: none;
+    @apply hidden;
   }
 }
 
 .ce-popover-item {
-  --border-radius: 6px;
-  border-radius: var(--border-radius);
-  display: flex;
-  align-items: center;
-  padding: var(--item-padding);
-  color: var(--color-text-primary);
-  user-select: none;
-  border: none;
-  background: transparent;
+  @apply flex cursor-pointer items-center rounded-lg bg-transparent px-0.5 py-1 text-zinc-900 select-none dark:text-zinc-300;
 
-  @media (width <= 650px) {
-    padding: 4px;
+  @variant mobile {
+    @apply px-1;
   }
 
   &:not(:last-of-type) {
-    margin-bottom: 1px;
+    @apply mb-px;
+  }
+
+  &:not(.ce-popover-item--no-hover) {
+    @apply hover:bg-zinc-100 dark:hover:bg-zinc-800/75;
   }
 
   &__icon {
-    width: 26px;
-    height: 26px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @apply flex size-6 items-center justify-center;
 
     svg {
-      width: var(--icon-size);
-      height: var(--icon-size);
+      @apply size-5;
     }
 
-    @media (width <= 650px) {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
+    @variant mobile {
+      @apply size-9 rounded-lg;
 
       svg {
-        width: 28px;
-        height: 28px;
+        @apply size-7;
       }
     }
   }
 
   &__icon--tool {
-    margin-right: 4px;
+    @apply mr-1;
   }
 
   &__title {
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: 500;
+    @apply mr-auto overflow-hidden text-sm font-medium overflow-ellipsis whitespace-nowrap;
 
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-
-    margin-right: auto;
-
-    @media (width <= 650px) {
-      font-size: 16px;
+    @variant mobile {
+      @apply text-base;
     }
   }
 
   &__secondary-title {
-    color: var(--color-text-secondary);
-    font-size: 12px;
-    white-space: nowrap;
-    letter-spacing: -0.1em;
-    padding-right: 5px;
-    opacity: 0.6;
+    @apply pr-1 text-xs whitespace-nowrap text-(--color-text-secondary) opacity-60;
 
-    @media (width <= 650px) {
-      display: none;
+    @variant mobile {
+      @apply hidden;
     }
   }
 
   &--active {
-    background: var(--color-background-icon-active);
-    color: var(--color-text-icon-active);
+    @apply bg-zinc-100! hover:bg-zinc-100/80! dark:bg-zinc-800! dark:hover:bg-zinc-800/80!;
   }
 
   &--disabled {
-    color: var(--color-text-secondary);
-    cursor: default;
-    pointer-events: none;
+    @apply pointer-events-none cursor-default opacity-50;
   }
 
   &--focused {
     &:not(.ce-popover-item--no-focus) {
-      background: var(--color-background-item-focus) !important;
+      @apply bg-zinc-100! hover:bg-zinc-100/80! dark:bg-zinc-800! dark:hover:bg-zinc-800/80!;
     }
   }
 
   &--hidden {
-    display: none;
-  }
-
-  @media (hover: hover) {
-    &:hover {
-      cursor: pointer;
-
-      &:not(.ce-popover-item--no-hover) {
-        background-color: var(--color-background-item-hover);
-      }
-    }
+    @apply hidden;
   }
 
   &--confirmation {
-    background: var(--color-background-item-confirm);
+    @apply bg-[#e24a4a];
 
     .ce-popover-item__title,
     .ce-popover-item__icon {
-      color: white;
+      @apply text-white;
     }
 
     &:not(.ce-popover-item--no-hover) {
-      @media (hover: hover) {
-        &:hover {
-          background: var(--color-background-item-confirm-hover);
-        }
-      }
+      @apply hover:bg-[#ce4343]!;
     }
 
     &:not(.ce-popover-item--no-focus) {
       &.ce-popover-item--focused {
-        background: var(--color-background-item-confirm-hover) !important;
+        @apply hover:bg-[#ce4343]!;
       }
     }
   }
@@ -389,27 +311,17 @@
 }
 
 .ce-popover-header {
-  margin-bottom: 8px;
-  margin-top: 4px;
-  display: flex;
-  align-items: center;
+  @apply mt-1 mb-2 flex items-center;
 
   &__text {
-    font-size: 18px;
-    font-weight: 600;
+    @apply text-lg font-bold;
   }
 
   &__back-button {
-    border: 0;
-    background: transparent;
-    width: 36px;
-    height: 36px;
-    color: var(--color-text-primary);
+    @apply size-9 bg-transparent text-current;
 
     svg {
-      display: block;
-      width: 28px;
-      height: 28px;
+      @apply block size-7;
     }
   }
 }

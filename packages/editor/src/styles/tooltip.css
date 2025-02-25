@@ -1,0 +1,7 @@
+.ct {
+  @apply rounded-lg shadow-sm before:bg-zinc-100 after:bg-zinc-100 dark:before:bg-zinc-900 dark:after:bg-zinc-900;
+
+  &__content {
+    @apply px-2.5 py-1.5 text-xs font-medium text-zinc-900 dark:text-white;
+  }
+}

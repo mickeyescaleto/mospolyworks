@@ -1,87 +1,78 @@
-.ce-toolbar {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  transition: opacity 100ms ease;
-  will-change: opacity, top;
+@utility toolbox-button {
+  @apply inline-flex size-9 animate-[bounceIn_0.3s_1] cursor-pointer items-center justify-center rounded-md text-zinc-900/75 transition-colors select-none hover:bg-zinc-100 hover:text-zinc-900 dark:text-white/75 dark:hover:bg-zinc-900 dark:hover:text-white;
 
-  display: none;
+  @variant not-mobile {
+    @apply size-6;
+  }
+}
+
+@utility overlay-pane {
+  @apply absolute z-2 rounded-md border border-zinc-200 bg-zinc-50 shadow-xs dark:border-zinc-700 dark:bg-zinc-800;
+
+  &--left-oriented {
+    &::before {
+      @apply left-4 ml-0;
+    }
+  }
+
+  &--right-oriented {
+    &::before {
+      @apply right-4 left-auto ml-0;
+    }
+  }
+}
+
+.ce-toolbar {
+  @apply absolute top-0 right-0 left-0 hidden transition-opacity duration-100 ease-in will-change-[opacity,top];
 
   &--opened {
-    display: block;
+    @apply block;
   }
 
   &__content {
-    max-width: var(--content-width);
-    margin: 0 auto;
-    position: relative;
+    @apply relative mx-auto max-w-full;
   }
 
   &__plus {
-    @apply toolbox-button;
-    flex-shrink: 0;
+    @apply toolbox-button shrink-0;
 
-    &-shortcut {
-      opacity: 0.6;
-      word-spacing: -2px;
-      margin-top: 5px;
+    @variant mobile {
+      @apply overlay-pane static;
     }
 
-    @media (width <= 650px) {
-      @apply overlay-pane;
-      position: static;
+    &-shortcut {
+      @apply mt-0.5 opacity-60;
     }
   }
 
   &__actions {
-    position: absolute;
-    right: 100%;
-    opacity: 0;
-    display: flex;
-    padding-right: 5px;
+    @apply absolute right-auto flex pr-1.5 opacity-0;
 
-    &--opened {
-      opacity: 1;
+    @variant not-mobile {
+      @apply right-full;
     }
 
-    @media (width <= 650px) {
-      right: auto;
+    &--opened {
+      @apply opacity-100;
     }
   }
 
   &__settings-btn {
-    @apply toolbox-button;
+    @apply toolbox-button ml-1 cursor-pointer select-none;
 
-    margin-left: 3px;
-    cursor: pointer;
-    user-select: none;
-
-    @media (width >= 651px) {
-      width: 24px;
+    @variant mobile {
+      @apply overlay-pane static;
     }
 
     &--hidden {
-      display: none;
-    }
-
-    @media (width <= 650px) {
-      @apply overlay-pane;
-      position: static;
+      @apply hidden;
     }
   }
 
   &__plus,
   &__settings-btn {
     svg {
-      width: 24px;
-      height: 24px;
+      @apply size-6;
     }
-  }
-}
-
-.codex-editor--narrow .ce-toolbar__plus {
-  @media (width >= 651px) {
-    left: 5px;
   }
 }

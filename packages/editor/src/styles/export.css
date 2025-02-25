@@ -57,13 +57,13 @@
     width: auto;
     height: auto;
 
-    @media (width <= 650px) {
+    @variant mobile {
       width: var(--icon-size--mobile);
       height: var(--icon-size--mobile);
     }
   }
 
-  @media (width <= 650px) {
+  @variant mobile {
     width: var(--toolbox-buttons-size--mobile);
     height: var(--toolbox-buttons-size--mobile);
     border-radius: 8px;

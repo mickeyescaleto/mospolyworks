@@ -1,5 +1,9 @@
 @import '@repo/ui/styles/editor';
 
+@utility invisible-block {
+  @apply h-0 w-0;
+}
+
 .e-image {
   .cdx-button {
     @apply flex items-center justify-center;
@@ -9,12 +13,12 @@
     @apply overflow-hidden rounded-lg;
 
     &-picture {
-      @apply block max-w-full;
+      @apply block h-auto w-full;
     }
   }
 
   &__image-preloader {
-    @apply relative m-auto size-12 rounded-full bg-zinc-100 bg-cover bg-center after:absolute after:top-1/2 after:left-1/2 after:z-10 after:size-14 after:-translate-x-1/2 after:-translate-y-1/2 after:transform after:animate-spin after:rounded-full after:border-2 after:border-zinc-100 after:border-t-zinc-600 dark:bg-zinc-700 dark:after:border-zinc-700 dark:after:border-t-zinc-400;
+    @apply relative m-auto size-12 rounded-full bg-zinc-100 bg-cover bg-center after:absolute after:top-1/2 after:left-1/2 after:z-3 after:size-14 after:-translate-x-1/2 after:-translate-y-1/2 after:transform after:animate-spin after:rounded-full after:border-2 after:border-zinc-100 after:border-t-zinc-600 dark:bg-zinc-700 dark:after:border-zinc-700 dark:after:border-t-zinc-400;
   }
 
   &--uploading {

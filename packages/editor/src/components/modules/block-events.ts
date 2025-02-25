@@ -79,7 +79,7 @@ export default class BlockEvents extends Module {
       event.target as Node,
     );
 
-    block.dropTarget = true;
+    block.dropTarget = false; // drag-on: true
   }
 
   public dragLeave(event: DragEvent): void {

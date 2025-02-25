@@ -14,7 +14,6 @@ export default class DragNDrop extends Module {
 
   private enableModuleBindings(): void {
     const { UI } = this.Editor;
-
     this.readOnlyMutableListeners.on(
       UI.nodes.holder,
       'drop',
@@ -23,11 +22,9 @@ export default class DragNDrop extends Module {
       },
       true,
     );
-
     this.readOnlyMutableListeners.on(UI.nodes.holder, 'dragstart', () => {
       this.processDragStart();
     });
-
     this.readOnlyMutableListeners.on(
       UI.nodes.holder,
       'dragover',

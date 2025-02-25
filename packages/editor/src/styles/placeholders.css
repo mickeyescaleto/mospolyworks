@@ -1,9 +1,3 @@
-@utility placeholder {
-  pointer-events: none;
-  color: var(--grayText);
-  cursor: text;
-}
-
 .codex-editor {
   [data-placeholder]:empty,
   [data-placeholder][data-empty='true'] {

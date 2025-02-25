@@ -197,8 +197,7 @@ export default class LinkInlineTool implements InlineTool {
 
     if (!this.validateURL(value)) {
       this.notifier.show({
-        message: 'Pasted link is not valid.',
-        style: 'error',
+        message: this.i18n.t('Pasted link is not valid'),
       });
 
       utilities.log('Incorrect Link pasted', 'warn', value);

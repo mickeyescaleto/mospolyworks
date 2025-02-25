@@ -282,7 +282,7 @@ export default class SelectionUtils {
   }
 
   public setFakeBackground(): void {
-    document.execCommand(this.commandBackground, false, '#a8d6ff');
+    // document.execCommand(this.commandBackground, false, '#a8d6ff');
 
     this.isFakeBackgroundEnabled = true;
   }

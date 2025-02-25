@@ -8,11 +8,9 @@ import type { OutputData } from '@repo/editor/types/data-formats/output-data';
 import { LogLevels } from '@repo/editor/types/configs/log-levels';
 
 export type EditorConfig = {
-  holderId?: string | HTMLElement;
   holder?: string | HTMLElement;
   autofocus?: boolean;
   defaultBlock?: string;
-  initialBlock?: string;
   placeholder?: string | false;
   sanitizer?: SanitizerConfig;
   hideToolbar?: boolean;
@@ -20,7 +18,6 @@ export type EditorConfig = {
     [toolName: string]: ToolConstructable | ToolSettings;
   };
   data?: OutputData;
-  minHeight?: number;
   logLevel?: LogLevels;
   readOnly?: boolean;
   i18n?: I18nConfig;

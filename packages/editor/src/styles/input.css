@@ -1,46 +1,15 @@
 .cdx-search-field {
-  --icon-margin-right: 10px;
-
-  background: #f8f8f8;
-  border: 1px solid rgba(226, 226, 229, 0.2);
-  border-radius: 6px;
-  padding: 2px;
-  display: grid;
-  grid-template-columns: auto auto 1fr;
-  grid-template-rows: auto;
+  @apply flex w-full items-center rounded-lg border border-zinc-200 bg-white p-1 text-zinc-900 transition-colors focus-within:ring-2 focus-within:ring-black/5 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white dark:focus-within:ring-white/5;
 
   &__icon {
-    width: var(--toolbox-buttons-size);
-    height: var(--toolbox-buttons-size);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: var(--icon-margin-right);
+    @apply mr-1 flex size-6 items-center justify-center;
 
     svg {
-      width: var(--icon-size);
-      height: var(--icon-size);
-      color: var(--grayText);
+      @apply size-5 text-current/50;
     }
   }
 
   &__input {
-    font-size: 14px;
-    outline: none;
-    font-weight: 500;
-    font-family: inherit;
-    border: 0;
-    background: transparent;
-    margin: 0;
-    padding: 0;
-    line-height: 22px;
-    min-width: calc(
-      100% - var(--toolbox-buttons-size) - var(--icon-margin-right)
-    );
-
-    &::placeholder {
-      color: var(--grayText);
-      font-weight: 500;
-    }
+    @apply m-0 w-full bg-transparent p-0 text-sm font-medium text-current outline-hidden;
   }
 }

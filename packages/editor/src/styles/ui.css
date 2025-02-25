@@ -1,10 +1,8 @@
 .codex-editor {
-  position: relative;
-  box-sizing: border-box;
-  z-index: 1;
+  @apply relative z-1;
 
   .hide {
-    display: none;
+    @apply hidden;
   }
 
   &__redactor {
@@ -13,82 +11,40 @@
     }
   }
 
-  &--narrow &__redactor {
-    @media (width >= 651px) {
-      margin-right: var(--narrow-mode-right-padding);
-    }
-  }
-
-  &--narrow&--rtl &__redactor {
-    @media (width >= 651px) {
-      margin-left: var(--narrow-mode-right-padding);
-      margin-right: 0;
-    }
-  }
-
-  &--narrow .ce-toolbar__actions {
-    @media (width >= 651px) {
-      right: -5px;
-    }
-  }
-
   &-copyable {
-    position: absolute;
-    height: 1px;
-    width: 1px;
-    top: -400%;
-    opacity: 0.001;
+    @apply absolute top-[-400%] h-px w-px opacity-[0.001];
   }
 
   &-overlay {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    z-index: 999;
-    pointer-events: none;
-    overflow: hidden;
+    @apply pointer-events-none fixed inset-0 z-999 overflow-hidden;
 
     &__container {
-      position: relative;
-      pointer-events: auto;
-      z-index: 0;
+      @apply pointer-events-auto relative z-0;
     }
 
     &__rectangle {
-      position: absolute;
-      pointer-events: none;
-      background-color: rgba(46, 170, 220, 0.2);
-      border: 1px solid transparent;
+      @apply pointer-events-none absolute -top-4 -left-4 border border-transparent bg-zinc-400/20 dark:bg-zinc-800/20;
     }
   }
 
   svg {
-    max-height: 100%;
+    @apply max-h-full;
   }
 
   path {
-    stroke: currentColor;
-  }
-
-  ::selection {
-    background-color: var(--inlineSelectionColor);
+    @apply stroke-current;
   }
 }
 
 .codex-editor--toolbox-opened
   [contentEditable='true'][data-placeholder]:focus::before {
-  opacity: 0 !important;
+  @apply opacity-0!;
 }
 
 .ce-scroll-locked {
-  overflow: hidden;
+  @apply overflow-hidden;
 }
 
 .ce-scroll-locked--hard {
-  overflow: hidden;
-  top: calc(-1 * var(--window-scroll-offset));
-  position: fixed;
-  width: 100%;
+  @apply fixed top-[calc(-1*var(--window-scroll-offset))] w-full overflow-hidden;
 }

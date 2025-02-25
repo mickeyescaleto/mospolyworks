@@ -92,12 +92,6 @@ export default class Uploader {
       typeof this.config.uploader.uploadByUrl === 'function'
     ) {
       upload = this.config.uploader.uploadByUrl(url);
-
-      if (!isPromise(upload)) {
-        console.warn(
-          'Custom uploader method uploadByUrl should return a Promise',
-        );
-      }
     } else {
       upload = ajax
         .post({
@@ -143,12 +137,6 @@ export default class Uploader {
       typeof this.config.uploader.uploadByFile === 'function'
     ) {
       upload = this.config.uploader.uploadByFile(file);
-
-      if (!isPromise(upload)) {
-        console.warn(
-          'Custom uploader method uploadByFile should return a Promise',
-        );
-      }
     } else {
       const formData = new FormData();
 
