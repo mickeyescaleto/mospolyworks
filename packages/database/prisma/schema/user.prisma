@@ -1,6 +1,26 @@
 model User {
-    id   String @id @default(auto()) @map("_id") @db.ObjectId
-    name String
+    id             String    @id @default(auto()) @map("_id") @db.ObjectId
+    name           String
+    surname        String
+    patronymic     String
+    avatar         String
+    roles          Role[]
+    login          String    @unique()
+    password       String
+    group          String
+    course         String
+    faculty        String
+    specialty      String
+    specialization String
+    externalToken  String    @unique() @map("external_token")
+    updatedAt      DateTime  @default(now()) @map("updated_at")
+    sessions       Session[]
 
     @@map("users")
+}
+
+enum Role {
+    STUDENT
+    STAFF
+    ADMIN
 }
