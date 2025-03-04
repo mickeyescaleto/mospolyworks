@@ -1,7 +1,9 @@
 import { JSX } from 'react';
-import { ParagraphBlock } from '@/components/editor/blocks/paragraph';
-import { HeaderBlock } from '@/components/editor/blocks/header';
-import { ImageBlock } from '@/components/editor/blocks/image';
+import { OutputData } from '@repo/editor';
+
+import { ParagraphBlock } from '@/components/editor-output-blocks/paragraph';
+import { HeaderBlock } from '@/components/editor-output-blocks/header';
+import { ImageBlock } from '@/components/editor-output-blocks/image';
 
 export type ConfigProp = Record<string, RenderConfig>;
 
@@ -22,22 +24,14 @@ export type RenderFnWithoutData<K = Record<string, any> | undefined> = (
 
 export type RenderersProp = Record<string, RenderFn<any>>;
 
-export type Block = {
-  id?: string;
-  type: string;
-  data: Record<string, any>;
-};
+export type { OutputData };
 
-export type DataProp = {
-  blocks: Block[];
-};
-
-export const EditorOutput = ({
+export const EditorOutputBlock = ({
   data,
   config = {},
   renderers = {},
 }: {
-  data: DataProp;
+  data: OutputData;
   config?: ConfigProp;
   renderers?: RenderersProp;
 }) => {

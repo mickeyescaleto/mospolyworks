@@ -1,27 +1,46 @@
+import * as React from 'react';
 import type { Metadata } from 'next';
-import { gilroy } from '@/styles/fonts';
-import { ThemeProvider } from '@/components/theme-provider';
+
 import { cn } from '@repo/ui/utilities/cn';
+import { Toaster } from '@repo/ui/core/sonner';
+import { gilroy } from '@/styles/fonts';
+import { ThemeProvider } from '@/components/providers/theme-provider';
+import { QueryProvider } from '@/components/providers/query-provider';
+
 import '@/styles/main.css';
 
 export const metadata: Metadata = {
-  title: 'mospolyworks',
+  title: {
+    default: 'mospolyworks',
+    template: `mospolyworks – %s`,
+  },
 };
 
-type RootLayoutProps = {
+export default function RootLayout({
+  children,
+}: Readonly<{
   children: React.ReactNode;
-};
-
-const RootLayout = ({ children }: RootLayoutProps) => {
+}>) {
   return (
     <html lang="ru" suppressHydrationWarning>
       <body
-        className={cn('font-sans font-medium antialiased', gilroy.variable)}
+        className={cn(
+          'flex min-h-dvh flex-col overflow-x-hidden bg-white font-sans font-medium text-zinc-900 antialiased dark:bg-zinc-950 dark:text-white',
+          gilroy.variable,
+        )}
       >
-        <ThemeProvider attribute="class">{children}</ThemeProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <QueryProvider>
+            {children}
+            <Toaster />
+          </QueryProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
-};
-
-export default RootLayout;
+}

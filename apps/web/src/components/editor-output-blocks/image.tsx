@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import { RenderFn } from '@/components/editor/editor-output';
+
+import { RenderFn } from '@/components/editor-output-block';
 
 export type ImageBlockData = {
   file: {
@@ -48,9 +49,11 @@ export const ImageBlock: RenderFn<ImageBlockData, ImageBlockConfig> = ({
   return (
     <Image
       src={data.file.url}
-      width={672}
-      height={672 / data.file.ratio}
+      width="0"
+      height="0"
+      sizes="100vw"
       alt="Image"
+      placeholder="blur"
       {...props}
     />
   );

@@ -1,6 +1,7 @@
 import { JSX } from 'react';
 import HTMLReactParser from 'html-react-parser';
-import { RenderFn } from '@/components/editor/editor-output';
+
+import { RenderFn } from '@/components/editor-output-block';
 
 export type HeaderBlockData = {
   text: string;
