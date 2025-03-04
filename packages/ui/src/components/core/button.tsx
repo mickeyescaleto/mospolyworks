@@ -13,10 +13,12 @@ export const buttonVariants = cva(
           'bg-zinc-800 text-white hover:bg-zinc-800/90 dark:bg-white dark:text-zinc-900 dark:hover:bg-white/90',
         ghost:
           'text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900',
+        header:
+          'text-zinc-500 dark:text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-900',
       },
       size: {
         default: 'h-9 px-4 py-2 has-[>svg]:px-3',
-        icon: 'size-9',
+        icon: 'size-8',
       },
     },
     defaultVariants: {
