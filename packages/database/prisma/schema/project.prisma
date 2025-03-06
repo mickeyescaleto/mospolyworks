@@ -1,0 +1,26 @@
+model Project {
+    id               String   @id @default(auto()) @map("_id") @db.ObjectId
+    title            String
+    content          String
+    authors          User[]   @relation(fields: [authorIds], references: [id])
+    authorIds        String[] @map("author_ids") @db.ObjectId
+    theme            Theme    @relation(fields: [themeId], references: [id])
+    themeId          String   @map("theme_id") @db.ObjectId
+    tags             Tag[]    @relation(fields: [tagIds], references: [id])
+    tagIds           String[] @map("tag_ids") @db.ObjectId
+    status           Status   @default(DRAFT)
+    rejectionComment String?  @map("rejection_comment")
+    link             String?
+    updatedAt        DateTime @updatedAt() @map("updated_at")
+    createdAt        DateTime @default(now()) @map("created_at")
+
+    @@map("projects")
+}
+
+enum Status {
+    DRAFT
+    PUBLISHED
+    REJECTED
+    REPEATED
+    VERIFIED
+}

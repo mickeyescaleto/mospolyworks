@@ -16,6 +16,8 @@ model User {
     updatedAt      DateTime       @default(now()) @map("updated_at")
     sessions       Session[]
     notifications  Notification[]
+    projects       Project[]      @relation(fields: [projectIds], references: [id])
+    projectIds     String[]       @map("project_ids") @db.ObjectId
 
     @@map("users")
 }

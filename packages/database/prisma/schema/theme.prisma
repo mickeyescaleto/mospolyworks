@@ -1,0 +1,8 @@
+model Theme {
+    id       String    @id @default(auto()) @map("_id") @db.ObjectId
+    title    String    @unique()
+    tags     Tag[]
+    projects Project[]
+
+    @@map("themes")
+}
