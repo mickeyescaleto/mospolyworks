@@ -1,23 +1,24 @@
 model User {
-    id             String         @id @default(auto()) @map("_id") @db.ObjectId
-    name           String
-    surname        String
-    patronymic     String
-    avatar         String
-    roles          Role[]
-    login          String         @unique()
-    password       String
-    group          String
-    course         String
-    faculty        String
-    specialty      String
-    specialization String
-    externalToken  String         @unique() @map("external_token")
-    updatedAt      DateTime       @default(now()) @map("updated_at")
-    sessions       Session[]
-    notifications  Notification[]
-    projects       Project[]      @relation(fields: [projectIds], references: [id])
-    projectIds     String[]       @map("project_ids") @db.ObjectId
+    id                   String         @id @default(auto()) @map("_id") @db.ObjectId
+    name                 String
+    surname              String
+    patronymic           String
+    avatar               String
+    roles                Role[]
+    login                String         @unique()
+    password             String
+    group                String
+    course               String
+    faculty              String
+    specialty            String
+    specialization       String
+    externalToken        String         @unique() @map("external_token")
+    updatedAt            DateTime       @default(now()) @map("updated_at")
+    sessions             Session[]
+    notifications        Notification[]
+    authoredProjects     Project[]      @relation("project_author")
+    partneredProjects    Project[]      @relation("project_partners", fields: [partneredProjectsIds], references: [id])
+    partneredProjectsIds String[]       @map("partnered_project_ids") @db.ObjectId
 
     @@map("users")
 }

@@ -2,8 +2,10 @@ model Project {
     id               String   @id @default(auto()) @map("_id") @db.ObjectId
     title            String
     content          String
-    authors          User[]   @relation(fields: [authorIds], references: [id])
-    authorIds        String[] @map("author_ids") @db.ObjectId
+    author           User     @relation("project_author", fields: [authorId], references: [id])
+    authorId         String   @map("author_id") @db.ObjectId
+    partners         User[]   @relation("project_partners", fields: [partnerIds], references: [id])
+    partnerIds       String[] @map("partner_ids") @db.ObjectId
     theme            Theme    @relation(fields: [themeId], references: [id])
     themeId          String   @map("theme_id") @db.ObjectId
     tags             Tag[]    @relation(fields: [tagIds], references: [id])
