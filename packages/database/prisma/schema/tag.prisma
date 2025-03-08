@@ -1,10 +1,9 @@
 model Tag {
-    id         String    @id @default(auto()) @map("_id") @db.ObjectId
-    title      String    @unique()
-    theme      Theme     @relation(fields: [themeId], references: [id])
-    themeId    String    @map("theme_id") @db.ObjectId
-    projects   Project[] @relation(fields: [projectIds], references: [id])
-    projectIds String[]  @map("project_ids") @db.ObjectId
+    id             String       @id @default(auto()) @map("_id") @db.ObjectId
+    title          String       @unique()
+    theme          Theme        @relation(fields: [themeId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+    themeId        String       @map("theme_id") @db.ObjectId
+    taggedProjects ProjectTag[]
 
     @@map("tags")
 }
