@@ -9,8 +9,8 @@ export default function AuthLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { useUser } = useAuth();
-  const { data: user } = useUser();
+  const { useUserQuery } = useAuth();
+  const { data: user } = useUserQuery();
 
   if (user) {
     redirect('/');

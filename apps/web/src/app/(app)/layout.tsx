@@ -8,8 +8,8 @@ export default function AppLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { useUser } = useAuth();
-  const { isPending } = useUser();
+  const { useUserQuery } = useAuth();
+  const { isPending } = useUserQuery();
 
   if (isPending) {
     return <LoadingScreen />;

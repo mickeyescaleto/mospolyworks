@@ -3,16 +3,17 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { useAuth } from '@/hooks/use-auth';
 import { cn } from '@repo/ui/utilities/cn';
-import { ProfileMenu } from '@/components/profile-menu';
-import { NotificationPopover } from '@/components/notification-popover';
 import { PlusIcon } from '@repo/ui/core/icons';
 import { Button } from '@repo/ui/core/button';
 
+import { useAuth } from '@/hooks/use-auth';
+import { ProfileMenu } from '@/components/profile-menu';
+import { NotificationPopover } from '@/components/notification-popover';
+
 export function Header() {
-  const { useUser } = useAuth();
-  const { data: user } = useUser();
+  const { useUserQuery } = useAuth();
+  const { data: user } = useUserQuery();
 
   return (
     <header className="sticky top-0 z-20 bg-white/75 backdrop-blur backdrop-saturate-200 dark:bg-zinc-950/75">
@@ -43,6 +44,7 @@ export function Header() {
                   <Button variant="header" size="icon" asChild>
                     <Link href="/projects/create">
                       <PlusIcon className="size-4.5" />
+                      <span className="sr-only">Создать проект</span>
                     </Link>
                   </Button>
                 </li>

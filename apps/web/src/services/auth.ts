@@ -1,5 +1,6 @@
 import { server } from '@repo/server';
-import { UserLoginCredentials } from '@/types/user';
+
+import type { UserLoginCredentials } from '@/types/user';
 
 export class AuthService {
   private static readonly instance = server.authentication;

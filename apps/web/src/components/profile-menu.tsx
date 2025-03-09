@@ -1,6 +1,7 @@
 'use client';
 
-import { useAuth } from '@/hooks/use-auth';
+import Link from 'next/link';
+
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -11,12 +12,13 @@ import {
 import { Avatar, AvatarImage, AvatarFallback } from '@repo/ui/core/avatar';
 import { ChevronDownIcon, LogOutIcon, UserIcon } from '@repo/ui/core/icons';
 import { Button } from '@repo/ui/core/button';
-import Link from 'next/link';
+
+import { useAuth } from '@/hooks/use-auth';
 
 export function ProfileMenu() {
-  const { useUser, useLogout } = useAuth();
-  const { data: user } = useUser();
-  const { mutate: logout } = useLogout();
+  const { useUserQuery, useLogoutMutation } = useAuth();
+  const { data: user } = useUserQuery();
+  const { mutate: logout } = useLogoutMutation();
 
   function getAvatarFallback(name: string, surname: string) {
     return `${name.at(0)}${surname.at(0)}`.toUpperCase();

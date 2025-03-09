@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 
 import { cn } from '@repo/ui/utilities/cn';
 import { Toaster } from '@repo/ui/core/sonner';
+
 import { gilroy } from '@/styles/fonts';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { QueryProvider } from '@/components/providers/query-provider';

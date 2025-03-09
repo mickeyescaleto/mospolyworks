@@ -3,18 +3,20 @@
 import { Popover, PopoverTrigger, PopoverContent } from '@repo/ui/core/popover';
 import { Button } from '@repo/ui/core/button';
 import { BellIcon } from '@repo/ui/core/icons';
-import { NotificationCard } from '@/components/notification-card';
+
 import { useNotification } from '@/hooks/use-notification';
+import { NotificationCard } from '@/components/notification-card';
 
 export function NotificationPopover() {
-  const { useNotifications } = useNotification();
-  const { data: notifications } = useNotifications();
+  const { useNotificationsQuery } = useNotification();
+  const { data: notifications } = useNotificationsQuery();
 
   return (
     <Popover>
       <PopoverTrigger asChild>
         <Button type="button" variant="header" size="icon">
           <BellIcon className="size-4.5" />
+          <span className="sr-only">Посмотреть уведомления</span>
         </Button>
       </PopoverTrigger>
       <PopoverContent align="end" className="w-56">

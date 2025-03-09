@@ -1,5 +1,5 @@
-import { NotificationService } from '@/services/notification';
+import { server } from '@repo/server';
 
-export type Notification = Awaited<
-  ReturnType<typeof NotificationService.getNotifications>
+export type Notification = NonNullable<
+  Awaited<ReturnType<typeof server.notifications.index.get>>['data']
 >[number];

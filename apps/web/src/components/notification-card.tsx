@@ -4,16 +4,17 @@ import Link from 'next/link';
 
 import { LinkIcon, XIcon } from '@repo/ui/core/icons';
 import { Button } from '@repo/ui/core/button';
+
 import { useNotification } from '@/hooks/use-notification';
-import { Notification } from '@/types/notification';
+import type { Notification } from '@/types/notification';
 
 type NotificationCardProps = {
   notification: Notification;
 };
 
 export function NotificationCard({ notification }: NotificationCardProps) {
-  const { useDelete } = useNotification();
-  const { mutate: deleteNotification } = useDelete();
+  const { useDeleteMutation } = useNotification();
+  const { mutate: deleteNotification } = useDeleteMutation();
 
   return (
     <div className="flex flex-col gap-y-1 rounded-lg bg-zinc-100 px-2 py-1 text-sm dark:bg-zinc-800/75">

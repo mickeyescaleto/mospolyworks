@@ -5,7 +5,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
 import { AuthService } from '@/services/auth';
-import { User, UserLoginCredentials } from '@/types/user';
+import type { User, UserLoginCredentials } from '@/types/user';
 
 export function useAuth() {
   const queryClient = useQueryClient();
@@ -15,14 +15,14 @@ export function useAuth() {
     [queryClient],
   );
 
-  function useUser() {
+  function useUserQuery() {
     return useQuery({
       queryKey: ['profile'],
       queryFn: () => AuthService.getProfile(),
     });
   }
 
-  function useLogin() {
+  function useLoginMutation() {
     return useMutation({
       mutationKey: ['login'],
       mutationFn: (data: UserLoginCredentials) => AuthService.login(data),
@@ -44,7 +44,7 @@ export function useAuth() {
     });
   }
 
-  function useLogout() {
+  function useLogoutMutation() {
     return useMutation({
       mutationKey: ['logout'],
       mutationFn: () => AuthService.logout(),
@@ -54,5 +54,5 @@ export function useAuth() {
     });
   }
 
-  return { useUser, useLogin, useLogout };
+  return { useUserQuery, useLoginMutation, useLogoutMutation };
 }

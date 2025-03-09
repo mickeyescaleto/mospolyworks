@@ -1,8 +1,9 @@
-import * as z from 'zod';
+import { server } from '@repo/server';
 
-import { AuthService } from '@/services/auth';
-import { userAuthSchema } from '@/schemas/user-auth';
+export type User = NonNullable<
+  Awaited<ReturnType<typeof server.authentication.profile.get>>['data']
+>;
 
-export type User = Awaited<ReturnType<typeof AuthService.getProfile>>;
-
-export type UserLoginCredentials = z.infer<typeof userAuthSchema>;
+export type UserLoginCredentials = Parameters<
+  typeof server.authentication.login.post
+>[0];

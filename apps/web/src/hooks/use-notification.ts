@@ -4,19 +4,19 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
 import { NotificationService } from '@/services/notification';
-import { Notification } from '@/types/notification';
+import type { Notification } from '@/types/notification';
 
 export function useNotification() {
   const queryClient = useQueryClient();
 
-  function useNotifications() {
+  function useNotificationsQuery() {
     return useQuery({
       queryKey: ['notifications'],
       queryFn: () => NotificationService.getNotifications(),
     });
   }
 
-  function useDelete() {
+  function useDeleteMutation() {
     return useMutation({
       mutationKey: ['delete-notification'],
       mutationFn: (id: string) => NotificationService.deleteNotification(id),
@@ -41,5 +41,5 @@ export function useNotification() {
     });
   }
 
-  return { useNotifications, useDelete };
+  return { useNotificationsQuery, useDeleteMutation };
 }
