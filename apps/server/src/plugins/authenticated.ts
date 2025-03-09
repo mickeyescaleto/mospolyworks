@@ -1,12 +1,13 @@
 import { Elysia, Static, t } from 'elysia';
+
 import { config } from '@/config';
 import { jsonwebtokens } from '@/plugins/jsonwebtokens';
 import { UserService } from '@/services/user';
 import { SessionService } from '@/services/session';
 import { getExpirationDate } from '@/utilities/get-expiration-date';
 import { tCookie } from '@/schemas/cookie';
-import { Payload } from '@/types/payload';
 import { tRole } from '@/schemas/role';
+import type { Payload } from '@/types/payload';
 
 const tRolesProps = t.Object({
   roles: t.Array(tRole),

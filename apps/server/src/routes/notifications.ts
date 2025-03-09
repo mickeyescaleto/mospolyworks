@@ -1,7 +1,7 @@
 import { Elysia, t } from 'elysia';
 
-import { NotificationService } from '@/services/notification';
 import { authenticated } from '@/plugins/authenticated';
+import { NotificationService } from '@/services/notification';
 
 export const notifications = new Elysia({
   name: 'routes.notifications',
@@ -14,11 +14,11 @@ export const notifications = new Elysia({
     app
       .use(authenticated())
       .get('/', async ({ user: { id }, notificationService }) => {
-        const notification = await notificationService.notifications({
+        const notifications = await notificationService.notifications({
           where: { userId: id },
         });
 
-        return notification;
+        return notifications;
       })
       .delete(
         '/:notificationId',

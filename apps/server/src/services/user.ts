@@ -1,8 +1,10 @@
 import axios from 'axios';
+
 import { prisma, Prisma } from '@repo/database';
+
 import { config } from '@/config';
 import { parseExternalUser } from '@/utilities/parse-external-user';
-import { ExternalUserData, UserLoginCredentials } from '@/types/user';
+import type { ExternalUserData, UserLoginCredentials } from '@/types/user';
 
 export class UserService {
   private readonly prisma: typeof prisma;

@@ -1,5 +1,6 @@
 import { Elysia } from 'elysia';
 import { jwt } from '@elysiajs/jwt';
+
 import { config } from '@/config';
 import { tPayload } from '@/schemas/payload';
 

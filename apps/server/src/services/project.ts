@@ -1,4 +1,6 @@
-import { prisma, Prisma } from '@repo/database';
+import { Prisma, prisma } from '@repo/database';
+
+import type { GetExhibitionProjects } from '@/types/project';
 
 export class ProjectService {
   private readonly prisma: typeof prisma;
@@ -7,70 +9,81 @@ export class ProjectService {
     this.prisma = prisma;
   }
 
-  async project(params: {
-    where: Prisma.ProjectWhereUniqueInput;
-    select?: Prisma.ProjectSelect;
-  }) {
-    const { where, select } = params;
+  async getExhibitionProjects({ search, theme, sort }: GetExhibitionProjects) {
+    const where: Prisma.ProjectWhereInput = {
+      status: { in: ['PUBLISHED', 'VERIFIED'] },
+    };
 
-    return await this.prisma.project.findUnique({
-      where,
-      select,
-    });
-  }
+    const orderBy: Prisma.ProjectOrderByWithRelationInput[] = [];
 
-  async projects(params: {
-    where?: Prisma.ProjectWhereInput;
-    orderBy?: Prisma.ProjectOrderByWithRelationInput;
-    cursor?: Prisma.ProjectWhereUniqueInput;
-    take?: number;
-    skip?: number;
-    select?: Prisma.ProjectSelect;
-  }) {
-    const { where, orderBy, cursor, take, skip, select } = params;
+    if (search) {
+      where.OR = [
+        { title: { contains: search, mode: 'insensitive' } },
+        { content: { contains: search, mode: 'insensitive' } },
+      ];
+    }
 
-    return await this.prisma.project.findMany({
+    if (theme) {
+      const existingTheme = await this.prisma.theme.findUnique({
+        where: { title: theme },
+      });
+
+      if (existingTheme) {
+        where.theme = { title: { equals: theme } };
+      }
+    }
+
+    switch (sort) {
+      case 'date':
+        orderBy.push({ createdAt: 'desc' });
+        break;
+      case 'rating':
+        orderBy.push({ likes: { _count: 'desc' } });
+        orderBy.push({ createdAt: 'desc' });
+        break;
+      case 'verified':
+        where.status = { equals: 'VERIFIED' };
+        orderBy.push({ createdAt: 'desc' });
+        break;
+      default:
+        orderBy.push({ createdAt: 'desc' });
+        break;
+    }
+
+    const result = await this.prisma.project.findMany({
       where,
       orderBy,
-      cursor,
-      take,
-      skip,
-      select,
+      select: {
+        id: true,
+        title: true,
+        image: true,
+        author: {
+          select: {
+            id: true,
+            name: true,
+            surname: true,
+          },
+        },
+        projectPartners: {
+          select: {
+            user: {
+              select: {
+                id: true,
+                name: true,
+                surname: true,
+              },
+            },
+          },
+        },
+        status: true,
+        _count: {
+          select: {
+            likes: true,
+          },
+        },
+      },
     });
-  }
 
-  async create(params: {
-    data: Prisma.ProjectCreateInput;
-    select?: Prisma.ProjectSelect;
-  }) {
-    const { data, select } = params;
-
-    return await this.prisma.project.create({ data, select });
-  }
-
-  async update(params: {
-    where: Prisma.ProjectWhereUniqueInput;
-    data: Prisma.ProjectUpdateInput;
-    select?: Prisma.ProjectSelect;
-  }) {
-    const { where, data, select } = params;
-
-    return await this.prisma.project.update({
-      where,
-      data,
-      select,
-    });
-  }
-
-  async delete(params: {
-    where: Prisma.ProjectWhereUniqueInput;
-    select?: Prisma.ProjectSelect;
-  }) {
-    const { where, select } = params;
-
-    return await this.prisma.project.delete({
-      where,
-      select,
-    });
+    return result;
   }
 }

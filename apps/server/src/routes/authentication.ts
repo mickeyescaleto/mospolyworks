@@ -6,11 +6,11 @@ import { jsonwebtokens } from '@/plugins/jsonwebtokens';
 import { authenticated } from '@/plugins/authenticated';
 import { UserService } from '@/services/user';
 import { SessionService } from '@/services/session';
-import { tCookie } from '@/schemas/cookie';
-import { tUserLoginCredentials, tUserResponse } from '@/schemas/user';
-import { Payload } from '@/types/payload';
 import { getExpirationDate } from '@/utilities/get-expiration-date';
 import { convertResponse } from '@/utilities/convert-response';
+import { tCookie } from '@/schemas/cookie';
+import { tUserLoginCredentials, tUserResponse } from '@/schemas/user';
+import type { Payload } from '@/types/payload';
 
 export const authentication = new Elysia({
   name: 'routes.authentication',
