@@ -15,7 +15,7 @@ export default function LoginPage() {
         <div className="flex w-full flex-col items-center">
           <Link href="/" className="relative block size-24 rounded-full">
             <Image
-              src="brand.svg"
+              src="/brand.svg"
               alt="Brand"
               fill
               priority

@@ -8,13 +8,15 @@ import { Loader2Icon } from '@repo/ui/core/icons';
 import { Input } from '@repo/ui/core/input';
 import { Label } from '@repo/ui/core/label';
 import { Button } from '@repo/ui/core/button';
-import { PasswordInput } from '@/components/password-input';
-import { userAuthSchema, UserLoginCredentials } from '@/schemas/user-auth';
+
 import { useAuth } from '@/hooks/use-auth';
+import { PasswordInput } from '@/components/password-input';
+import { userAuthSchema } from '@/schemas/user-auth';
+import type { UserLoginCredentials } from '@/types/user';
 
 export function UserAuthForm() {
-  const { useLogin } = useAuth();
-  const { mutate: login, isPending } = useLogin();
+  const { useLoginMutation } = useAuth();
+  const { mutate: login, isPending } = useLoginMutation();
 
   const {
     register,

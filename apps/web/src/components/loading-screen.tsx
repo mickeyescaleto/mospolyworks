@@ -5,7 +5,7 @@ export function LoadingScreen() {
     <main className="flex flex-1 flex-col items-center justify-center">
       <div className="relative size-24">
         <Image
-          src="brand.svg"
+          src="/brand.svg"
           alt="Brand"
           fill
           priority

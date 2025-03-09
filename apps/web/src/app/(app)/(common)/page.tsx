@@ -34,7 +34,7 @@ export default async function RootPage(props: {
           >
             <div className="relative mt-0.5 size-5 rounded-full md:mt-1 md:size-6 lg:mt-1.5 lg:size-7">
               <Image
-                src="brand.svg"
+                src="/brand.svg"
                 alt="Brand"
                 fill
                 priority

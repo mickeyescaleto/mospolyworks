@@ -21,7 +21,7 @@ export function Header() {
         <div className="flex items-center border-b border-zinc-200 dark:border-zinc-700">
           <Link href="/" className="relative my-2 block size-10 rounded-full">
             <Image
-              src="brand.svg"
+              src="/brand.svg"
               alt="Brand"
               fill
               priority
