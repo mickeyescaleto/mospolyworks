@@ -4,7 +4,6 @@ model ProjectPartner {
     userId    String  @map("user_id") @db.ObjectId
     project   Project @relation(fields: [projectId], references: [id], onUpdate: Cascade, onDelete: Cascade)
     projectId String  @map("project_id") @db.ObjectId
-    role      String?
 
     @@unique([userId, projectId])
     @@map("project_partners")

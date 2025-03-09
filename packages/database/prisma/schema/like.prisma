@@ -1,0 +1,7 @@
+model Like {
+    id        String  @id @default(auto()) @map("_id") @db.ObjectId
+    project   Project @relation(fields: [projectId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+    projectId String  @map("project_id") @db.ObjectId
+
+    @@map("likes")
+}

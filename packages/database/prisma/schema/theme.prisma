@@ -3,7 +3,7 @@ model Theme {
     title    String    @unique()
     tags     Tag[]
     projects Project[]
-    isHidden Boolean   @default(false)
+    isHidden Boolean   @default(false) @map("is_hidden")
 
     @@map("themes")
 }

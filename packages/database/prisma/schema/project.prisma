@@ -2,6 +2,8 @@ model Project {
     id               String           @id @default(auto()) @map("_id") @db.ObjectId
     title            String
     content          String
+    image            String
+    link             String?
     author           User             @relation(fields: [authorId], references: [id], onUpdate: Cascade, onDelete: Cascade)
     authorId         String           @map("author_id") @db.ObjectId
     projectPartners  ProjectPartner[]
@@ -10,7 +12,7 @@ model Project {
     projectTags      ProjectTag[]
     status           Status           @default(DRAFT)
     rejectionComment String?          @map("rejection_comment")
-    link             String?
+    likes            Like[]
     updatedAt        DateTime         @updatedAt @map("updated_at")
     createdAt        DateTime         @default(now()) @map("created_at")
 
