@@ -1,33 +1,26 @@
 import { Elysia } from 'elysia';
 import { cors } from '@elysiajs/cors';
-import { swagger } from '@elysiajs/swagger';
-import { cron } from '@elysiajs/cron';
 
 import { config } from '@/config';
-import { authentication } from '@/routes/authentication';
-import { notifications } from '@/routes/notifications';
-import { projects } from '@/routes/projects';
-import { themes } from '@/routes/themes';
-import { SessionService } from '@/services/session';
+import { documentation } from '@/plugins/documentation';
+import { scheduler } from '@/plugins/scheduler';
+import { auth } from '@/modules/auth/auth.routes';
+import { notifications } from '@/modules/notification/notification.routes';
+import { projects } from '@/modules/project/project.routes';
+import { themes } from '@/modules/theme/theme.routes';
+import { users } from '@/modules/user/user.routes';
 
-const app = new Elysia()
+const application = new Elysia()
   .use(cors())
-  .use(swagger())
-  .use(
-    cron({
-      name: 'verification',
-      pattern: '0 0 * * *',
-      run: async () => {
-        await new SessionService().deleteExpiredSessions();
-      },
-    }),
-  )
-  .use(authentication)
+  .use(documentation)
+  .use(scheduler)
+  .use(auth)
   .use(notifications)
   .use(projects)
   .use(themes)
+  .use(users)
   .listen(config.app.port, ({ url }) =>
-    console.log(`🦊 Application is running at ${url}`),
+    console.log(`Application is running at ${url}`),
   );
 
-export type App = typeof app;
+export type App = typeof application;

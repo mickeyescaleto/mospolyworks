@@ -3,7 +3,7 @@ import { server } from '@repo/server';
 import type { UserLoginCredentials } from '@/types/user';
 
 export class AuthService {
-  private static readonly instance = server.authentication;
+  private static readonly instance = server.auth;
 
   public static async getProfile() {
     const { data, error } = await this.instance.profile.get();

@@ -1,5 +1,6 @@
 import { t } from 'elysia';
-import { tRole } from '@/schemas/role';
+
+import { tRole } from '@/modules/user/schemas/role';
 
 export const tPayload = t.Object({
   id: t.String(),

@@ -1,10 +1,14 @@
 import { Prisma } from '@repo/database';
-import { ExternalUserDataWithCredentials } from '@/types/user';
-import { Role } from '@/types/role';
+
+import {
+  tExternalUser,
+  tExternalUserCredentials,
+} from '@/modules/user/schemas/external-user';
+import { tRole } from '@/modules/user/schemas/role';
 
 type ParseExternalUserProps = {
   token: string;
-  user: ExternalUserDataWithCredentials;
+  user: typeof tExternalUser.static & typeof tExternalUserCredentials.static;
 };
 
 export const parseExternalUser = async (
@@ -12,7 +16,7 @@ export const parseExternalUser = async (
 ): Promise<Prisma.UserCreateInput> => {
   const password = await Bun.password.hash(data.user.password, 'bcrypt');
 
-  const roles: Role[] =
+  const roles: (typeof tRole.static)[] =
     data.user['user_status'] === 'stud' ? ['STUDENT'] : ['STAFF'];
 
   const parsedData: Prisma.UserCreateInput = {

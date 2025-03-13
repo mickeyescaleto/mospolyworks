@@ -1,15 +1,13 @@
 import { Prisma, prisma } from '@repo/database';
 
-import type { GetExhibitionProjects } from '@/types/project';
+import { tGetExhibitionProjectsQuery } from '@/modules/project/schemas/get-exhibition-projects';
 
-export class ProjectService {
-  private readonly prisma: typeof prisma;
-
-  constructor() {
-    this.prisma = prisma;
-  }
-
-  async getExhibitionProjects({ search, theme, sort }: GetExhibitionProjects) {
+export abstract class ProjectService {
+  static async getExhibitionProjects({
+    search,
+    theme,
+    sort,
+  }: typeof tGetExhibitionProjectsQuery.static) {
     const where: Prisma.ProjectWhereInput = {
       status: { in: ['PUBLISHED', 'VERIFIED'] },
     };
@@ -24,7 +22,7 @@ export class ProjectService {
     }
 
     if (theme) {
-      const existingTheme = await this.prisma.theme.findUnique({
+      const existingTheme = await prisma.theme.findUnique({
         where: { title: theme },
       });
 
@@ -50,7 +48,7 @@ export class ProjectService {
         break;
     }
 
-    const result = await this.prisma.project.findMany({
+    const result = await prisma.project.findMany({
       where,
       orderBy,
       select: {

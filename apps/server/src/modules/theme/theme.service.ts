@@ -1,14 +1,8 @@
 import { prisma } from '@repo/database';
 
-export class ThemeService {
-  private readonly prisma: typeof prisma;
-
-  constructor() {
-    this.prisma = prisma;
-  }
-
-  async getExhibitionThemes() {
-    const result = await this.prisma.theme.findMany({
+export abstract class ThemeService {
+  static async getExhibitionThemes() {
+    return await prisma.theme.findMany({
       where: {
         isHidden: false,
         projects: { some: {} },
@@ -25,7 +19,5 @@ export class ThemeService {
         },
       },
     });
-
-    return result;
   }
 }
