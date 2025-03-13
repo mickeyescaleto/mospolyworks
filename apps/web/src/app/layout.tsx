@@ -7,6 +7,7 @@ import { Toaster } from '@repo/ui/core/sonner';
 import { gilroy } from '@/styles/fonts';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { QueryProvider } from '@/components/providers/query-provider';
+import { ThemeSwitch } from '@/components/theme-switch';
 
 import '@/styles/main.css';
 
@@ -38,6 +39,7 @@ export default function RootLayout({
         >
           <QueryProvider>
             {children}
+            <ThemeSwitch />
             <Toaster />
           </QueryProvider>
         </ThemeProvider>
