@@ -46,7 +46,7 @@
   }
 
   &__actions {
-    @apply absolute right-auto flex pr-1.5 opacity-0;
+    @apply absolute right-auto flex pr-2.5 opacity-0;
 
     @variant not-mobile {
       @apply right-full;
@@ -58,7 +58,7 @@
   }
 
   &__settings-btn {
-    @apply toolbox-button ml-1 cursor-pointer select-none;
+    @apply toolbox-button ml-1.5 cursor-pointer select-none;
 
     @variant mobile {
       @apply overlay-pane static;
