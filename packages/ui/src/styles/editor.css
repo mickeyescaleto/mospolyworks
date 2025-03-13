@@ -1,8 +1,5 @@
 @import './main.css';
 
-@custom-variant not-mobile (@media (width >= 50rem));
-@custom-variant mobile (@media (width < 50rem));
-
 @utility placeholder {
   @apply pointer-events-none cursor-text text-zinc-400/75;
 }

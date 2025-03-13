@@ -3,9 +3,17 @@
 @source "../components/";
 
 @custom-variant dark (&:is(.dark *));
+@custom-variant not-mobile (@media (width >= 50rem));
+@custom-variant mobile (@media (width < 50rem));
 
 @utility wrapper {
   @apply mx-auto max-w-[50rem] px-4;
+}
+
+@utility editor-wrapper {
+  @variant not-mobile {
+    @apply mx-auto max-w-[40rem];
+  }
 }
 
 @utility hidden-scrollbar {
@@ -41,6 +49,7 @@
   }
 
   body {
+    position: relative;
     overscroll-behavior: none;
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
