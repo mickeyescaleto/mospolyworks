@@ -1,0 +1,10 @@
+model Report {
+    id        String   @id @default(auto()) @map("_id") @db.ObjectId
+    content   String
+    isChecked Boolean  @default(false) @map("is_checked")
+    createdAt DateTime @default(now()) @map("created_at")
+    project   Project  @relation(fields: [projectId], references: [id])
+    projectId String   @map("project_id") @db.ObjectId
+
+    @@map("reports")
+}

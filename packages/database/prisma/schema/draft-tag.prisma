@@ -1,0 +1,10 @@
+model DraftTag {
+    id      String @id @default(auto()) @map("_id") @db.ObjectId
+    tag     Tag    @relation(fields: [tagId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+    tagId   String @map("tag_id") @db.ObjectId
+    draft   Draft  @relation(fields: [draftId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+    draftId String @map("draft_id") @db.ObjectId
+
+    @@unique([tagId, draftId])
+    @@map("draft_tags")
+}

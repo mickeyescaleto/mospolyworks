@@ -6,18 +6,19 @@ model User {
     avatar            String
     roles             Role[]
     login             String           @unique()
-    password          String
     group             String
     course            String
     faculty           String
     specialty         String
     specialization    String
     externalToken     String           @unique() @map("external_token")
-    updatedAt         DateTime         @default(now()) @map("updated_at")
     sessions          Session[]
     notifications     Notification[]
+    authoredDrafts    Draft[]
+    partneredDrafts   DraftPartner[]
     authoredProjects  Project[]
     partneredProjects ProjectPartner[]
+    likes             Like[]
 
     @@map("users")
 }

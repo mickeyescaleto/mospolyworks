@@ -1,9 +1,10 @@
-model Theme {
+model Category {
     id       String    @id @default(auto()) @map("_id") @db.ObjectId
     title    String    @unique()
-    tags     Tag[]
-    projects Project[]
     isHidden Boolean   @default(false) @map("is_hidden")
+    tags     Tag[]
+    drafts   Draft[]
+    projects Project[]
 
-    @@map("themes")
+    @@map("categories")
 }

@@ -1,26 +1,26 @@
 model Project {
     id               String           @id @default(auto()) @map("_id") @db.ObjectId
     title            String
-    content          String
+    content          Json[]
     image            String
     link             String?
+    status           Status           @default(PUBLISHED)
+    rejectionComment String?          @map("rejection_comment")
+    views            Int              @default(0)
+    createdAt        DateTime         @default(now()) @map("created_at")
+    category         Category         @relation(fields: [categoryId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+    categoryId       String           @map("category_id") @db.ObjectId
     author           User             @relation(fields: [authorId], references: [id], onUpdate: Cascade, onDelete: Cascade)
     authorId         String           @map("author_id") @db.ObjectId
     projectPartners  ProjectPartner[]
-    theme            Theme            @relation(fields: [themeId], references: [id], onUpdate: Cascade, onDelete: Cascade)
-    themeId          String           @map("theme_id") @db.ObjectId
     projectTags      ProjectTag[]
-    status           Status           @default(DRAFT)
-    rejectionComment String?          @map("rejection_comment")
     likes            Like[]
-    updatedAt        DateTime         @updatedAt @map("updated_at")
-    createdAt        DateTime         @default(now()) @map("created_at")
+    reports          Report[]
 
     @@map("projects")
 }
 
 enum Status {
-    DRAFT
     PUBLISHED
     REJECTED
     REPEATED
