@@ -1,6 +1,6 @@
 import { t } from 'elysia';
 
-export const tTheme = t.Object({
+export const tCategory = t.Object({
   id: t.String(),
   title: t.String(),
   isHidden: t.Boolean(),

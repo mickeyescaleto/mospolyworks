@@ -1,50 +1,72 @@
-import axios from 'axios';
+import { NotFoundError } from 'elysia';
 
-import { Prisma, prisma } from '@repo/database';
+import { prisma } from '@repo/database';
 
-import { config } from '@/config';
-import { parseExternalUser } from '@/utilities/parse-external-user';
-import {
-  tExternalUser,
-  tExternalUserCredentials,
-} from '@/modules/user/schemas/external-user';
+import { type CreateUserBody } from '@/modules/user/schemas/create-user';
 
 export abstract class UserService {
-  static async createUser(data: Prisma.UserCreateInput) {
-    return await prisma.user.create({ data });
+  static async createUser(data: CreateUserBody) {
+    const user = await prisma.user.create({
+      data,
+    });
+
+    return user;
   }
 
-  static async getUserById(id: string) {
-    return await prisma.user.findUnique({ where: { id } });
+  static async getUserById(userId: string) {
+    const user = await prisma.user.findUnique({
+      where: {
+        id: userId,
+      },
+    });
+
+    if (!user) {
+      throw new NotFoundError(`User with the ID ${userId} was not found`);
+    }
+
+    return user;
   }
 
   static async getUserByLogin(login: string) {
-    return await prisma.user.findUnique({ where: { login } });
-  }
-
-  static async getExternalUser(
-    credentials: typeof tExternalUserCredentials.static,
-  ) {
-    const {
-      data: { token },
-    } = await axios.post<{ token: string }>(
-      config.external.endpoint,
-      Object.entries({
-        ulogin: credentials.login,
-        upassword: credentials.password,
-      }).reduce((f, [k, v]) => (f.append(k, v), f), new FormData()),
-    );
-
-    const { data } = await axios.get<{ user: typeof tExternalUser.static }>(
-      `${config.external.endpoint}/?getUser&token=${token}`,
-    );
-
-    return await parseExternalUser({
-      token,
-      user: {
-        ...data.user,
-        ...credentials,
+    const user = await prisma.user.findUnique({
+      where: {
+        login,
       },
     });
+
+    if (!user) {
+      throw new NotFoundError(`User with the login ${login} was not found`);
+    }
+
+    return user;
+  }
+
+  static async updateUser(userId: string, data: Partial<CreateUserBody>) {
+    const user = await prisma.user.update({
+      where: {
+        id: userId,
+      },
+      data,
+    });
+
+    return user;
+  }
+
+  static async getCountUsers() {
+    const count = await prisma.user.count();
+
+    return count;
+  }
+
+  static async getUsersBatch(skip: number, take: number) {
+    const users = await prisma.user.findMany({
+      skip,
+      take,
+      select: {
+        id: true,
+      },
+    });
+
+    return users;
   }
 }

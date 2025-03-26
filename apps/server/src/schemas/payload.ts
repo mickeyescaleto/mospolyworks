@@ -6,3 +6,5 @@ export const tPayload = t.Object({
   id: t.String(),
   roles: t.Array(tRole),
 });
+
+export type Payload = typeof tPayload.static;

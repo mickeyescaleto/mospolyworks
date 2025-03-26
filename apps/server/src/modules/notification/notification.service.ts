@@ -2,10 +2,54 @@ import { prisma } from '@repo/database';
 
 export abstract class NotificationService {
   static async getNotifications(userId: string) {
-    return await prisma.notification.findMany({ where: { userId } });
+    const notifications = await prisma.notification.findMany({
+      where: {
+        user: {
+          id: userId,
+        },
+      },
+      select: {
+        id: true,
+        title: true,
+        content: true,
+        link: true,
+        isRead: true,
+        createdAt: true,
+      },
+    });
+
+    return notifications;
   }
 
-  static async deleteNotificationById(id: string) {
-    return await prisma.notification.delete({ where: { id } });
+  static async deleteNotification(notificationId: string, userId: string) {
+    const notification = await prisma.notification.delete({
+      where: {
+        id: notificationId,
+        user: {
+          id: userId,
+        },
+      },
+      select: {
+        id: true,
+      },
+    });
+
+    return notification;
+  }
+
+  static async readNotification(notificationId: string, userId: string) {
+    const notification = await prisma.notification.update({
+      where: {
+        id: notificationId,
+        user: {
+          id: userId,
+        },
+      },
+      data: {
+        isRead: true,
+      },
+    });
+
+    return notification;
   }
 }

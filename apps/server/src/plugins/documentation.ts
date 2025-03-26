@@ -9,11 +9,30 @@ export const documentation = swagger({
       description: 'API Documentation',
     },
     tags: [
-      { name: 'auth', description: 'Authentication routes' },
-      { name: 'users', description: 'User routes' },
-      { name: 'projects', description: 'Project routes' },
-      { name: 'themes', description: 'Theme routes' },
-      { name: 'notifications', description: 'Notification routes' },
+      { name: 'Accounts', description: 'Account routes' },
+      { name: 'Notifications', description: 'Notification routes' },
+      { name: 'Users', description: 'User routes' },
+      { name: 'Categories', description: 'Category routes' },
+      { name: 'Tags', description: 'Tag routes' },
+      { name: 'Drafts', description: 'Draft routes' },
+      { name: 'Projects', description: 'Project routes' },
+      { name: 'Likes', description: 'Like routes' },
+      { name: 'Reports', description: 'Report routes' },
+      { name: 'S3', description: 'S3 routes' },
     ],
+    components: {
+      securitySchemes: {
+        AccessTokenCookie: {
+          type: 'apiKey',
+          in: 'cookie',
+          name: 'access_token',
+        },
+        RefreshTokenCookie: {
+          type: 'apiKey',
+          in: 'cookie',
+          name: 'refresh_token',
+        },
+      },
+    },
   },
 });

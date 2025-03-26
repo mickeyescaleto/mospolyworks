@@ -13,8 +13,8 @@
     "@elysiajs/cron": "^1.2.0",
     "@elysiajs/jwt": "^1.2.0",
     "@elysiajs/swagger": "^1.2.0",
-    "axios": "^1.7.9",
-    "elysia": "^1.2.12"
+    "elysia": "^1.2.12",
+    "winston": "^3.17.0"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",

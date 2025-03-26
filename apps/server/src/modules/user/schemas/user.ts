@@ -10,12 +10,10 @@ export const tUser = t.Object({
   avatar: t.String(),
   roles: t.Array(tRole),
   login: t.String(),
-  password: t.String(),
   group: t.String(),
   course: t.String(),
   faculty: t.String(),
   specialty: t.String(),
   specialization: t.String(),
   externalToken: t.String(),
-  updatedAt: t.Date(),
 });
