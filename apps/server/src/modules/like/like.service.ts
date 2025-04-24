@@ -1,75 +1,49 @@
 import { prisma } from '@repo/database';
 
-export abstract class LikeService {
-  static async createAnonymousLike(projectId: string, userHash: string) {
-    const like = await prisma.like.create({
+export class LikeService {
+  static async createLike(
+    projectId: string,
+    { client, account }: { client: string; account?: string },
+  ) {
+    return await prisma.like.create({
       data: {
         project: {
           connect: {
             id: projectId,
           },
         },
-        userHash,
-      },
-      select: {
-        id: true,
+        ...(account
+          ? {
+              user: {
+                connect: {
+                  id: account,
+                },
+              },
+            }
+          : {
+              client,
+            }),
       },
     });
-
-    return like;
   }
 
-  static async deleteAnonymousLike(projectId: string, userHash: string) {
-    const like = await prisma.like.delete({
+  static async deleteLike(
+    id: string,
+    { client, account }: { client: string; account?: string },
+  ) {
+    return await prisma.like.delete({
       where: {
-        userHash_projectId: {
-          userHash,
-          projectId,
-        },
-      },
-      select: {
-        id: true,
-      },
-    });
-
-    return like;
-  }
-
-  static async createLike(projectId: string, userId: string) {
-    const like = await prisma.like.create({
-      data: {
-        project: {
-          connect: {
-            id: projectId,
-          },
-        },
-        user: {
-          connect: {
-            id: userId,
-          },
-        },
-      },
-      select: {
-        id: true,
+        id,
+        ...(account
+          ? {
+              user: {
+                id: account,
+              },
+            }
+          : {
+              client,
+            }),
       },
     });
-
-    return like;
-  }
-
-  static async deleteLike(projectId: string, userId: string) {
-    const like = await prisma.like.delete({
-      where: {
-        userId_projectId: {
-          userId,
-          projectId,
-        },
-      },
-      select: {
-        id: true,
-      },
-    });
-
-    return like;
   }
 }

@@ -1,30 +1,30 @@
-.codex-editor {
+@reference '@repo/ui/styles/editor';
+
+.editor {
   @apply relative z-1;
 
-  .hide {
-    @apply hidden;
-  }
-
   &__redactor {
+    @apply pb-64;
+
     [contenteditable]:empty::after {
       content: '\feff ';
     }
   }
 
-  &-copyable {
-    @apply absolute top-[-400%] h-px w-px opacity-[0.001];
-  }
-
   &-overlay {
-    @apply pointer-events-none fixed inset-0 z-999 overflow-hidden;
+    @apply pointer-events-none fixed inset-0 z-999 hidden;
 
     &__container {
       @apply pointer-events-auto relative z-0;
     }
 
     &__rectangle {
-      @apply pointer-events-none absolute -top-4 -left-4 border border-transparent bg-zinc-400/20 dark:bg-zinc-800/20;
+      @apply bg-secondary/30 pointer-events-none absolute -top-4 -left-4;
     }
+  }
+
+  .hide {
+    @apply hidden;
   }
 
   svg {
@@ -36,15 +36,15 @@
   }
 }
 
-.codex-editor--toolbox-opened
+.editor--toolbox-opened
   [contentEditable='true'][data-placeholder]:focus::before {
   @apply opacity-0!;
 }
 
-.ce-scroll-locked {
+.editor-scroll-locked {
   @apply overflow-hidden;
 }
 
-.ce-scroll-locked--hard {
+.editor-scroll-locked--hard {
   @apply fixed top-[calc(-1*var(--window-scroll-offset))] w-full overflow-hidden;
 }

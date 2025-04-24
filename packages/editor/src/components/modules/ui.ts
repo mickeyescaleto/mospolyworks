@@ -25,11 +25,11 @@ export default class UI extends Module<UINodes> {
     editorRtlFix: string;
   } {
     return {
-      editorWrapper: 'codex-editor',
-      editorZone: 'codex-editor__redactor',
-      editorZoneHidden: 'codex-editor__redactor--hidden',
-      editorEmpty: 'codex-editor--empty',
-      editorRtlFix: 'codex-editor--rtl',
+      editorWrapper: 'editor',
+      editorZone: 'editor__redactor',
+      editorZoneHidden: 'editor__redactor--hidden',
+      editorEmpty: 'editor--empty',
+      editorRtlFix: 'editor--rtl',
     };
   }
 
@@ -276,7 +276,7 @@ export default class UI extends Module<UINodes> {
       this.nodes.redactor,
       'mousemove',
       utilities.throttle((event: MouseEvent | TouchEvent) => {
-        const hoveredBlock = (event.target as Element).closest('.ce-block');
+        const hoveredBlock = (event.target as Element).closest('.editor-block');
 
         if (this.Editor.BlockSelection.anyBlockSelected) {
           return;

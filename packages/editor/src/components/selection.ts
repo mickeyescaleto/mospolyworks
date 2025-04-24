@@ -32,8 +32,8 @@ export default class SelectionUtils {
 
   public static get CSS(): { editorWrapper: string; editorZone: string } {
     return {
-      editorWrapper: 'codex-editor',
-      editorZone: 'codex-editor__redactor',
+      editorWrapper: 'editor',
+      editorZone: 'editor__redactor',
     };
   }
 
@@ -250,7 +250,7 @@ export default class SelectionUtils {
       return;
     }
 
-    const fakeCursor = Dom.make('span', 'codex-editor__fake-cursor');
+    const fakeCursor = Dom.make('span', 'editor__fake-cursor');
 
     fakeCursor.dataset.mutationFree = 'true';
 
@@ -259,11 +259,11 @@ export default class SelectionUtils {
   }
 
   public static isFakeCursorInsideContainer(el: HTMLElement): boolean {
-    return Dom.find(el, `.codex-editor__fake-cursor`) !== null;
+    return Dom.find(el, `.editor__fake-cursor`) !== null;
   }
 
   public static removeFakeCursor(container: HTMLElement = document.body): void {
-    const fakeCursor = Dom.find(container, `.codex-editor__fake-cursor`);
+    const fakeCursor = Dom.find(container, `.editor__fake-cursor`);
 
     if (!fakeCursor) {
       return;

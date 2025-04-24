@@ -2,26 +2,12 @@ import { prisma } from '@repo/database';
 
 import { config } from '@/config';
 import { UnauthorizedError } from '@/errors/unauthorized';
-import { getExpirationDate } from '@/utilities/get-expiration-date';
 
-export abstract class SessionService {
-  static async createSession(userId: string, token: string) {
-    const session = await prisma.session.create({
-      data: {
-        user: {
-          connect: {
-            id: userId,
-          },
-        },
-        token,
-        expiresAt: getExpirationDate(config.rjwt.expires),
-      },
-      select: {
-        id: true,
-      },
-    });
-
-    return session;
+export class SessionService {
+  private static getExpirationDate(seconds: number) {
+    const date = new Date();
+    date.setSeconds(date.getSeconds() + seconds);
+    return date;
   }
 
   static async getSessionByToken(token: string) {
@@ -29,14 +15,8 @@ export abstract class SessionService {
       where: {
         token,
       },
-      select: {
-        id: true,
-        user: {
-          select: {
-            id: true,
-            roles: true,
-          },
-        },
+      include: {
+        user: true,
       },
     });
 
@@ -49,44 +29,46 @@ export abstract class SessionService {
     return session;
   }
 
+  static async createSession(userId: string, token: string) {
+    return await prisma.session.create({
+      data: {
+        token,
+        user: {
+          connect: {
+            id: userId,
+          },
+        },
+        expiresAt: this.getExpirationDate(config.rjwt.expires),
+      },
+    });
+  }
+
   static async updateSessionByToken(sessionId: string, token: string) {
-    const session = await prisma.session.update({
+    return await prisma.session.update({
       where: {
         id: sessionId,
       },
       data: {
         token,
       },
-      select: {
-        id: true,
-      },
     });
-
-    return session;
   }
 
   static async deleteSessionByToken(token: string) {
-    const session = await prisma.session.delete({
+    return await prisma.session.delete({
       where: {
         token,
       },
-      select: {
-        id: true,
-      },
     });
-
-    return session;
   }
 
   static async deleteExpiredSessions() {
-    const sessions = await prisma.session.deleteMany({
+    return await prisma.session.deleteMany({
       where: {
         expiresAt: {
           lt: new Date(),
         },
       },
     });
-
-    return sessions;
   }
 }

@@ -1,19 +1,28 @@
 import { t } from 'elysia';
 
-import { tAccount } from '@/modules/account/schemas/account';
+import { Account } from '@/modules/account/schemas/account';
 
-export const tExternalAccount = t.Composite([
-  t.Omit(tAccount, ['id', 'roles', 'login', 'externalToken']),
+export const ExternalAccount = t.Composite([
+  t.Omit(Account, ['id', 'login', 'externalToken', 'createdAt', 'roles']),
   t.Object({
     user_status: t.String(),
   }),
 ]);
 
-export type ExternalAccount = typeof tExternalAccount.static;
-
-export const tExternalAccountBody = t.Object({
+export const ExternalAccountCredentials = t.Object({
   login: t.String(),
   password: t.String(),
 });
 
-export type ExternalAccountBody = typeof tExternalAccountBody.static;
+export type IExternalAccountCredentials =
+  typeof ExternalAccountCredentials.static;
+
+export const ParseAccountProps = t.Object({
+  token: t.String(),
+  user: t.Composite([
+    ExternalAccount,
+    t.Pick(ExternalAccountCredentials, ['login']),
+  ]),
+});
+
+export type IParseAccountProps = typeof ParseAccountProps.static;

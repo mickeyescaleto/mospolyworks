@@ -1,6 +1,6 @@
 import { t } from 'elysia';
 
-export const tConfig = t.Object({
+export const Config = t.Object({
   app: t.Object({
     port: t.Number(),
   }),
@@ -23,6 +23,9 @@ export const tConfig = t.Object({
     region: t.String(),
     domain: t.String(),
   }),
+  fake: t.Object({
+    agent: t.String(),
+  }),
 });
 
-export type Config = typeof tConfig.static;
+export type IConfig = typeof Config.static;

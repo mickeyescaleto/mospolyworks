@@ -2,29 +2,31 @@ import { Elysia, NotFoundError } from 'elysia';
 
 import { config } from '@/config';
 import { BadRequestError } from '@/errors/bad-request';
-import { tCookie } from '@/schemas/cookie';
-import { tError } from '@/schemas/error';
-import { type Payload } from '@/schemas/payload';
 import { getLogger } from '@/utilities/logger';
+import { response } from '@/utilities/response';
 import { jsonwebtokens } from '@/plugins/jsonwebtokens';
 import { security } from '@/plugins/security';
+import { Cookie } from '@/schemas/cookie';
+import { type IPayload } from '@/schemas/payload';
 import { AccountService } from '@/modules/account/account.service';
-import { UserService } from '@/modules/user/user.service';
 import { SessionService } from '@/modules/session/session.service';
-import { tLoginBody, tLoginResponse } from '@/modules/account/schemas/login';
-import { tGetProfileResponse } from '@/modules/account/schemas/get-profile';
-import { tLogoutResponse } from '@/modules/account/schemas/logout';
+import {
+  LoginBody,
+  LoginResponse,
+} from '@/modules/account/schemas/routes/login';
+import { GetAccountResponse } from '@/modules/account/schemas/routes/get-account';
+import { LogoutResponse } from '@/modules/account/schemas/routes/logout';
 
 const logger = getLogger('Accounts');
 
 export const accounts = new Elysia({
   prefix: '/accounts',
-  tags: ['Accounts'],
+  tags: ['Учётные записи'],
 })
-  .guard({ cookie: tCookie })
   .use(jsonwebtokens)
+  .guard({ cookie: Cookie })
   .resolve(async ({ cookie, ajwt, rjwt }) => {
-    async function setCookies(payload: Payload) {
+    async function setCookies(payload: IPayload) {
       cookie['access_token'].set({
         value: await ajwt.sign(payload),
         maxAge: config.ajwt.expires,
@@ -40,83 +42,70 @@ export const accounts = new Elysia({
     return { setCookies };
   })
   .post(
-    '/login',
-    async ({ setCookies, body, error }) => {
+    '/users/auth/login',
+    async ({ setCookies, body, set }) => {
       try {
-        const user = await UserService.getUserByLogin(body.login).catch(
-          () => null,
-        );
+        const account = await AccountService.getAccountByLogin(body.login);
 
-        if (!user) {
-          const externalAccountData =
-            await AccountService.getExternalAccount(body);
-
-          const user = await UserService.createUser(externalAccountData);
+        if (!account) {
+          const account = await AccountService.createAccount(body);
 
           const token = await setCookies({
-            id: user.id,
-            roles: user.roles,
+            id: account.id,
+            roles: account.roles,
           });
 
-          await SessionService.createSession(user.id, token);
+          await SessionService.createSession(account.id, token);
 
-          const message = `User with ID ${user.id} has been successfully created and logged in`;
+          const message = `User with ID ${account.id} has been successfully created and logged in`;
 
           logger.info(message);
 
-          return user;
+          return account;
         }
 
-        const externalAccountData =
-          await AccountService.getExternalAccount(body);
-
-        if (user.roles.includes('ADMIN')) {
-          externalAccountData.roles.push('ADMIN');
-        }
-
-        const actualizedUser = await UserService.updateUser(
-          user.id,
-          externalAccountData,
+        const updatedAccount = await AccountService.updateAccount(
+          account,
+          body,
         );
 
         const token = await setCookies({
-          id: actualizedUser.id,
-          roles: actualizedUser.roles,
+          id: updatedAccount.id,
+          roles: updatedAccount.roles,
         });
 
-        await SessionService.createSession(actualizedUser.id, token);
+        await SessionService.createSession(updatedAccount.id, token);
 
-        const message = `User with ID ${actualizedUser.id} has successfully logged in`;
+        const message = `User with ID ${updatedAccount.id} has successfully logged in`;
 
         logger.info(message);
 
-        return actualizedUser;
-      } catch (e) {
-        if (e instanceof BadRequestError) {
-          const message = e.message;
+        return updatedAccount;
+      } catch (error) {
+        if (error instanceof BadRequestError) {
+          const message = error.message;
 
           logger.warn(message);
 
-          return error('Bad Request', { message });
+          set.status = 400;
+          throw new Error(message);
         }
 
         const message = 'An error occurred when authorizing the user';
 
         logger.error(message);
 
-        return error('Internal Server Error', { message });
+        set.status = 400;
+        throw new Error(message);
       }
     },
     {
-      body: tLoginBody,
-      response: {
-        200: tLoginResponse,
-        400: tError,
-        500: tError,
-      },
+      body: LoginBody,
+      response: response(LoginResponse),
       detail: {
-        summary: 'User authentication',
-        description: 'Verifies user credentials and issues tokens',
+        summary: 'Вход в учётную запись',
+        description:
+          'Проверяет учётные данные пользователя, записывает токены доступа и обновления в cookie',
       },
     },
   )
@@ -124,47 +113,46 @@ export const accounts = new Elysia({
     app
       .use(security)
       .get(
-        '/profile',
-        async ({ user, error }) => {
+        '/users/me',
+        async ({ account, set }) => {
           try {
-            const profile = await UserService.getUserById(user.id);
+            const profile = await AccountService.getAccountById(account.id);
 
-            const message = `User with the ID ${user.id} received successfully`;
+            const message = `User with the ID ${account.id} received successfully`;
 
             logger.info(message);
 
             return profile;
-          } catch (e) {
-            if (e instanceof NotFoundError) {
-              const message = e.message;
+          } catch (error) {
+            if (error instanceof NotFoundError) {
+              const message = error.message;
 
               logger.warn(message);
 
-              return error('Not Found', { message });
+              set.status = 404;
+              throw new Error(message);
             }
 
             const message = 'An error occurred when receiving the user';
 
             logger.error(message);
 
-            return error('Internal Server Error', { message });
+            set.status = 500;
+            throw new Error(message);
           }
         },
         {
-          response: {
-            200: tGetProfileResponse,
-            404: tError,
-            500: tError,
-          },
+          response: response(GetAccountResponse),
           detail: {
-            summary: 'Get user data',
-            description: 'Returns user data of authenticated user',
+            summary: 'Профиль пользователя',
+            description:
+              'Возвращает данные профиля авторизованного пользователя',
           },
         },
       )
       .post(
-        '/logout',
-        async ({ user, cookie, error }) => {
+        '/users/auth/logout',
+        async ({ account, cookie, set }) => {
           try {
             await SessionService.deleteSessionByToken(
               cookie['refresh_token'].value!,
@@ -173,7 +161,7 @@ export const accounts = new Elysia({
             cookie['access_token'].remove();
             cookie['refresh_token'].remove();
 
-            const message = `User with the ID ${user.id} logged out successfully`;
+            const message = `User with the ID ${account.id} logged out successfully`;
 
             logger.info(message);
 
@@ -183,18 +171,16 @@ export const accounts = new Elysia({
 
             logger.error(message);
 
-            return error('Internal Server Error', { message });
+            set.status = 500;
+            throw new Error(message);
           }
         },
         {
-          response: {
-            200: tLogoutResponse,
-            500: tError,
-          },
+          response: response(LogoutResponse),
           detail: {
-            summary: 'User logout',
+            summary: 'Выход из учётной записи',
             description:
-              'Invalidates current session tokens and clears authentication cookies',
+              'Удаляет текущую сессию, удаляет токены доступа и обновления из cookie',
           },
         },
       ),

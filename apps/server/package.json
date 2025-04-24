@@ -8,12 +8,13 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@repo/database": "workspace:*",
     "@elysiajs/cors": "^1.2.0",
     "@elysiajs/cron": "^1.2.0",
     "@elysiajs/jwt": "^1.2.0",
     "@elysiajs/swagger": "^1.2.0",
+    "@repo/database": "workspace:*",
     "elysia": "^1.2.12",
+    "superjson": "^2.2.2",
     "winston": "^3.17.0"
   },
   "devDependencies": {

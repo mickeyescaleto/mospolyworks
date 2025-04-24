@@ -1,6 +1,6 @@
 import { bem } from '@repo/editor/components/utils/bem';
 
-const className = bem('ce-popover');
+const className = bem('editor-popover');
 
 export const css = {
   popover: className(),

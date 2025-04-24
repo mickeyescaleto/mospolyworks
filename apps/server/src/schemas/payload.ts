@@ -1,10 +1,10 @@
 import { t } from 'elysia';
 
-import { tRole } from '@/modules/user/schemas/role';
+import { UserRole } from '@/modules/user/schemas/user-role';
 
-export const tPayload = t.Object({
+export const Payload = t.Object({
   id: t.String(),
-  roles: t.Array(tRole),
+  roles: t.Array(UserRole),
 });
 
-export type Payload = typeof tPayload.static;
+export type IPayload = typeof Payload.static;

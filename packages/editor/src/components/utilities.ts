@@ -308,7 +308,7 @@ export function throttle(
 }
 
 export function copyTextToClipboard(text): void {
-  const el = Dom.make('div', 'codex-editor-clipboard', {
+  const el = Dom.make('div', 'editor-clipboard', {
     innerHTML: text,
   });
 
@@ -477,7 +477,12 @@ export function cacheable<
   return descriptor;
 }
 
-export const mobileScreenBreakpoint = 800;
+export const mobileScreenBreakpoint =
+  parseFloat(
+    getComputedStyle(document.documentElement).getPropertyValue(
+      '--breakpoint-lg',
+    ),
+  ) * 16;
 
 export function isMobileScreen(): boolean {
   return window.matchMedia(`(max-width: ${mobileScreenBreakpoint / 16}rem)`)

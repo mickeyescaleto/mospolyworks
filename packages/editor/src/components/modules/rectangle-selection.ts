@@ -7,11 +7,11 @@ import * as utilities from '@repo/editor/components/utilities';
 export default class RectangleSelection extends Module {
   public static get CSS(): { [name: string]: string } {
     return {
-      overlay: 'codex-editor-overlay',
-      overlayContainer: 'codex-editor-overlay__container',
-      rect: 'codex-editor-overlay__rectangle',
-      topScrollZone: 'codex-editor-overlay__scroll-zone--top',
-      bottomScrollZone: 'codex-editor-overlay__scroll-zone--bottom',
+      overlay: 'editor-overlay',
+      overlayContainer: 'editor-overlay__container',
+      rect: 'editor-overlay__rectangle',
+      topScrollZone: 'editor-overlay__scroll-zone--top',
+      bottomScrollZone: 'editor-overlay__scroll-zone--bottom',
     };
   }
 

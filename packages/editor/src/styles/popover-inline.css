@@ -1,27 +1,29 @@
-.ce-popover--inline {
+@reference '@repo/ui/styles/editor';
+
+.editor-popover--inline {
+  @apply relative;
+
   --height: 38px;
   --height-mobile: 46px;
   --container-padding: 4px;
 
-  @apply relative;
-
-  .ce-popover__custom-content {
+  .editor-popover__custom-content {
     @apply mb-0;
   }
 
-  .ce-popover__items {
+  .editor-popover__items {
     @apply flex;
   }
 
-  .ce-popover__container {
+  .editor-popover__container {
     @apply top-0 left-0 h-(--height) w-max min-w-max animate-none flex-row p-(--container-padding);
 
-    @variant mobile {
+    @variant not-desktop {
       @apply absolute h-(--height-mobile);
     }
   }
 
-  .ce-popover-item-separator {
+  .editor-popover-item-separator {
     @apply px-1;
 
     &__line {
@@ -29,8 +31,8 @@
     }
   }
 
-  .ce-popover-item {
-    @apply rounded-lg p-1;
+  .editor-popover-item {
+    @apply rounded-md p-1;
 
     &__icon--tool {
       @apply mr-0 bg-transparent shadow-none;
@@ -43,7 +45,7 @@
       svg {
         @apply size-5;
 
-        @variant mobile {
+        @variant not-desktop {
           @apply size-7;
         }
       }
@@ -54,29 +56,30 @@
     }
   }
 
-  .ce-popover-item-html {
+  .editor-popover-item-html {
     @apply flex items-center;
   }
 
-  .ce-popover-item__icon--chevron-right {
+  .editor-popover-item__icon--chevron-right {
     transform: rotate(90deg);
   }
 
-  .ce-popover--nested-level-1 {
-    .ce-popover__container {
+  .editor-popover--nested-level-1 {
+    .editor-popover__container {
+      @apply left-0;
+
       --offset: 3px;
 
-      left: 0px;
       top: calc(var(--height) + var(--offset));
 
-      @variant mobile {
+      @variant not-desktop {
         top: calc(var(--height-mobile) + var(--offset));
       }
     }
   }
 
-  .ce-popover--nested {
-    .ce-popover__container {
+  .editor-popover--nested {
+    .editor-popover__container {
       @apply p-1;
 
       min-width: var(--width);
@@ -85,16 +88,12 @@
       flex-direction: column;
     }
 
-    .ce-popover__items {
+    .editor-popover__items {
       @apply block w-full;
     }
 
-    .ce-popover-item {
-      @apply rounded-lg p-1;
-
-      @variant mobile {
-        @apply p-1;
-      }
+    .editor-popover-item {
+      @apply not-desktop:p-1 rounded-md p-1;
 
       &__icon--tool {
         @apply mr-1;
@@ -105,7 +104,7 @@
       }
     }
 
-    .ce-popover-item-separator {
+    .editor-popover-item-separator {
       @apply p-1;
 
       &__line {

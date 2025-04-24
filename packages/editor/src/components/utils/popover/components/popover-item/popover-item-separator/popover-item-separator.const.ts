@@ -1,6 +1,6 @@
 import { bem } from '@repo/editor/components/utils/bem';
 
-const className = bem('ce-popover-item-separator');
+const className = bem('editor-popover-item-separator');
 
 export const css = {
   container: className(),

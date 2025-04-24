@@ -1,29 +1,19 @@
-@utility toolbox-button {
-  @apply inline-flex size-9 animate-[bounceIn_0.3s_1] cursor-pointer items-center justify-center rounded-md text-zinc-900/75 transition-colors select-none hover:bg-zinc-100 hover:text-zinc-900 dark:text-white/75 dark:hover:bg-zinc-900 dark:hover:text-white;
+@reference '@repo/ui/styles/editor';
 
-  @variant not-mobile {
-    @apply size-6;
-  }
+@utility toolbar-button-animate {
+  @apply animate-in slide-in-from-top-2 zoom-in fade-in duration-200;
 }
 
-@utility overlay-pane {
-  @apply absolute z-2 rounded-md border border-zinc-200 bg-zinc-50 shadow-xs dark:border-zinc-700 dark:bg-zinc-800;
-
-  &--left-oriented {
-    &::before {
-      @apply left-4 ml-0;
-    }
-  }
-
-  &--right-oriented {
-    &::before {
-      @apply right-4 left-auto ml-0;
-    }
-  }
+@utility toolbar-button {
+  @apply toolbar-button-animate text-secondary-foreground/80 hover:text-secondary-foreground hover:bg-secondary/30 inline-flex size-6 cursor-pointer items-center justify-center rounded-md transition-colors select-none [&_svg]:pointer-events-none [&_svg]:size-6 [&_svg]:shrink-0;
 }
 
-.ce-toolbar {
-  @apply absolute top-0 right-0 left-0 hidden transition-opacity duration-100 ease-in will-change-[opacity,top];
+@utility mobile-toolbar-button {
+  @apply bg-surface hover:bg-secondary text-surface-foreground static z-2 size-10 rounded-full border shadow-md;
+}
+
+.editor-toolbar {
+  @apply absolute top-0 right-0 left-0 hidden;
 
   &--opened {
     @apply block;
@@ -33,44 +23,30 @@
     @apply relative mx-auto max-w-full;
   }
 
-  &__plus {
-    @apply toolbox-button shrink-0;
-
-    @variant mobile {
-      @apply overlay-pane static;
-    }
-
-    &-shortcut {
-      @apply mt-0.5 opacity-60;
-    }
-  }
-
   &__actions {
-    @apply absolute right-auto flex pr-2.5 opacity-0;
-
-    @variant not-mobile {
-      @apply right-full;
-    }
+    @apply desktop:right-full absolute right-auto flex pr-2 opacity-0 transition-opacity;
 
     &--opened {
       @apply opacity-100;
     }
   }
 
-  &__settings-btn {
-    @apply toolbox-button ml-1.5 cursor-pointer select-none;
-
-    @variant mobile {
-      @apply overlay-pane static;
-    }
+  &__settings {
+    @apply ml-1;
 
     &--hidden {
-      @apply hidden;
+      @apply hidden!;
     }
   }
 
+  &__plus-shortcut {
+    @apply mt-0.5 opacity-60;
+  }
+
   &__plus,
-  &__settings-btn {
+  &__settings {
+    @apply toolbar-button not-desktop:mobile-toolbar-button;
+
     svg {
       @apply size-6;
     }

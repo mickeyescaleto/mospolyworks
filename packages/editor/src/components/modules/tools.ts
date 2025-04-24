@@ -3,6 +3,7 @@ import * as utilities from '@repo/editor/components/utilities';
 import Paragraph from '@repo/editor/tools/paragraph';
 import Header from '@repo/editor/tools/header';
 import Image from '@repo/editor/tools/image';
+import AlignmentTune from '@repo/editor/tools/alignment-tune';
 import BoldInlineTool from '@repo/editor/components/inline-tools/inline-tool-bold';
 import ItalicInlineTool from '@repo/editor/components/inline-tools/inline-tool-italic';
 import LinkInlineTool from '@repo/editor/components/inline-tools/inline-tool-link';
@@ -146,6 +147,7 @@ export default class Tools extends Module {
         config: {
           placeholder: 'Текст',
         },
+        tunes: ['alignmentTune'],
       },
       header: {
         class: Header,
@@ -156,14 +158,15 @@ export default class Tools extends Module {
           levels: [2, 3, 4],
           defaultLevel: 2,
         },
+        tunes: ['alignmentTune'],
       },
       image: {
         class: Image,
         isInternal: true,
         config: {
           endpoints: {
-            byFile: 'http://localhost:3001/upload-by-file',
-            byUrl: 'http://localhost:3001/upload-by-url',
+            byFile: 'http://localhost:3001/storage/upload-by-file',
+            byUrl: 'http://localhost:3001/storage/upload-by-url',
           },
         },
       },
@@ -182,6 +185,9 @@ export default class Tools extends Module {
       moveDown: {
         class: MoveDownTune,
         isInternal: true,
+      },
+      alignmentTune: {
+        class: AlignmentTune,
       },
     };
   }

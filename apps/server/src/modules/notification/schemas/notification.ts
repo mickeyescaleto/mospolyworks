@@ -1,6 +1,6 @@
 import { t } from 'elysia';
 
-export const tNotification = t.Object({
+export const Notification = t.Object({
   id: t.String(),
   title: t.String(),
   content: t.String(),

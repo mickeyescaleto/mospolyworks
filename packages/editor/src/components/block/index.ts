@@ -58,11 +58,11 @@ type BlockEvents = {
 export default class Block extends EventsDispatcher<BlockEvents> {
   public static get CSS(): { [name: string]: string } {
     return {
-      wrapper: 'ce-block',
-      wrapperStretched: 'ce-block--stretched',
-      content: 'ce-block__content',
-      selected: 'ce-block--selected',
-      dropTarget: 'ce-block--drop-target',
+      wrapper: 'editor-block',
+      wrapperStretched: 'editor-block--stretched',
+      content: 'editor-block__content',
+      selected: 'editor-block--selected',
+      dropTarget: 'editor-block--drop-target',
     };
   }
 

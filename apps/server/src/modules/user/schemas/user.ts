@@ -1,14 +1,13 @@
 import { t } from 'elysia';
 
-import { tRole } from '@/modules/user/schemas/role';
+import { UserRole } from '@/modules/user/schemas/user-role';
 
-export const tUser = t.Object({
+export const User = t.Object({
   id: t.String(),
   name: t.String(),
   surname: t.String(),
   patronymic: t.String(),
   avatar: t.String(),
-  roles: t.Array(tRole),
   login: t.String(),
   group: t.String(),
   course: t.String(),
@@ -16,4 +15,6 @@ export const tUser = t.Object({
   specialty: t.String(),
   specialization: t.String(),
   externalToken: t.String(),
+  createdAt: t.Date(),
+  roles: t.Array(UserRole),
 });

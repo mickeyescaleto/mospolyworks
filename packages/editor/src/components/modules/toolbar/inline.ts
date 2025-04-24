@@ -25,7 +25,7 @@ type InlineToolbarNodes = {
 
 export default class InlineToolbar extends Module<InlineToolbarNodes> {
   public CSS = {
-    inlineToolbar: 'ce-inline-toolbar',
+    inlineToolbar: 'editor-inline-toolbar',
   };
 
   public opened = false;

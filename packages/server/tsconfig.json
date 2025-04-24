@@ -1,7 +1,9 @@
 {
   "extends": "@repo/typescript-config/default.json",
-  "compilerOptions": {},
+  "compilerOptions": {
+    "skipLibCheck": true
+  },
   "references": [{ "path": "../../apps/server" }],
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["**/*.ts"],
+  "exclude": ["../../node_modules", "node_modules", "dist"]
 }

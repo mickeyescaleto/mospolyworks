@@ -1,4 +1,4 @@
-@import '@repo/ui/styles/editor';
+@reference '@repo/ui/styles/editor';
 
 .e-header {
   @apply header outline-hidden;

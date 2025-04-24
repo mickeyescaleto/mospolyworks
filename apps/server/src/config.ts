@@ -1,13 +1,13 @@
 import { Value } from '@sinclair/typebox/value';
 
-import { type Config, tConfig } from '@/schemas/config';
 import { getLogger } from '@/utilities/logger';
+import { type IConfig, Config } from '@/schemas/config';
 
 const logger = getLogger('Configuration');
 
-function getConfig(): Config {
+function getConfig(): IConfig {
   try {
-    const config: Config = {
+    const config: IConfig = {
       app: {
         port: +Bun.env.SERVER_PORT!,
       },
@@ -30,9 +30,12 @@ function getConfig(): Config {
         region: Bun.env.S3_REGION!,
         domain: Bun.env.S3_DOMAIN!,
       },
+      fake: {
+        agent: Bun.env.FAKE_AGENT!,
+      },
     };
 
-    return Value.Decode(tConfig, config);
+    return Value.Decode(Config, config);
   } catch (error) {
     logger.error('Application configuration was declared incorrectly');
     throw error;

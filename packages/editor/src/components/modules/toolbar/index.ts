@@ -35,16 +35,16 @@ export default class Toolbar extends Module<ToolbarNodes> {
 
   public get CSS(): { [name: string]: string } {
     return {
-      toolbar: 'ce-toolbar',
-      content: 'ce-toolbar__content',
-      actions: 'ce-toolbar__actions',
-      actionsOpened: 'ce-toolbar__actions--opened',
-      toolbarOpened: 'ce-toolbar--opened',
-      openedToolboxHolderModifier: 'codex-editor--toolbox-opened',
-      plusButton: 'ce-toolbar__plus',
-      plusButtonShortcut: 'ce-toolbar__plus-shortcut',
-      settingsToggler: 'ce-toolbar__settings-btn',
-      settingsTogglerHidden: 'ce-toolbar__settings-btn--hidden',
+      toolbar: 'editor-toolbar',
+      content: 'editor-toolbar__content',
+      actions: 'editor-toolbar__actions',
+      actionsOpened: 'editor-toolbar__actions--opened',
+      toolbarOpened: 'editor-toolbar--opened',
+      openedToolboxHolderModifier: 'editor--toolbox-opened',
+      plusButton: 'editor-toolbar__plus',
+      plusButtonShortcut: 'editor-toolbar__plus-shortcut',
+      settingsToggler: 'editor-toolbar__settings',
+      settingsTogglerHidden: 'editor-toolbar__settings--hidden',
     };
   }
 

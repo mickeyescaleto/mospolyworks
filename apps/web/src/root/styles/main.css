@@ -1,0 +1,64 @@
+@import '@repo/ui/styles/editor';
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-border);
+    outline-color: color-mix(in oklab, var(--color-ring) 5%, transparent);
+  }
+
+  a:focus-visible {
+    outline: 2px solid color-mix(in oklab, var(--color-ring) 5%, transparent);
+    outline-offset: 0;
+  }
+
+  html {
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    position: relative;
+    overflow-x: hidden;
+    overscroll-behavior: none;
+  }
+
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+
+  input[type='password']::-ms-reveal,
+  input[type='password']::-ms-clear {
+    visibility: hidden;
+    display: none;
+    pointer-events: none;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-scrollbar);
+    border-radius: 50%;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-scrollbar) transparent;
+  }
+}

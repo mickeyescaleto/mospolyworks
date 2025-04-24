@@ -1,6 +1,6 @@
 import { t } from 'elysia';
 
-export const tReport = t.Object({
+export const Report = t.Object({
   id: t.String(),
   content: t.String(),
   isChecked: t.Boolean(),

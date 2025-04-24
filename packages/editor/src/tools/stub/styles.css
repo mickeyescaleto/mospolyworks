@@ -1,7 +1,7 @@
-@import '@repo/ui/styles/editor';
+@reference '@repo/ui/styles/editor';
 
 .e-stub {
-  @apply flex items-center rounded-lg border border-zinc-200 bg-zinc-100 px-5 py-4 text-base text-zinc-600 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400;
+  @apply border-border bg-accent text-muted-foreground flex items-center rounded-md border px-5 py-4 text-base;
 
   svg {
     @apply size-6;
@@ -12,6 +12,6 @@
   }
 
   &__title {
-    @apply font-medium capitalize;
+    @apply font-normal capitalize;
   }
 }

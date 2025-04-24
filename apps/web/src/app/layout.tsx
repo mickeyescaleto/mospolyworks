@@ -1,15 +1,12 @@
-import * as React from 'react';
-import type { Metadata } from 'next';
+import { ReactNode } from 'react';
+import { type Metadata } from 'next';
 
 import { cn } from '@repo/ui/utilities/cn';
-import { Toaster } from '@repo/ui/core/sonner';
 
-import { gilroy } from '@/styles/fonts';
-import { ThemeProvider } from '@/components/providers/theme-provider';
-import { QueryProvider } from '@/components/providers/query-provider';
-import { ThemeSwitch } from '@/components/theme-switch';
+import { inter } from '@/root/styles/fonts';
+import { Providers } from '@/root/providers';
 
-import '@/styles/main.css';
+import '@/root/styles/main.css';
 
 export const metadata: Metadata = {
   title: {
@@ -18,31 +15,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: ReactNode;
+}) {
   return (
     <html lang="ru" suppressHydrationWarning>
       <body
         className={cn(
-          'flex min-h-dvh flex-col overflow-x-hidden bg-white font-sans font-medium text-zinc-900 antialiased dark:bg-zinc-950 dark:text-white',
-          gilroy.variable,
+          'bg-background text-foreground flex min-h-dvh flex-col font-sans',
+          inter.variable,
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <QueryProvider>
-            {children}
-            <ThemeSwitch />
-            <Toaster />
-          </QueryProvider>
-        </ThemeProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

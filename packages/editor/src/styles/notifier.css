@@ -1,9 +1,11 @@
+@reference '@repo/ui/styles/editor';
+
 body {
   .cdx-notifies {
     @apply right-5 bottom-5 left-auto font-sans;
 
     .cdx-notify {
-      @apply w-[22.25rem] rounded-lg border border-zinc-200 bg-zinc-100 p-4 text-sm font-medium text-zinc-900 shadow-lg dark:border-zinc-700 dark:bg-zinc-900 dark:text-white;
+      @apply bg-surface text-muted-foreground w-89 rounded-md border p-4 text-sm font-normal shadow-md;
 
       &__cross {
         @apply hidden before:hidden after:hidden;

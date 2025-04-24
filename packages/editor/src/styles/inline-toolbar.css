@@ -1,97 +1,30 @@
-.ce-inline-toolbar {
-  --y-offset: 8px;
+@reference '@repo/ui/styles/editor';
 
-  --color-background-icon-active: rgba(56, 138, 229, 0.1);
-  --color-text-icon-active: #388ae5;
-  --color-text-primary: black;
+@utility inline-toolbar-button {
+  @apply not-desktop:[&>svg]:size-7 not-desktop:size-9 text-secondary-foreground hover:bg-secondary/30 flex size-7 cursor-pointer items-center justify-center rounded-md bg-transparent p-0 [&>svg]:block [&>svg]:size-5;
+}
 
-  position: absolute;
-  visibility: hidden;
-  transition: opacity 250ms ease;
-  will-change: opacity, left, top;
-  top: 0;
-  left: 0;
-  z-index: 3;
-  opacity: 1;
-  visibility: visible;
+@utility active-inline-toolbar-button {
+  @apply active-popover-item;
+}
+
+.editor-inline-toolbar {
+  @apply visible absolute top-0 left-0 z-3 opacity-100 transition-opacity will-change-[opcaity,left,top];
 
   [hidden] {
-    display: none !important;
+    @apply hidden!;
   }
 
-  .ce-popover--inline
-    .ce-popover--nested
-    .ce-popover__container
-    .ce-popover__items {
+  .editor-popover--inline
+    .editor-popover--nested
+    .editor-popover__container
+    .editor-popover__items {
     @apply overflow-y-visible;
-  }
-
-  &__toggler-and-button-wrapper {
-    display: flex;
-    width: 100%;
-    padding: 0 6px;
-  }
-
-  &__buttons {
-    display: flex;
-  }
-
-  &__dropdown {
-    display: flex;
-    padding: 6px;
-    margin: 0 6px 0 -6px;
-    align-items: center;
-    cursor: pointer;
-    border-right: 1px solid var(--color-gray-border);
-    box-sizing: border-box;
-
-    @media (hover: hover) {
-      &:hover {
-        background: var(--bg-light);
-      }
-    }
-
-    &--hidden {
-      display: none;
-    }
-
-    &-content,
-    &-arrow {
-      display: flex;
-      svg {
-        width: var(--icon-size);
-        height: var(--icon-size);
-      }
-    }
-  }
-
-  &__shortcut {
-    opacity: 0.6;
-    word-spacing: -3px;
-    margin-top: 3px;
   }
 }
 
-.ce-inline-tool {
-  @apply flex cursor-pointer items-center justify-center rounded-lg bg-transparent text-zinc-900 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800/75;
-
-  border: 0;
-  line-height: normal;
-  height: 100%;
-  padding: 0;
-  width: 28px;
-
-  @variant mobile {
-    @apply size-9;
-  }
-
-  svg {
-    @apply block size-5;
-
-    @variant mobile {
-      @apply size-7;
-    }
-  }
+.editor-inline-tool {
+  @apply inline-toolbar-button;
 
   &--link {
     .icon--unlink {
@@ -103,13 +36,14 @@
     .icon--link {
       @apply hidden;
     }
+
     .icon--unlink {
       @apply -mb-px inline-block;
     }
   }
 
   &-input {
-    @apply hidden h-8.5 w-full appearance-none rounded-lg border border-zinc-200 bg-white px-2 py-1 text-sm font-medium text-zinc-900 outline-hidden transition-colors focus-within:ring-2 focus-within:ring-black/5 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white dark:focus-within:ring-white/5;
+    @apply editor-input hidden appearance-none px-3 py-2 outline-hidden;
 
     &--showed {
       @apply block;
@@ -117,6 +51,6 @@
   }
 
   &--active {
-    @apply bg-zinc-100! hover:bg-zinc-100/80! dark:bg-zinc-800! dark:hover:bg-zinc-800/80!;
+    @apply active-inline-toolbar-button;
   }
 }

@@ -31,12 +31,12 @@ export default class LinkInlineTool implements InlineTool {
   private readonly ENTER_KEY: number = 13;
 
   private readonly CSS = {
-    button: 'ce-inline-tool',
-    buttonActive: 'ce-inline-tool--active',
-    buttonModifier: 'ce-inline-tool--link',
-    buttonUnlink: 'ce-inline-tool--unlink',
-    input: 'ce-inline-tool-input',
-    inputShowed: 'ce-inline-tool-input--showed',
+    button: 'editor-inline-tool',
+    buttonActive: 'editor-inline-tool--active',
+    buttonModifier: 'editor-inline-tool--link',
+    buttonUnlink: 'editor-inline-tool--unlink',
+    input: 'editor-inline-tool-input',
+    inputShowed: 'editor-inline-tool-input--showed',
   };
 
   private nodes: {

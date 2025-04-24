@@ -1,9 +1,7 @@
-.cdx-block {
-  padding: var(--block-padding-vertical) 0;
+@reference '@repo/ui/styles/editor';
 
-  &::-webkit-input-placeholder {
-    line-height: normal !important;
-  }
+.cdx-block {
+  padding: 0.4em 0;
 }
 
 .cdx-input {
@@ -41,7 +39,8 @@
   min-height: var(--toolbox-buttons-size);
 
   &--focused {
-    @apply button-focused;
+    box-shadow: inset 0 0 0px 1px rgba(7, 161, 227, 0.08);
+    background: rgba(34, 186, 255, 0.08) !important;
 
     &-animated {
       animation-name: buttonClicked;
@@ -57,13 +56,13 @@
     width: auto;
     height: auto;
 
-    @variant mobile {
+    @variant not-desktop {
       width: var(--icon-size--mobile);
       height: var(--icon-size--mobile);
     }
   }
 
-  @variant mobile {
+  @variant not-desktop {
     width: var(--toolbox-buttons-size--mobile);
     height: var(--toolbox-buttons-size--mobile);
     border-radius: 8px;
@@ -77,10 +76,11 @@
 }
 
 .cdx-loader {
-  position: relative;
-  border: 1px solid var(--color-gray-border);
+  @apply border-border relative border;
 
   &::before {
+    @apply animate-spin;
+
     content: '';
     position: absolute;
     left: 50%;
@@ -91,21 +91,11 @@
     border: 2px solid var(--color-gray-border);
     border-left-color: var(--color-active-icon);
     border-radius: 50%;
-    animation: cdxRotation 1.2s infinite linear;
-  }
-}
-
-@keyframes cdxRotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
   }
 }
 
 .cdx-button {
-  @apply cursor-pointer rounded-lg border border-zinc-200 bg-zinc-100 px-5 py-4 text-center text-base font-medium text-zinc-600 hover:opacity-90 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400;
+  @apply border-border text-muted-foreground/80 bg-accent hover:text-muted-foreground cursor-pointer rounded-md border px-5 py-4 text-center text-base font-normal;
 
   svg {
     @apply mr-2 size-6;

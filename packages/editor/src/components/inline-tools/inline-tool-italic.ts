@@ -1,5 +1,6 @@
 import { IconItalic } from '@codexteam/icons';
 
+import type { MenuConfig } from '@repo/editor/types/tools/menu-config';
 import type { InlineTool } from '@repo/editor/types/tools/inline-tool';
 import type { SanitizerConfig } from '@repo/editor/types/configs/sanitizer-config';
 
@@ -8,43 +9,23 @@ export default class ItalicInlineTool implements InlineTool {
 
   public static title = 'Italic';
 
+  private readonly commandName: string = 'italic';
+
+  public render(): MenuConfig {
+    return {
+      icon: IconItalic,
+      name: 'italic',
+      onActivate: () => {
+        document.execCommand(this.commandName);
+      },
+      isActive: () => document.queryCommandState(this.commandName),
+    };
+  }
+
   public static get sanitize(): SanitizerConfig {
     return {
       i: {},
     } as SanitizerConfig;
-  }
-
-  private readonly commandName: string = 'italic';
-
-  private readonly CSS = {
-    button: 'ce-inline-tool',
-    buttonActive: 'ce-inline-tool--active',
-    buttonModifier: 'ce-inline-tool--italic',
-  };
-
-  private nodes: { button: HTMLButtonElement } = {
-    button: null,
-  };
-
-  public render(): HTMLElement {
-    this.nodes.button = document.createElement('button') as HTMLButtonElement;
-    this.nodes.button.type = 'button';
-    this.nodes.button.classList.add(this.CSS.button, this.CSS.buttonModifier);
-    this.nodes.button.innerHTML = IconItalic;
-
-    return this.nodes.button;
-  }
-
-  public surround(): void {
-    document.execCommand(this.commandName);
-  }
-
-  public checkState(): boolean {
-    const isActive = document.queryCommandState(this.commandName);
-
-    this.nodes.button.classList.toggle(this.CSS.buttonActive, isActive);
-
-    return isActive;
   }
 
   public get shortcut(): string {

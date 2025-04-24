@@ -13,8 +13,8 @@
   },
   "editor.formatOnSave": true,
   "tailwindCSS.experimental.configFile": {
-    "apps/web/src/styles/main.css": "apps/web/src/**",
-    "packages/ui/src/styles/main.css": "packages/ui/src/**",
+    "apps/web/src/root/styles/main.css": "apps/web/src/**",
+    "packages/ui/src/styles/editor.css": "packages/ui/src/**",
     "packages/editor/src/styles/main.css": "packages/editor/src/**"
   }
 }

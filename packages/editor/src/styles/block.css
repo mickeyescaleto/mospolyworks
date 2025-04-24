@@ -1,18 +1,14 @@
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
+@reference '@repo/ui/styles/editor';
 
-  to {
-    opacity: 1;
-  }
+@utility editor-block-animate {
+  @apply animate-in fade-in duration-750;
 }
 
-.ce-block {
-  @apply animate-[fade-in_0.75s_ease] first:mt-0! last:mb-0!;
+.editor-block {
+  @apply editor-block-animate first:mt-0! last:mb-0!;
 
   &--selected &__content {
-    @apply bg-zinc-100/50! dark:bg-zinc-900/40!;
+    @apply bg-secondary/30;
 
     & [contenteditable] {
       @apply select-none;
@@ -32,7 +28,7 @@
     @apply relative mx-auto max-w-full transition-colors duration-150;
   }
 
-  &:has(.ce-block__content) {
+  &:has(.editor-block__content) {
     &:has(.e-stub) {
       @apply my-4;
     }

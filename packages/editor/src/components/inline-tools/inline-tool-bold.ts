@@ -9,12 +9,6 @@ export default class BoldInlineTool implements InlineTool {
 
   public static title = 'Bold';
 
-  public static get sanitize(): SanitizerConfig {
-    return {
-      b: {},
-    } as SanitizerConfig;
-  }
-
   private readonly commandName: string = 'bold';
 
   public render(): MenuConfig {
@@ -26,6 +20,12 @@ export default class BoldInlineTool implements InlineTool {
       },
       isActive: () => document.queryCommandState(this.commandName),
     };
+  }
+
+  public static get sanitize(): SanitizerConfig {
+    return {
+      b: {},
+    } as SanitizerConfig;
   }
 
   public get shortcut(): string {

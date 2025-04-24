@@ -1,21 +1,9 @@
-@utility button-focused {
-  box-shadow: inset 0 0 0px 1px rgba(7, 161, 227, 0.08);
-  background: rgba(34, 186, 255, 0.08) !important;
-}
-
 :root {
-  --selectionColor: #e1f2ff;
-  --inlineSelectionColor: #d4ecff;
   --bg-light: #eff2f5;
-  --grayText: #707684;
-  --color-dark: #1d202b;
   --color-active-icon: #388ae5;
   --color-gray-border: rgba(201, 201, 204, 0.48);
-  --content-width: 672px;
   --toolbox-buttons-size: 26px;
   --toolbox-buttons-size--mobile: 36px;
   --icon-size: 20px;
   --icon-size--mobile: 28px;
-  --block-padding-vertical: 0.4em;
-  --color-line-gray: #eff0f1;
 }

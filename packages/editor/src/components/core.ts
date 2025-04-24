@@ -70,7 +70,7 @@ export default class Core {
     }
 
     if (!this.config.logLevel) {
-      this.config.logLevel = utilities.LogLevels.VERBOSE;
+      this.config.logLevel = utilities.LogLevels.WARN;
     }
 
     utilities.setLogLevel(this.config.logLevel);

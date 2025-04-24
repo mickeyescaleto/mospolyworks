@@ -1,4 +1,10 @@
-.codex-editor {
+@reference '@repo/ui/styles/editor';
+
+@utility placeholder {
+  @apply text-muted-foreground/50 pointer-events-none cursor-text;
+}
+
+.editor {
   [data-placeholder]:empty,
   [data-placeholder][data-empty='true'] {
     &::before {

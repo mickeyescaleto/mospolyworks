@@ -1,56 +1,39 @@
-.ce-popover {
-  --border-radius: 6px;
+@reference '@repo/ui/styles/editor';
+
+@utility popover-animation {
+  @apply animate-in slide-in-from-top-2 zoom-in-95 fade-in;
+}
+
+@utility mobile-popover-animation {
+  @apply animate-in slide-in-from-bottom-4 zoom-in-95 fade-in;
+}
+
+@utility active-popover-item {
+  @apply bg-secondary/80 hover:bg-secondary/60!;
+}
+
+.editor-popover {
   --width: 200px;
-  --max-height: 270px;
-  --padding: 6px;
   --offset-from-target: 8px;
-  --color-border: #eff0f1;
-  --color-shadow: rgba(13, 20, 33, 0.1);
-  --color-background: white;
-  --color-text-primary: black;
-  --color-text-secondary: #707684;
-  --color-border-icon: rgb(201 201 204 / 48%);
-  --color-border-icon-disabled: #eff0f1;
-  --color-text-icon-active: #388ae5;
-  --color-background-icon-active: rgba(56, 138, 229, 0.1);
-  --color-background-item-focus: rgba(34, 186, 255, 0.08);
-  --color-shadow-item-focus: rgba(7, 161, 227, 0.08);
-  --color-background-item-hover: #f8f8f8;
-  --color-background-item-confirm: #e24a4a;
-  --color-background-item-confirm-hover: #ce4343;
   --popover-top: calc(100% + var(--offset-from-target));
   --popover-left: 0;
   --nested-popover-overlap: 4px;
-
   --icon-size: 20px;
   --item-padding: 3px;
   --item-height: calc(var(--icon-size) + 2 * var(--item-padding));
 
   &__container {
-    @apply pointer-events-none absolute z-4 flex flex-col overflow-hidden rounded-xl bg-white p-0 opacity-0 shadow-sm dark:bg-zinc-900;
-
-    min-width: var(--width);
-    width: var(--width);
-    max-height: var(--max-height);
-    left: var(--popover-left);
-    top: var(--popover-top);
+    @apply bg-surface pointer-events-none absolute top-(--popover-top) left-(--popover-left) z-4 flex max-h-64 w-50 flex-col overflow-hidden rounded-lg p-0 opacity-0 shadow-md;
   }
 
   &--opened {
-    & > .ce-popover__container {
-      @apply pointer-events-auto border border-zinc-200 p-1 opacity-100 dark:border-zinc-700;
-
-      max-height: var(--max-height);
-      animation: panelShowing 100ms ease;
-
-      @variant mobile {
-        animation: panelShowingMobile 250ms ease;
-      }
+    & > .editor-popover__container {
+      @apply border-border popover-animation not-desktop:mobile-popover-animation pointer-events-auto max-h-64 border p-1 opacity-100;
     }
   }
 
   &--open-top {
-    .ce-popover__container {
+    .editor-popover__container {
       --popover-top: calc(
         -1 * (var(--offset-from-target) + var(--popover-height))
       );
@@ -58,7 +41,7 @@
   }
 
   &--open-left {
-    .ce-popover__container {
+    .editor-popover__container {
       --popover-left: calc(-1 * var(--width) + 100%);
     }
   }
@@ -68,12 +51,8 @@
   }
 
   &__overlay {
-    @variant mobile {
-      @apply fixed inset-0 z-3 bg-zinc-900 opacity-50;
-
-      transition: opacity 0.12s ease-in;
-      will-change: opacity;
-      visibility: visible;
+    @variant not-desktop {
+      @apply bg-background visible fixed inset-0 z-3 opacity-60 transition-opacity duration-150 ease-in will-change-[opacity];
     }
 
     &--hidden {
@@ -81,11 +60,11 @@
     }
   }
 
-  @variant mobile {
-    .ce-popover__container {
-      --offset: 5px;
+  @variant not-desktop {
+    .editor-popover__container {
+      @apply fixed top-auto max-w-none rounded-lg;
 
-      @apply fixed top-auto max-w-none rounded-xl;
+      --offset: 6px;
 
       min-width: calc(100% - var(--offset) * 2);
       left: var(--offset);
@@ -99,7 +78,7 @@
   }
 
   &__nothing-found-message {
-    @apply hidden overflow-hidden px-1 py-2 text-center text-sm font-medium overflow-ellipsis whitespace-nowrap text-zinc-900 select-none dark:text-zinc-300;
+    @apply text-muted-foreground hidden overflow-hidden px-1 py-2 text-center text-sm font-normal overflow-ellipsis whitespace-nowrap select-none;
 
     &--displayed {
       @apply block;
@@ -107,17 +86,19 @@
   }
 
   &--nested {
-    .ce-popover__container {
+    .editor-popover__container {
+      @apply absolute;
+
       --popover-left: calc(
         var(--nesting-level) * (var(--width) - var(--nested-popover-overlap))
       );
+
       top: calc(var(--trigger-item-top) - var(--nested-popover-overlap));
-      position: absolute;
     }
   }
 
-  &--open-top.ce-popover--nested {
-    .ce-popover__container {
+  &--open-top.editor-popover--nested {
+    .editor-popover__container {
       top: calc(
         var(--trigger-item-top) - var(--popover-height) + var(--item-height) +
           var(--offset-from-target) + var(--nested-popover-overlap)
@@ -126,8 +107,8 @@
   }
 
   &--open-left {
-    .ce-popover--nested {
-      .ce-popover__container {
+    .editor-popover--nested {
+      .editor-popover__container {
         --popover-left: calc(
           -1 * (var(--nesting-level) + 1) * var(--width) + 100%
         );
@@ -136,7 +117,7 @@
   }
 }
 
-.ce-popover-item-separator {
+.editor-popover-item-separator {
   @apply p-1;
 
   &--hidden {
@@ -144,29 +125,25 @@
   }
 
   &__line {
-    @apply h-px w-full bg-zinc-200 dark:bg-zinc-700;
+    @apply bg-border h-px w-full;
   }
 }
 
-.ce-popover-item-html {
+.editor-popover-item-html {
   &--hidden {
     @apply hidden;
   }
 }
 
-.ce-popover-item {
-  @apply flex cursor-pointer items-center rounded-lg bg-transparent px-0.5 py-1 text-zinc-900 select-none dark:text-zinc-300;
-
-  @variant mobile {
-    @apply px-1;
-  }
+.editor-popover-item {
+  @apply text-surface-foreground not-desktop:px-1 flex cursor-pointer items-center rounded-md bg-transparent px-0.5 py-1 select-none;
 
   &:not(:last-of-type) {
     @apply mb-px;
   }
 
-  &:not(.ce-popover-item--no-hover) {
-    @apply hover:bg-zinc-100 dark:hover:bg-zinc-800/75;
+  &:not(.editor-popover-item--no-hover) {
+    @apply hover:bg-secondary/30;
   }
 
   &__icon {
@@ -176,8 +153,8 @@
       @apply size-5;
     }
 
-    @variant mobile {
-      @apply size-9 rounded-lg;
+    @variant not-desktop {
+      @apply size-9;
 
       svg {
         @apply size-7;
@@ -190,23 +167,15 @@
   }
 
   &__title {
-    @apply mr-auto overflow-hidden text-sm font-medium overflow-ellipsis whitespace-nowrap;
-
-    @variant mobile {
-      @apply text-base;
-    }
+    @apply not-desktop:text-base mr-auto overflow-hidden text-sm font-normal overflow-ellipsis whitespace-nowrap;
   }
 
   &__secondary-title {
-    @apply pr-1 text-xs whitespace-nowrap text-(--color-text-secondary) opacity-60;
-
-    @variant mobile {
-      @apply hidden;
-    }
+    @apply not-desktop:hidden text-muted-foreground pr-1 text-xs whitespace-nowrap opacity-60;
   }
 
   &--active {
-    @apply bg-zinc-100! hover:bg-zinc-100/80! dark:bg-zinc-800! dark:hover:bg-zinc-800/80!;
+    @apply active-popover-item;
   }
 
   &--disabled {
@@ -214,8 +183,8 @@
   }
 
   &--focused {
-    &:not(.ce-popover-item--no-focus) {
-      @apply bg-zinc-100! hover:bg-zinc-100/80! dark:bg-zinc-800! dark:hover:bg-zinc-800/80!;
+    &:not(.editor-popover-item--no-focus) {
+      @apply active-popover-item;
     }
   }
 
@@ -224,97 +193,30 @@
   }
 
   &--confirmation {
-    @apply bg-[#e24a4a];
+    @apply bg-destructive;
 
-    .ce-popover-item__title,
-    .ce-popover-item__icon {
-      @apply text-white;
+    .editor-popover-item__title,
+    .editor-popover-item__icon {
+      @apply text-destructive-foreground;
     }
 
-    &:not(.ce-popover-item--no-hover) {
-      @apply hover:bg-[#ce4343]!;
+    &:not(.editor-popover-item--no-hover) {
+      @apply hover:bg-destructive!;
     }
 
-    &:not(.ce-popover-item--no-focus) {
-      &.ce-popover-item--focused {
-        @apply hover:bg-[#ce4343]!;
+    &:not(.editor-popover-item--no-focus) {
+      &.editor-popover-item--focused {
+        @apply hover:bg-destructive!;
       }
     }
   }
 }
 
-@keyframes panelShowing {
-  from {
-    opacity: 0;
-    transform: translateY(-8px) scale(0.9);
-  }
-
-  70% {
-    opacity: 1;
-    transform: translateY(2px);
-  }
-
-  to {
-    transform: translateY(0);
-  }
-}
-
-@keyframes panelShowingMobile {
-  from {
-    opacity: 0;
-    transform: translateY(14px) scale(0.98);
-  }
-
-  70% {
-    opacity: 1;
-    transform: translateY(-4px);
-  }
-
-  to {
-    transform: translateY(0);
-  }
-}
-
-.wobble {
-  animation-name: wobble;
-  animation-duration: 400ms;
-}
-
-@keyframes wobble {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  15% {
-    transform: translate3d(-9%, 0, 0);
-  }
-
-  30% {
-    transform: translate3d(9%, 0, 0);
-  }
-
-  45% {
-    transform: translate3d(-4%, 0, 0);
-  }
-
-  60% {
-    transform: translate3d(4%, 0, 0);
-  }
-
-  75% {
-    transform: translate3d(-1%, 0, 0);
-  }
-
-  to {
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-.ce-popover-header {
+.editor-popover-header {
   @apply mt-1 mb-2 flex items-center;
 
   &__text {
-    @apply text-lg font-bold;
+    @apply text-lg font-semibold;
   }
 
   &__back-button {
@@ -324,4 +226,9 @@
       @apply block size-7;
     }
   }
+}
+
+.wobble {
+  animation-name: wobble;
+  animation-duration: 400ms;
 }

@@ -1,55 +1,83 @@
 import { Elysia, NotFoundError } from 'elysia';
 
-import { tError } from '@/schemas/error';
 import { getLogger } from '@/utilities/logger';
+import { response } from '@/utilities/response';
+import { security } from '@/plugins/security';
 import { UserService } from '@/modules/user/user.service';
-import {
-  tGetUserParams,
-  tGetUserResponse,
-} from '@/modules/user/schemas/get-user';
+import { GetUserResponse } from '@/modules/user/schemas/routes/get-user';
+import { GetUsersForProjectResponse } from '@/modules/user/schemas/routes/get-users-for-project';
 
 const logger = getLogger('Users');
 
 export const users = new Elysia({
   prefix: '/users',
-  tags: ['Users'],
-}).get(
-  '/:userId',
-  async ({ params, error }) => {
-    try {
-      const user = await UserService.getUserById(params.userId);
+  tags: ['Пользователи'],
+})
+  .get(
+    '/:id',
+    async ({ params, set }) => {
+      try {
+        const user = await UserService.getUserById(params.id);
 
-      const message = `User with the ID ${user.id} received successfully`;
+        const message = `User with the ID ${user.id} received successfully`;
 
-      logger.info(message);
+        logger.info(message);
 
-      return user;
-    } catch (e) {
-      if (e instanceof NotFoundError) {
-        const message = e.message;
+        return user;
+      } catch (error) {
+        if (error instanceof NotFoundError) {
+          const message = error.message;
 
-        logger.warn(message);
+          logger.warn(message);
 
-        return error('Not Found', { message });
+          set.status = 404;
+          throw new Error(message);
+        }
+
+        const message = 'An error occurred when receiving the user';
+
+        logger.error(message);
+
+        set.status = 500;
+        throw new Error(message);
       }
-
-      const message = 'An error occurred when receiving the user';
-
-      logger.error(message);
-
-      return error('Internal Server Error', { message });
-    }
-  },
-  {
-    params: tGetUserParams,
-    response: {
-      200: tGetUserResponse,
-      404: tError,
-      500: tError,
     },
-    detail: {
-      summary: 'Get user by ID',
-      description: 'Returns detailed information about a specific user',
+    {
+      response: response(GetUserResponse),
+      detail: {
+        summary: 'Получить пользователя по идентификатору',
+        description: 'Возвращает информацию о конкретном пользователе',
+      },
     },
-  },
-);
+  )
+  .guard((app) =>
+    app.use(security).get(
+      '/for-project',
+      async ({ account, set }) => {
+        try {
+          const users = await UserService.getUsersForProject(account.id);
+
+          const message = `Users have been successfully received`;
+
+          logger.info(message);
+
+          return users;
+        } catch {
+          const message = 'An error occurred when receiving users';
+
+          logger.error(message);
+
+          set.status = 500;
+          throw new Error(message);
+        }
+      },
+      {
+        response: response(GetUsersForProjectResponse),
+        detail: {
+          summary: 'Получить всех пользователей для обновления проекта',
+          description:
+            'Возвращает список со всеми пользователями для обновления проекта',
+        },
+      },
+    ),
+  );

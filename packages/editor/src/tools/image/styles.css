@@ -1,6 +1,6 @@
-@import '@repo/ui/styles/editor';
+@reference '@repo/ui/styles/editor';
 
-@utility invisible-block {
+.invisible-block {
   @apply h-0 w-0;
 }
 
@@ -10,7 +10,7 @@
   }
 
   &__image {
-    @apply overflow-hidden rounded-lg;
+    @apply overflow-hidden rounded-md;
 
     &-picture {
       @apply block h-auto w-full;
@@ -18,12 +18,12 @@
   }
 
   &__image-preloader {
-    @apply relative m-auto size-12 rounded-full bg-zinc-100 bg-cover bg-center after:absolute after:top-1/2 after:left-1/2 after:z-3 after:size-14 after:-translate-x-1/2 after:-translate-y-1/2 after:transform after:animate-spin after:rounded-full after:border-2 after:border-zinc-100 after:border-t-zinc-600 dark:bg-zinc-700 dark:after:border-zinc-700 dark:after:border-t-zinc-400;
+    @apply bg-accent relative m-auto size-12 rounded-full bg-cover bg-center after:absolute after:top-1/2 after:left-1/2 after:z-3 after:size-14 after:-translate-x-1/2 after:-translate-y-1/2 after:transform after:animate-spin after:rounded-full after:border-2 after:border-zinc-100 after:border-t-zinc-600 dark:after:border-zinc-700 dark:after:border-t-zinc-400;
   }
 
   &--uploading {
     .e-image__image {
-      @apply flex min-h-52 border border-zinc-200 bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800;
+      @apply border-border bg-accent flex min-h-52 border;
 
       &-picture {
         @apply hidden;

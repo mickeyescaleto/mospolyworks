@@ -1,7 +1,8 @@
 import { t } from 'elysia';
 
-export const tCategory = t.Object({
+export const Category = t.Object({
   id: t.String(),
-  title: t.String(),
+  label: t.String(),
   isHidden: t.Boolean(),
+  createdAt: t.Date(),
 });

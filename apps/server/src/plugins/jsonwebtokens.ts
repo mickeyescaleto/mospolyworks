@@ -2,7 +2,7 @@ import { Elysia } from 'elysia';
 import { jwt } from '@elysiajs/jwt';
 
 import { config } from '@/config';
-import { tPayload } from '@/schemas/payload';
+import { Payload } from '@/schemas/payload';
 
 export const jsonwebtokens = new Elysia()
   .use(
@@ -10,7 +10,7 @@ export const jsonwebtokens = new Elysia()
       name: 'ajwt',
       secret: config.ajwt.secret,
       exp: `${config.ajwt.expires}s`,
-      schema: tPayload,
+      schema: Payload,
     }),
   )
   .use(
@@ -18,7 +18,7 @@ export const jsonwebtokens = new Elysia()
       name: 'rjwt',
       secret: config.rjwt.secret,
       exp: `${config.rjwt.expires}s`,
-      schema: tPayload,
+      schema: Payload,
     }),
   )
   .as('plugin');

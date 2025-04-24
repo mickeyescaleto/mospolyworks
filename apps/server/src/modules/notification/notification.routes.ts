@@ -1,36 +1,30 @@
 import { Elysia } from 'elysia';
 
-import { tError } from '@/schemas/error';
 import { getLogger } from '@/utilities/logger';
+import { response } from '@/utilities/response';
 import { security } from '@/plugins/security';
 import { NotificationService } from '@/modules/notification/notification.service';
-import { tGetNotificationsResponse } from '@/modules/notification/schemas/get-notifications';
-import {
-  tDeleteNotificationParams,
-  tDeleteNotificationResponse,
-} from '@/modules/notification/schemas/delete-notification';
-import {
-  tReadNotificationsParams,
-  tReadNotificationsResponse,
-} from '@/modules/notification/schemas/read-notifications';
+import { GetNotificationsResponse } from '@/modules/notification/schemas/routes/get-notifications';
+import { DeleteNotificationResponse } from '@/modules/notification/schemas/routes/delete-notification';
+import { ReadNotificationsResponse } from '@/modules/notification/schemas/routes/read-notifications';
 
 const logger = getLogger('Notifications');
 
 export const notifications = new Elysia({
   prefix: '/notifications',
-  tags: ['Notifications'],
+  tags: ['Уведомления'],
 }).guard((app) =>
   app
     .use(security)
     .get(
       '/',
-      async ({ user, error }) => {
+      async ({ account, set }) => {
         try {
           const notifications = await NotificationService.getNotifications(
-            user.id,
+            account.id,
           );
 
-          const message = `Notifications of the user with ID ${user.id} have been successfully received`;
+          const message = `Notifications of the user with ID ${account.id} have been successfully received`;
 
           logger.info(message);
 
@@ -40,27 +34,26 @@ export const notifications = new Elysia({
 
           logger.error(message);
 
-          return error('Internal Server Error', { message });
+          set.status = 500;
+          throw new Error(message);
         }
       },
       {
-        response: {
-          200: tGetNotificationsResponse,
-          500: tError,
-        },
+        response: response(GetNotificationsResponse),
         detail: {
-          summary: 'Get user notifications',
-          description: 'Returns all notifications for the authenticated user',
+          summary: 'Получить уведомления для авторизованного пользователя',
+          description:
+            'Возвращает список всех уведомлений для авторизованного пользователя',
         },
       },
     )
     .delete(
-      '/:notificationId',
-      async ({ params, user, error }) => {
+      '/:id',
+      async ({ account, params, set }) => {
         try {
           const notification = await NotificationService.deleteNotification(
-            params.notificationId,
-            user.id,
+            params.id,
+            account.id,
           );
 
           const message = `Notification with the ID ${notification.id} successfully deleted`;
@@ -73,28 +66,26 @@ export const notifications = new Elysia({
 
           logger.error(message);
 
-          return error('Internal Server Error', { message });
+          set.status = 500;
+          throw new Error(message);
         }
       },
       {
-        params: tDeleteNotificationParams,
-        response: {
-          200: tDeleteNotificationResponse,
-          500: tError,
-        },
+        response: response(DeleteNotificationResponse),
         detail: {
-          summary: 'Delete notification',
-          description: 'Permanently removes a specific notification',
+          summary: 'Удалить уведомление',
+          description:
+            'Безвозвратно удаляет определенное уведомление авторизованного пользователя',
         },
       },
     )
     .post(
-      '/:notificationId/read',
-      async ({ user, params, error }) => {
+      '/:id/read',
+      async ({ account, params, set }) => {
         try {
           const notification = await NotificationService.readNotification(
-            params.notificationId,
-            user.id,
+            params.id,
+            account.id,
           );
 
           const message = `Notification with the ID ${notification.id} read successfully`;
@@ -107,18 +98,16 @@ export const notifications = new Elysia({
 
           logger.error(message);
 
-          return error('Internal Server Error', { message });
+          set.status = 500;
+          throw new Error(message);
         }
       },
       {
-        params: tReadNotificationsParams,
-        response: {
-          200: tReadNotificationsResponse,
-          500: tError,
-        },
+        response: response(ReadNotificationsResponse),
         detail: {
-          summary: 'Mark notification as read',
-          description: 'Updates notification read status',
+          summary: 'Отметить уведомление как прочитанное',
+          description:
+            'Отмечает уведомление авторизованного пользователя как прочитанное',
         },
       },
     ),

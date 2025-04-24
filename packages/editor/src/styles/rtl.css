@@ -1,46 +1,28 @@
-.codex-editor.codex-editor--rtl {
+@reference '@repo/ui/styles/editor';
+
+.editor.editor--rtl {
   direction: rtl;
 
   .cdx-list {
     @apply pr-10 pl-0;
   }
 
-  .ce-toolbar {
+  .editor-toolbar {
     &__plus {
       @apply -right-6 left-auto;
     }
 
     &__actions {
-      @apply right-auto -left-6;
-
-      @variant mobile {
-        @apply mr-auto ml-0 pr-0 pl-2.5;
-      }
+      @apply not-desktop:mr-auto not-desktop:ml-0 not-desktop:pr-0 not-desktop:pl-2.5 right-auto -left-6;
     }
   }
 
-  .ce-settings {
+  .editor-settings {
     @apply right-auto left-1.5 before:right-auto before:left-6;
 
     &__button {
       &:not(:nth-child(3n + 3)) {
         @apply mr-0 ml-1;
-      }
-    }
-  }
-
-  .ce-conversion-tool {
-    &__icon {
-      @apply mr-0 ml-2.5;
-    }
-  }
-
-  .ce-inline-toolbar {
-    &__dropdown {
-      @apply -mr-1.5 ml-1.5 border-r-0 border-l-1 border-[rgba(201,201,204,0.48)];
-
-      .icon--toggler-down {
-        @apply mr-1 ml-0;
       }
     }
   }

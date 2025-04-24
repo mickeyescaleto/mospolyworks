@@ -1,122 +1,50 @@
 import { Elysia } from 'elysia';
 
-import { config } from '@/config';
-import { UnauthorizedError } from '@/errors/unauthorized';
-import { tCookie } from '@/schemas/cookie';
-import { tError } from '@/schemas/error';
 import { getLogger } from '@/utilities/logger';
-import { jsonwebtokens } from '@/plugins/jsonwebtokens';
-import { SessionService } from '@/modules/session/session.service';
-import { type Role } from '@/modules/user/schemas/role';
+import { account } from '@/plugins/account';
+import { Cookie } from '@/schemas/cookie';
+import { type IUserRole } from '@/modules/user/schemas/user-role';
 
 const logger = getLogger('Security');
 
 type UseRolesProps = {
-  roles: Role[];
+  roles: IUserRole[];
   type?: 'some' | 'every';
 };
 
 export const security = new Elysia()
-  .use(jsonwebtokens)
+  .use(account)
   .guard({
-    cookie: tCookie,
-    response: {
-      401: tError,
-      403: tError,
-      500: tError,
-    },
-    detail: {
-      security: [{ AccessTokenCookie: [] }, { RefreshTokenCookie: [] }],
-    },
+    cookie: Cookie,
+    detail: { security: [{ AccessToken: [] }, { RefreshToken: [] }] },
   })
-  .resolve(async ({ cookie, error, ajwt, rjwt }) => {
-    try {
-      if (cookie['access_token'].value) {
-        const payload = await ajwt.verify(cookie['access_token'].value);
+  .resolve(({ account, cookie, set }) => {
+    if (!account) {
+      cookie['access_token'].remove();
+      cookie['refresh_token'].remove();
 
-        if (!payload) {
-          throw new UnauthorizedError('Invalid access token');
-        }
+      const message = 'Unauthorized';
 
-        return {
-          user: {
-            id: payload.id,
-            roles: payload.roles,
-          },
-        };
-      }
+      logger.warn(message);
 
-      if (cookie['refresh_token'].value) {
-        const payload = await rjwt.verify(cookie['refresh_token'].value);
-
-        if (!payload) {
-          throw new UnauthorizedError('Invalid refresh token');
-        }
-
-        const session = await SessionService.getSessionByToken(
-          cookie['refresh_token'].value,
-        );
-
-        const user = {
-          id: session.user.id,
-          roles: session.user.roles,
-        };
-
-        const tokens: Record<string, string> = {};
-
-        tokens['access_token'] = await ajwt.sign(user);
-        tokens['refresh_token'] = await rjwt.sign(user);
-
-        await SessionService.updateSessionByToken(
-          session.id,
-          tokens['refresh_token'],
-        );
-
-        cookie['access_token'].set({
-          value: tokens['access_token'],
-          maxAge: config.ajwt.expires,
-        });
-        cookie['refresh_token'].set({
-          value: tokens['refresh_token'],
-          maxAge: config.rjwt.expires,
-        });
-
-        return { user };
-      }
-
-      throw new UnauthorizedError('Access and refresh tokens are missing');
-    } catch (e) {
-      if (e instanceof UnauthorizedError) {
-        cookie['access_token'].remove();
-        cookie['refresh_token'].remove();
-
-        const message = e.message;
-
-        logger.warn(message);
-
-        return error('Unauthorized', { message });
-      }
-
-      const message = 'An error occurred during authorization';
-
-      logger.error(message);
-
-      return error('Internal Server Error', { message });
+      set.status = 401;
+      throw new Error(message);
     }
+
+    return { account };
   })
-  .macro(({ onBeforeHandle }) => ({
-    useRoles({ roles, type = 'some' }: UseRolesProps) {
-      onBeforeHandle(({ user, set }) => {
-        if (!roles[type]((role) => user?.roles.includes(role))) {
+  .macro({
+    useRoles: ({ roles, type = 'some' }: UseRolesProps) => ({
+      beforeHandle: ({ account, set }) => {
+        if (!roles[type]((role) => account?.roles.includes(role))) {
           const message = 'Access is denied due to insufficient permissions';
 
           logger.warn(message);
 
-          set.status = 'Forbidden';
-
-          return { message };
+          set.status = 403;
+          throw new Error(message);
         }
-      });
-    },
-  }))
+      },
+    }),
+  })
   .as('plugin');

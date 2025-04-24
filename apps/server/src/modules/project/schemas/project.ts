@@ -1,15 +1,18 @@
 import { t } from 'elysia';
 
-import { tStatus } from '@/modules/project/schemas/status';
+import { TitleAlignment } from '@/modules/project/schemas/title-alignment';
+import { ProjectStatus } from '@/modules/project/schemas/project-status';
 
-export const tProject = t.Object({
+export const Project = t.Object({
   id: t.String(),
-  title: t.String(),
-  content: t.Array(t.Any()),
-  image: t.String(),
+  cover: t.Nullable(t.String()),
+  title: t.Nullable(t.String()),
+  titleAlignment: TitleAlignment,
+  content: t.Nullable(t.Any()),
   link: t.Nullable(t.String()),
-  status: tStatus,
   rejectionComment: t.Nullable(t.String()),
+  publishedAt: t.Nullable(t.Date()),
+  status: ProjectStatus,
   views: t.Number(),
   createdAt: t.Date(),
 });

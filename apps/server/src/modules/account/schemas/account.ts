@@ -1,7 +1,5 @@
-import { t } from 'elysia';
+import { User } from '@/modules/user/schemas/user';
 
-import { tUser } from '@/modules/user/schemas/user';
+export const Account = User;
 
-export const tAccount = tUser;
-
-export const tAccountResponse = t.Omit(tAccount, ['login', 'externalToken']);
+export type IAccount = typeof Account.static;

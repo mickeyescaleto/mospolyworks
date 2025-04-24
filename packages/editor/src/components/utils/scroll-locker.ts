@@ -2,8 +2,8 @@ import { isIosDevice } from '@repo/editor/components/utilities';
 
 export default class ScrollLocker {
   private static CSS = {
-    scrollLocked: 'ce-scroll-locked',
-    scrollLockedHard: 'ce-scroll-locked--hard',
+    scrollLocked: 'editor-scroll-locked',
+    scrollLockedHard: 'editor-scroll-locked--hard',
   };
 
   private scrollPosition: null | number = null;

@@ -1,0 +1,15 @@
+.e-alignment-tune--left {
+  text-align: left;
+}
+
+.e-alignment-tune--right {
+  text-align: right;
+}
+
+.e-alignment-tune--center {
+  text-align: center;
+}
+
+.e-alignment-tune--justify {
+  text-align: justify;
+}
