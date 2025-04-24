@@ -1,11 +1,23 @@
-@import './main.css';
+@import './theme.css';
 
-@utility placeholder {
-  @apply pointer-events-none cursor-text text-zinc-400/75;
+.o-align-left {
+  @apply text-left;
+}
+
+.o-align-center {
+  @apply text-center;
+}
+
+.o-align-right {
+  @apply text-right;
+}
+
+.o-align-justify {
+  @apply text-justify;
 }
 
 @utility a {
-  @apply cursor-pointer text-zinc-900 underline dark:text-white;
+  @apply text-foreground cursor-pointer underline;
 }
 
 @utility b {
@@ -33,7 +45,7 @@
 }
 
 @utility paragraph {
-  @apply text-base font-medium text-zinc-700 dark:text-zinc-300;
+  @apply text-muted-foreground text-base font-normal;
 }
 
 @utility paragraph-margin {
@@ -45,31 +57,31 @@
 }
 
 @utility header {
-  @apply text-zinc-900 dark:text-white;
+  @apply text-foreground;
 }
 
 @utility header-h1 {
-  @apply text-3xl font-black;
+  @apply text-2xl font-semibold lg:text-3xl;
 }
 
 @utility header-h1-margin {
-  @apply mt-7 mb-5;
+  @apply mt-5 mb-3 lg:mt-6 lg:mb-4;
 }
 
 @utility header-h2 {
-  @apply text-2xl font-extrabold;
+  @apply text-xl font-semibold lg:text-2xl;
 }
 
 @utility header-h2-margin {
-  @apply mt-6 mb-4;
+  @apply mt-5 mb-3 lg:mt-6 lg:mb-4;
 }
 
 @utility header-h3 {
-  @apply text-xl font-bold;
+  @apply text-lg font-semibold lg:text-xl;
 }
 
 @utility header-h3-margin {
-  @apply mt-5 mb-3;
+  @apply mt-4 mb-3 lg:mt-5;
 }
 
 @utility header-other {
@@ -77,7 +89,7 @@
 }
 
 @utility header-other-margin {
-  @apply mt-4 mb-2;
+  @apply mt-3 mb-2 lg:mt-4;
 }
 
 @utility o-header {
@@ -109,11 +121,11 @@
 }
 
 @utility image-with-border {
-  @apply border border-zinc-200 dark:border-zinc-700;
+  @apply border-border border;
 }
 
 @utility image-with-background {
-  @apply bg-zinc-100 px-24 py-8 dark:bg-zinc-800;
+  @apply bg-accent px-24 py-8;
 }
 
 @utility image-rounded-corners {
