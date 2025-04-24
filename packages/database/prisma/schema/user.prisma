@@ -4,7 +4,6 @@ model User {
     surname           String
     patronymic        String
     avatar            String
-    roles             Role[]
     login             String           @unique()
     group             String
     course            String
@@ -12,10 +11,10 @@ model User {
     specialty         String
     specialization    String
     externalToken     String           @unique() @map("external_token")
+    createdAt         DateTime         @default(now()) @map("created_at")
+    roles             UserRole[]
     sessions          Session[]
     notifications     Notification[]
-    authoredDrafts    Draft[]
-    partneredDrafts   DraftPartner[]
     authoredProjects  Project[]
     partneredProjects ProjectPartner[]
     likes             Like[]
@@ -23,8 +22,8 @@ model User {
     @@map("users")
 }
 
-enum Role {
-    STUDENT
-    STAFF
-    ADMIN
+enum UserRole {
+    student
+    staff
+    admin
 }

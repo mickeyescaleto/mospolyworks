@@ -1,13 +1,13 @@
 model Like {
     id        String   @id @default(auto()) @map("_id") @db.ObjectId
-    userHash  String?  @map("user_hash")
+    client    String?
     createdAt DateTime @default(now()) @map("created_at")
     user      User?    @relation(fields: [userId], references: [id])
     userId    String?  @map("user_id") @db.ObjectId
     project   Project  @relation(fields: [projectId], references: [id], onUpdate: Cascade, onDelete: Cascade)
     projectId String   @map("project_id") @db.ObjectId
 
-    @@unique([userHash, projectId])
+    @@unique([client, projectId])
     @@unique([userId, projectId])
     @@map("likes")
 }

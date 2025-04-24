@@ -1,10 +1,10 @@
 model Tag {
-    id             String       @id @default(auto()) @map("_id") @db.ObjectId
-    title          String
-    category       Category     @relation(fields: [categoryId], references: [id], onUpdate: Cascade, onDelete: Cascade)
-    categoryId     String       @map("category_id") @db.ObjectId
-    taggedDrafts   DraftTag[]
-    taggedProjects ProjectTag[]
+    id         String       @id @default(auto()) @map("_id") @db.ObjectId
+    label      String
+    createdAt  DateTime     @default(now()) @map("created_at")
+    category   Category     @relation(fields: [categoryId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+    categoryId String       @map("category_id") @db.ObjectId
+    projects   ProjectTag[]
 
     @@map("tags")
 }
