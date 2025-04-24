@@ -2,6 +2,13 @@
 
 import { useTheme } from 'next-themes';
 import { Toaster as Sonner, ToasterProps } from 'sonner';
+import {
+  AlertCircleIcon,
+  BanIcon,
+  CheckCircle2Icon,
+  LoaderCircleIcon,
+  TriangleAlertIcon,
+} from 'lucide-react';
 
 export const Toaster = ({ ...props }: ToasterProps) => {
   const { theme = 'system' } = useTheme();
@@ -9,19 +16,27 @@ export const Toaster = ({ ...props }: ToasterProps) => {
   return (
     <Sonner
       theme={theme as ToasterProps['theme']}
-      className="toaster group"
+      icons={{
+        success: <CheckCircle2Icon className="size-4" />,
+        info: <AlertCircleIcon className="size-4" />,
+        warning: <TriangleAlertIcon className="size-4" />,
+        error: <BanIcon className="size-4" />,
+        loading: <LoaderCircleIcon className="size-4 animate-spin" />,
+      }}
       toastOptions={{
         classNames: {
-          toast:
-            'group toast group-[.toaster]:bg-zinc-100! font-sans! dark:group-[.toaster]:bg-zinc-900! group-[.toaster]:text-zinc-900! dark:group-[.toaster]:text-white! group-[.toaster]:border! group-[.toaster]:border-zinc-200! dark:group-[.toaster]:border-zinc-700! group-[.toaster]:shadow-lg!',
-          content:
-            'data-[content]:font-medium! data-[content]:text-sm! group-[.toaster]:text-zinc-900! dark:group-[.toaster]:text-white!',
-          title:
-            'data-[title]:font-medium! data-[title]:text-sm! group-[.toaster]:text-zinc-900! dark:group-[.toaster]:text-white!',
-          description:
-            'group-[.toast]:text-zinc-700! data-[description]:font-medium! data-[description]:text-sm! dark:group-[.toast]:text-zinc-300!',
+          toast: 'font-sans! rounded-md! shadow-md!',
         },
       }}
+      style={
+        {
+          '--toast-icon-margin-start': 0,
+          '--toast-icon-margin-end': 0,
+          '--normal-bg': 'var(--popover)',
+          '--normal-text': 'var(--popover-foreground)',
+          '--normal-border': 'var(--border)',
+        } as React.CSSProperties
+      }
       {...props}
     />
   );

@@ -5,7 +5,7 @@ import * as AvatarPrimitive from '@radix-ui/react-avatar';
 
 import { cn } from '@repo/ui/utilities/cn';
 
-export function Avatar({
+function Avatar({
   className,
   ...props
 }: React.ComponentProps<typeof AvatarPrimitive.Root>) {
@@ -21,20 +21,20 @@ export function Avatar({
   );
 }
 
-export function AvatarImage({
+function AvatarImage({
   className,
   ...props
 }: React.ComponentProps<typeof AvatarPrimitive.Image>) {
   return (
     <AvatarPrimitive.Image
       data-slot="avatar-image"
-      className={cn('aspect-square size-full object-cover', className)}
+      className={cn('aspect-square size-full', className)}
       {...props}
     />
   );
 }
 
-export function AvatarFallback({
+function AvatarFallback({
   className,
   ...props
 }: React.ComponentProps<typeof AvatarPrimitive.Fallback>) {
@@ -42,10 +42,12 @@ export function AvatarFallback({
     <AvatarPrimitive.Fallback
       data-slot="avatar-fallback"
       className={cn(
-        'flex size-full items-center justify-center rounded-full bg-zinc-200 dark:bg-zinc-800',
+        'bg-secondary text-secondary-foreground flex size-full items-center justify-center rounded-full text-xs',
         className,
       )}
       {...props}
     />
   );
 }
+
+export { Avatar, AvatarImage, AvatarFallback };
