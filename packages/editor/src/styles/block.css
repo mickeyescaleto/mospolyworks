@@ -8,7 +8,7 @@
   @apply editor-block-animate first:mt-0! last:mb-0!;
 
   &--selected &__content {
-    @apply bg-secondary/30;
+    @apply bg-accent;
 
     & [contenteditable] {
       @apply select-none;

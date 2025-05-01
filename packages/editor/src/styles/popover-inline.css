@@ -32,7 +32,7 @@
   }
 
   .editor-popover-item {
-    @apply rounded-md p-1;
+    @apply rounded-sm p-1;
 
     &__icon--tool {
       @apply mr-0 bg-transparent shadow-none;
@@ -93,7 +93,7 @@
     }
 
     .editor-popover-item {
-      @apply not-desktop:p-1 rounded-md p-1;
+      @apply not-desktop:p-1 rounded-sm p-1;
 
       &__icon--tool {
         @apply mr-1;

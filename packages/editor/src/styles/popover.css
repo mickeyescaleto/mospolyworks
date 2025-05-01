@@ -9,7 +9,7 @@
 }
 
 @utility active-popover-item {
-  @apply bg-secondary/80 hover:bg-secondary/60!;
+  @apply bg-accent hover:bg-accent/75!;
 }
 
 .editor-popover {
@@ -23,7 +23,7 @@
   --item-height: calc(var(--icon-size) + 2 * var(--item-padding));
 
   &__container {
-    @apply bg-surface pointer-events-none absolute top-(--popover-top) left-(--popover-left) z-4 flex max-h-64 w-50 flex-col overflow-hidden rounded-lg p-0 opacity-0 shadow-md;
+    @apply bg-surface pointer-events-none absolute top-(--popover-top) left-(--popover-left) z-4 flex max-h-64 w-50 flex-col overflow-hidden rounded-md p-0 opacity-0 shadow-md;
   }
 
   &--opened {
@@ -62,7 +62,7 @@
 
   @variant not-desktop {
     .editor-popover__container {
-      @apply fixed top-auto max-w-none rounded-lg;
+      @apply fixed top-auto max-w-none rounded-md;
 
       --offset: 6px;
 
@@ -136,14 +136,14 @@
 }
 
 .editor-popover-item {
-  @apply text-surface-foreground not-desktop:px-1 flex cursor-pointer items-center rounded-md bg-transparent px-0.5 py-1 select-none;
+  @apply text-surface-foreground not-desktop:px-1 flex cursor-pointer items-center rounded-sm bg-transparent px-0.5 py-1 select-none;
 
   &:not(:last-of-type) {
     @apply mb-px;
   }
 
   &:not(.editor-popover-item--no-hover) {
-    @apply hover:bg-secondary/30;
+    @apply hover:bg-accent;
   }
 
   &__icon {

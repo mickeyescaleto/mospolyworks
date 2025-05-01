@@ -129,7 +129,7 @@
 }
 
 @utility image-rounded-corners {
-  @apply rounded-lg;
+  @apply rounded-md;
 }
 
 @utility o-image {

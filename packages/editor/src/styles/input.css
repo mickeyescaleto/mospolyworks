@@ -1,7 +1,7 @@
 @reference '@repo/ui/styles/editor';
 
 @utility editor-input {
-  @apply bg-surface text-surface-foreground border-border flex h-9 w-full items-center rounded-md border text-sm font-normal transition-colors;
+  @apply bg-surface text-surface-foreground border-border flex h-9 w-full items-center rounded-sm border text-sm font-normal transition-colors;
 }
 
 .cdx-search-field {

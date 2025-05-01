@@ -1,7 +1,7 @@
 @reference '@repo/ui/styles/editor';
 
 @utility inline-toolbar-button {
-  @apply not-desktop:[&>svg]:size-7 not-desktop:size-9 text-secondary-foreground hover:bg-secondary/30 flex size-7 cursor-pointer items-center justify-center rounded-md bg-transparent p-0 [&>svg]:block [&>svg]:size-5;
+  @apply not-desktop:[&>svg]:size-7 not-desktop:size-9 text-accent-foreground hover:bg-accent flex size-7 cursor-pointer items-center justify-center rounded-sm bg-transparent p-0 [&>svg]:block [&>svg]:size-5;
 }
 
 @utility active-inline-toolbar-button {

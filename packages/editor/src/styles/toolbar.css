@@ -5,11 +5,11 @@
 }
 
 @utility toolbar-button {
-  @apply toolbar-button-animate text-secondary-foreground/80 hover:text-secondary-foreground hover:bg-secondary/30 inline-flex size-6 cursor-pointer items-center justify-center rounded-md transition-colors select-none [&_svg]:pointer-events-none [&_svg]:size-6 [&_svg]:shrink-0;
+  @apply toolbar-button-animate text-accent-foreground/80 hover:text-accent-foreground hover:bg-accent inline-flex size-6 cursor-pointer items-center justify-center rounded-sm transition-colors select-none [&_svg]:pointer-events-none [&_svg]:size-6 [&_svg]:shrink-0;
 }
 
 @utility mobile-toolbar-button {
-  @apply bg-surface hover:bg-secondary text-surface-foreground static z-2 size-10 rounded-full border shadow-md;
+  @apply bg-surface hover:bg-accent text-surface-foreground static z-2 size-10 rounded-full border shadow-md;
 }
 
 .editor-toolbar {

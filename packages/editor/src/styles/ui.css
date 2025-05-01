@@ -19,7 +19,7 @@
     }
 
     &__rectangle {
-      @apply bg-secondary/30 pointer-events-none absolute -top-4 -left-4;
+      @apply bg-accent pointer-events-none absolute -top-4 -left-4;
     }
   }
 
