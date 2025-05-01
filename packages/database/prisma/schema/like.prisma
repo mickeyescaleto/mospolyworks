@@ -2,7 +2,7 @@ model Like {
     id        String   @id @default(auto()) @map("_id") @db.ObjectId
     client    String?
     createdAt DateTime @default(now()) @map("created_at")
-    user      User?    @relation(fields: [userId], references: [id])
+    user      User?    @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
     userId    String?  @map("user_id") @db.ObjectId
     project   Project  @relation(fields: [projectId], references: [id], onUpdate: Cascade, onDelete: Cascade)
     projectId String   @map("project_id") @db.ObjectId
