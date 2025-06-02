@@ -3,14 +3,21 @@
 import { memo, useEffect, useRef } from 'react';
 
 import Editor, { type OutputData } from '@repo/editor';
+import { cn } from '@repo/ui/utilities/cn';
 
 type EditorBlockProps = {
   data?: OutputData;
   onChange?(data: OutputData): void;
   holder?: string;
+  readOnly?: boolean;
 };
 
-function EditorBlock({ data, onChange, holder = 'editor' }: EditorBlockProps) {
+function EditorBlock({
+  data,
+  onChange,
+  holder = 'editor',
+  readOnly = false,
+}: EditorBlockProps) {
   const editorRef = useRef<Editor>(null);
 
   useEffect(() => {
@@ -25,6 +32,7 @@ function EditorBlock({ data, onChange, holder = 'editor' }: EditorBlockProps) {
           const data = await api.saver.save();
           onChange?.(data);
         },
+        readOnly,
       });
     }
 
@@ -39,7 +47,12 @@ function EditorBlock({ data, onChange, holder = 'editor' }: EditorBlockProps) {
     };
   }, [editorRef]);
 
-  return <div id={holder} className="max-w-full" />;
+  return (
+    <div
+      id={holder}
+      className={cn('max-w-full', { 'editor-readonly': readOnly })}
+    />
+  );
 }
 
 export default memo(EditorBlock);

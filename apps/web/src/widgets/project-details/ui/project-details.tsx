@@ -1,6 +1,8 @@
+'use client';
+
 import { ProjectContributors } from '@/widgets/project-details/ui/project-contributors';
 import { ProjectActions } from '@/widgets/project-details/ui/project-actions';
-import { EditorOutputBlock, type OutputData } from '@/features/editor';
+import { LazyEditorBlock, type OutputData } from '@/features/editor';
 import { type ExhibitionProject, ProjectCover } from '@/entities/project';
 
 type ProjectDetailsProps = {
@@ -23,7 +25,12 @@ export function ProjectDetails({ project }: ProjectDetailsProps) {
           {project.title}
         </h1>
 
-        <EditorOutputBlock data={{ blocks: project.content } as OutputData} />
+        <LazyEditorBlock
+          holder="editor"
+          data={{ blocks: project.content } as OutputData}
+          onChange={(data) => console.log(data)}
+          readOnly
+        />
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 'use client';
 
 import { ProjectCover, useProjectForReview } from '@/entities/project';
-import { EditorOutputBlock, type OutputData } from '@/features/editor';
+import { LazyEditorBlock, type OutputData } from '@/features/editor';
 
 type ProjectForReviewDetailsProps = {
   projectId: string;
@@ -29,7 +29,12 @@ export function ProjectForReviewDetails({
           {project.title}
         </h1>
 
-        <EditorOutputBlock data={{ blocks: project.content } as OutputData} />
+        <LazyEditorBlock
+          holder="editor"
+          data={{ blocks: project.content } as OutputData}
+          onChange={(data) => console.log(data)}
+          readOnly
+        />
       </div>
     </div>
   );

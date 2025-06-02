@@ -1,5 +1,9 @@
 @import './theme.css';
 
+.editor-block--selected .editor-block__content {
+  @apply !bg-transparent;
+}
+
 .o-align-left {
   @apply text-left;
 }
