@@ -55,6 +55,7 @@ import {
   useDeleteProject,
 } from '@/entities/project';
 import { TagButton } from '@/entities/tag';
+import { CreateReport } from '@/features/create-report';
 
 type ProjectActionsProps = {
   project: ExhibitionProject;
@@ -275,11 +276,7 @@ export function ProjectActions({ project }: ProjectActionsProps) {
                   </AlertDialog>
                 </Fragment>
               ) : (
-                <DropdownMenuItem variant="destructive">
-                  <Trash2Icon className="size-4" />
-
-                  <span>Пожаловаться</span>
-                </DropdownMenuItem>
+                <CreateReport projectId={project.id} />
               )}
             </DropdownMenuContent>
 

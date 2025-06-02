@@ -147,3 +147,20 @@
     @apply image-rounded-corners;
   }
 }
+
+@utility delimiter {
+  @apply text-muted-foreground;
+
+  line-height: 1.6em;
+  width: 100%;
+  text-align: center;
+
+  &:before {
+    display: inline-block;
+    content: '***';
+    font-size: 30px;
+    line-height: 65px;
+    height: 30px;
+    letter-spacing: 0.2em;
+  }
+}

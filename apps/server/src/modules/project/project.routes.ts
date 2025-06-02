@@ -35,6 +35,8 @@ import {
   RejectProjectBody,
   RejectProjectResponse,
 } from '@/modules/project/schemas/routes/reject-project';
+import { NotificationService } from '@/modules/notification/notification.service';
+import { GetProjectForReviewResponse } from '@/modules/project/schemas/routes/get-project-for-review';
 
 const logger = getLogger('Projects');
 
@@ -485,11 +487,56 @@ export const projects = new Elysia({
           },
         },
       )
+      .get(
+        '/for-review/:id',
+        async ({ params, set }) => {
+          try {
+            const project = await ProjectService.getProjectForReview(params.id);
+
+            const message =
+              'Project for review have been successfully received';
+
+            logger.info(message);
+
+            const { partners, tags, ...rest } = project;
+
+            return {
+              ...rest,
+              partners: partners.map((partner) => partner.partner),
+              tags: tags.map((tag) => tag.tag),
+            };
+          } catch {
+            const message =
+              'An error occurred when receiving project for review';
+
+            logger.error(message);
+
+            set.status = 500;
+            throw new Error(message);
+          }
+        },
+        {
+          useRoles: {
+            roles: ['admin'],
+          },
+          response: response(GetProjectForReviewResponse),
+          detail: {
+            summary: 'Получить проект для проверки',
+            description: 'Возвращает проект для проверки',
+          },
+        },
+      )
       .post(
         '/:id/approve',
         async ({ params, set }) => {
           try {
             const project = await ProjectService.approveProject(params.id);
+
+            await NotificationService.createNotification(project.author.id, {
+              title: 'Ваш проект был одобрен!',
+              content: `Ваш проект: ${project.title} был одобрен администрацией`,
+              link: `/projects/${project.id}`,
+            });
 
             const message = `Project with the ID ${project.id} has been successfully approved`;
 
@@ -521,6 +568,12 @@ export const projects = new Elysia({
         async ({ params, body, set }) => {
           try {
             const project = await ProjectService.rejectProject(params.id, body);
+
+            await NotificationService.createNotification(project.author.id, {
+              title: 'Ваш проект был отклонён!',
+              content: `Ваш проект: ${project.title} был отклонён администрацией`,
+              link: `/projects/${project.id}/edit`,
+            });
 
             const message = `Project with the ID ${project.id} has been successfully rejected`;
 

@@ -118,8 +118,8 @@ export const tags = new Elysia({
           },
           response: response(GetTagsResponse),
           detail: {
-            summary: 'Получить все теги',
-            description: 'Возвращает список с информацией о тегах',
+            summary: 'Получить тег',
+            description: 'Возвращает информацию о теге по идентификатору',
           },
         },
       )

@@ -6,6 +6,7 @@ import { type OutputData } from '@repo/editor';
 import { ParagraphBlock } from '@/features/editor/ui/blocks/paragraph';
 import { HeaderBlock } from '@/features/editor/ui/blocks/header';
 import { ImageBlock } from '@/features/editor/ui/blocks/image';
+import { DelimiterBlock } from '@/features/editor/ui/blocks/delimiter';
 
 type RenderFn<T = undefined, K = Record<string, any> | undefined> = (
   _: {
@@ -35,6 +36,7 @@ function EditorOutputBlock({
     paragraph: ParagraphBlock,
     header: HeaderBlock,
     image: ImageBlock,
+    delimiter: DelimiterBlock,
   };
 
   return (

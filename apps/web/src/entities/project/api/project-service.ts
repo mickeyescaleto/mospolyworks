@@ -5,6 +5,16 @@ import { type GetProjectsQuery } from '@/entities/project/types/get-projects';
 import { type GetProjectsForReviewQuery } from '@/entities/project/types/get-projects-for-review';
 
 export class ProjectService {
+  static async getProjectForReviewById(id: string) {
+    const { data, error } = await server.projects['for-review']({ id }).get();
+
+    if (error) {
+      throw error;
+    }
+
+    return data;
+  }
+
   static async getExhibitionProjects(query: GetExhibitionProjectsQuery) {
     query = Object.fromEntries(
       Object.entries(query).filter(([_, value]) => value),

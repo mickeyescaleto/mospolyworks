@@ -64,7 +64,7 @@ export const EditProjectFormActions = memo(function EditProjectFormActions({
   const { mutate: unpublishProject } = useUnpublishProject(projectId);
   const { mutate: deleteProject } = useDeleteProject(projectId);
 
-  const { register, control, watch } = useFormContext();
+  const { register, control, watch, setValue } = useFormContext();
 
   const categoryId = watch('categoryId');
 
@@ -196,7 +196,11 @@ export const EditProjectFormActions = memo(function EditProjectFormActions({
                   name="categoryId"
                   control={control}
                   render={({ field: { value, onChange } }) => (
-                    <SelectCategory categoryId={value} onChange={onChange} />
+                    <SelectCategory
+                      categoryId={value}
+                      onChange={onChange}
+                      setValue={setValue}
+                    />
                   )}
                 />
               </div>

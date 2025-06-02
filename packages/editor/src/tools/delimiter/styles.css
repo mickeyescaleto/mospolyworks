@@ -1,0 +1,5 @@
+@reference '@repo/ui/styles/editor';
+
+.e-delimiter {
+  @apply delimiter;
+}

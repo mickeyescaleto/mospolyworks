@@ -15,9 +15,14 @@ import { useCategoriesForProject } from '@/entities/category';
 type SelectCategoryProps = {
   categoryId: string;
   onChange: (id: string) => void;
+  setValue: (...args: any) => void;
 };
 
-export function SelectCategory({ categoryId, onChange }: SelectCategoryProps) {
+export function SelectCategory({
+  categoryId,
+  onChange,
+  setValue,
+}: SelectCategoryProps) {
   const { data: categories, isError, isPending } = useCategoriesForProject();
 
   if (isPending) {
@@ -36,7 +41,10 @@ export function SelectCategory({ categoryId, onChange }: SelectCategoryProps) {
     <Fragment>
       <Select
         defaultValue={categoryId}
-        onValueChange={(value) => onChange(value)}
+        onValueChange={(value) => {
+          onChange(value);
+          setValue('tags', []);
+        }}
       >
         <SelectTrigger className="w-80">
           {categories.find((category) => category.id === categoryId)?.label ||

@@ -48,7 +48,6 @@ export function EditProjectForm({ project }: EditProjectFormProps) {
     formState: { isValid, isDirty },
     control,
     watch,
-    setValue,
     reset,
   } = methods;
 
@@ -82,16 +81,6 @@ export function EditProjectForm({ project }: EditProjectFormProps) {
       partners: project.partners.map((partner) => partner.id) || [],
     });
   }, [project, reset]);
-
-  useEffect(() => {
-    if (project.category && categoryId !== project.category.id) {
-      setValue('tags', []);
-    }
-  }, [categoryId, project]);
-
-  useEffect(() => {
-    console.log(formValues);
-  }, [formValues]);
 
   async function handleFormSubmit(data: FormValues) {
     editProject(

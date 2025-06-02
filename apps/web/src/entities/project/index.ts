@@ -3,6 +3,7 @@ export { KEYS } from './constants/keys';
 export { ProjectService } from './api/project-service';
 export { useProjects } from './model/use-projects';
 export { useProject } from './model/use-project';
+export { useProjectForReview } from './model/use-project-for-review';
 export { usePublishProject } from './model/use-publish-project';
 export { useExhibitionProjects } from './model/use-exhibition-projects';
 export { useProjectsForReview } from './model/use-projects-for-review';

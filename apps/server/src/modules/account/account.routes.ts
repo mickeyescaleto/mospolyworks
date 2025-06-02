@@ -10,6 +10,7 @@ import { Cookie } from '@/schemas/cookie';
 import { type IPayload } from '@/schemas/payload';
 import { AccountService } from '@/modules/account/account.service';
 import { SessionService } from '@/modules/session/session.service';
+import { NotificationService } from '@/modules/notification/notification.service';
 import {
   LoginBody,
   LoginResponse,
@@ -56,6 +57,13 @@ export const accounts = new Elysia({
           });
 
           await SessionService.createSession(account.id, token);
+
+          await NotificationService.createNotification(account.id, {
+            title: 'Добро пожаловать!',
+            content:
+              'Рады видеть Вас! Спасибо, что используете это приложение!',
+            link: null,
+          });
 
           const message = `User with ID ${account.id} has been successfully created and logged in`;
 

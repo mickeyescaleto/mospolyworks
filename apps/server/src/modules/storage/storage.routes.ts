@@ -14,7 +14,7 @@ export const storage = new Elysia({
     return {
       success: 1,
       file: {
-        url: await StorageService.save(body.file, 'test'),
+        url: await StorageService.save(body.file),
       },
     };
   },

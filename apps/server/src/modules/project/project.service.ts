@@ -186,6 +186,69 @@ export class ProjectService {
     });
   }
 
+  static async getProjectForReview(id: string) {
+    const project = await prisma.project.findUnique({
+      where: {
+        id,
+      },
+      select: {
+        id: true,
+        cover: true,
+        title: true,
+        titleAlignment: true,
+        content: true,
+        link: true,
+        status: true,
+        views: true,
+        rejectionComment: true,
+        publishedAt: true,
+        createdAt: true,
+        author: {
+          select: {
+            id: true,
+            name: true,
+            surname: true,
+            avatar: true,
+          },
+        },
+        category: {
+          select: {
+            id: true,
+            label: true,
+          },
+        },
+        partners: {
+          select: {
+            partner: {
+              select: {
+                id: true,
+                name: true,
+                surname: true,
+                avatar: true,
+              },
+            },
+          },
+        },
+        tags: {
+          select: {
+            tag: {
+              select: {
+                id: true,
+                label: true,
+              },
+            },
+          },
+        },
+      },
+    });
+
+    if (!project) {
+      throw new NotFoundError(`Project with the ID ${id} was not found`);
+    }
+
+    return project;
+  }
+
   static async getProjectById(projectId: string, authorId: string) {
     const project = await prisma.project.findUnique({
       where: {
@@ -560,7 +623,7 @@ export class ProjectService {
     const tags = data.tags ? JSON.parse(data.tags) : [];
     const cover =
       data.cover instanceof File
-        ? await StorageService.save(data.cover, `projects/${id}`)
+        ? await StorageService.save(data.cover)
         : (data.cover as string);
 
     const { categoryId, link, title, titleAlignment } = data;
@@ -742,6 +805,12 @@ export class ProjectService {
       },
       select: {
         id: true,
+        title: true,
+        author: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
   }
@@ -757,6 +826,12 @@ export class ProjectService {
       },
       select: {
         id: true,
+        title: true,
+        author: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
   }

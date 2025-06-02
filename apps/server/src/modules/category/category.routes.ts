@@ -125,7 +125,6 @@ export const categories = new Elysia({
           },
         },
       )
-
       .get(
         '/',
         async ({ set }) => {

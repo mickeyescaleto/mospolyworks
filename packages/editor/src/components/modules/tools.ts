@@ -3,6 +3,7 @@ import * as utilities from '@repo/editor/components/utilities';
 import Paragraph from '@repo/editor/tools/paragraph';
 import Header from '@repo/editor/tools/header';
 import Image from '@repo/editor/tools/image';
+import Delimiter from '@repo/editor/tools/delimiter';
 import AlignmentTune from '@repo/editor/tools/alignment-tune';
 import BoldInlineTool from '@repo/editor/components/inline-tools/inline-tool-bold';
 import ItalicInlineTool from '@repo/editor/components/inline-tools/inline-tool-italic';
@@ -166,10 +167,10 @@ export default class Tools extends Module {
         config: {
           endpoints: {
             byFile: 'http://localhost:3001/storage/upload-by-file',
-            byUrl: 'http://localhost:3001/storage/upload-by-url',
           },
         },
       },
+      delimiter: Delimiter,
       stub: {
         class: Stub,
         isInternal: true,
