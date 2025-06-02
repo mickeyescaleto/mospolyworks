@@ -47,7 +47,7 @@
   }
 
   &__items {
-    @apply overflow-y-auto overscroll-contain;
+    @apply overflow-x-hidden overflow-y-auto overscroll-contain;
   }
 
   &__overlay {

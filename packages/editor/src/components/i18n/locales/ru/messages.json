@@ -25,7 +25,8 @@
   "toolNames": {
     "Text": "Параграф",
     "Heading": "Заголовок",
-    "List": "Список",
+    "Ordered List": "Нумерованный список",
+    "Unordered List": "Маркированный список",
     "Warning": "Примечание",
     "Checklist": "Чеклист",
     "Quote": "Цитата",
@@ -83,7 +84,25 @@
     },
     "list": {
       "Ordered": "Нумерованный",
-      "Unordered": "Маркированный"
+      "Unordered": "Маркированный",
+      "Start with": "Начать с",
+      "Counter type": "Тип счётчика",
+      "Numeric": "Число",
+      "Lower Roman": "Маленькие римские",
+      "Upper Roman": "Большие римские",
+      "Lower Alpha": "Маленькие латинские",
+      "Upper Alpha": "Большие латинские"
+    },
+    "table": {
+      "Heading": "Заголовок",
+      "With headings": "С заголовками",
+      "Without headings": "Без заголовков",
+      "Add column to left": "Добавить столбец слева",
+      "Add column to right": "Добавить столбец справа",
+      "Delete column": "Удалить столбец",
+      "Add row above": "Добавить строку над",
+      "Add row below": "Добавить строку под",
+      "Delete row": "Удалить строку"
     },
     "convertTo": {
       "Convert to": "Преобразовать"

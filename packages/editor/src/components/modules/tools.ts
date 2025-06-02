@@ -2,6 +2,8 @@ import Module from '@repo/editor/components/__module';
 import * as utilities from '@repo/editor/components/utilities';
 import Paragraph from '@repo/editor/tools/paragraph';
 import Header from '@repo/editor/tools/header';
+import List from '@repo/editor/tools/list';
+import Table from '@repo/editor/tools/table';
 import Image from '@repo/editor/tools/image';
 import Delimiter from '@repo/editor/tools/delimiter';
 import AlignmentTune from '@repo/editor/tools/alignment-tune';
@@ -161,6 +163,14 @@ export default class Tools extends Module {
         },
         tunes: ['alignmentTune'],
       },
+      list: {
+        class: List,
+        inlineToolbar: true,
+        config: {
+          defaultStyle: 'unordered',
+        },
+      },
+      table: Table,
       image: {
         class: Image,
         isInternal: true,

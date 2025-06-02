@@ -1,0 +1,77 @@
+.cdx-list {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  display: grid;
+  counter-reset: item;
+  gap: var(--spacing-s);
+  padding: var(--spacing-xs);
+  color: var(--muted-foreground);
+  --spacing-s: 8px;
+  --spacing-xs: 6px;
+  --list-counter-type: numeric;
+  --radius-border: 5px;
+  --checkbox-background: #fff;
+  --color-border: #c9c9c9;
+  --color-bg-checked: #369fff;
+  --line-height: 1.45em;
+  --color-bg-checked-hover: #0059ab;
+  --color-tick: #fff;
+  --size-checkbox: 1.2em;
+
+  &__item {
+    line-height: var(--line-height);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      'checkbox content'
+      '. child';
+
+    &-children {
+      display: grid;
+      grid-area: child;
+      gap: var(--spacing-s);
+      padding-top: var(--spacing-s);
+    }
+
+    [contenteditable] {
+      outline: none;
+    }
+
+    &-content {
+      word-break: break-word;
+      white-space: pre-wrap;
+      grid-area: content;
+      padding-left: var(--spacing-s);
+    }
+
+    &::before {
+      counter-increment: item;
+
+      white-space: nowrap;
+    }
+  }
+
+  &-ordered &__item::before {
+    content: counters(item, '.', var(--list-counter-type)) '.';
+  }
+
+  &-ordered {
+    counter-reset: item;
+  }
+
+  &-unordered &__item::before {
+    content: '•';
+  }
+
+  &-checklist &__item::before {
+    content: '';
+  }
+
+  &__settings {
+    .cdx-settings-button {
+      width: 50%;
+    }
+  }
+}

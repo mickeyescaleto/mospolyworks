@@ -158,10 +158,10 @@ export function EditProjectForm({ project }: EditProjectFormProps) {
                 className={cn(
                   'hover:bg-secondary/50 focus:bg-secondary/50 ring-ring/5 peer header header-h1 hover:ring focus:ring',
                   {
-                    'text-left': formValues.titleAlignment === 'left',
-                    'text-center': formValues.titleAlignment === 'center',
-                    'text-right': formValues.titleAlignment === 'right',
-                    'text-justify': formValues.titleAlignment === 'justify',
+                    'o-align-left': formValues.titleAlignment === 'left',
+                    'o-align-center': formValues.titleAlignment === 'center',
+                    'o-align-right': formValues.titleAlignment === 'right',
+                    'o-align-justify': formValues.titleAlignment === 'justify',
                   },
                 )}
                 {...register('title')}
