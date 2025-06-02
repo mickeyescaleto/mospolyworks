@@ -29,7 +29,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function TagPage({
+export default async function UserPage({
   params,
 }: {
   params: Promise<{ id: string }>;
