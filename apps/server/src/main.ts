@@ -5,6 +5,7 @@ import { config } from '@/config';
 import { getLogger } from '@/utilities/logger';
 import { serialization } from '@/plugins/serialization';
 import { documentation } from '@/plugins/documentation';
+import { scheduler } from '@/plugins/scheduler';
 import { accounts } from '@/modules/account/account.routes';
 import { notifications } from '@/modules/notification/notification.routes';
 import { users } from '@/modules/user/user.routes';
@@ -21,6 +22,7 @@ export const application = new Elysia()
   .use(cors())
   .use(serialization)
   .use(documentation)
+  .use(scheduler)
   .use(accounts)
   .use(notifications)
   .use(users)
