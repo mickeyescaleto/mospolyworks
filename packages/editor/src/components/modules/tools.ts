@@ -6,6 +6,7 @@ import List from '@repo/editor/tools/list';
 import Table from '@repo/editor/tools/table';
 import Image from '@repo/editor/tools/image';
 import Delimiter from '@repo/editor/tools/delimiter';
+import Attaches from '@editorjs/attaches';
 import AlignmentTune from '@repo/editor/tools/alignment-tune';
 import BoldInlineTool from '@repo/editor/components/inline-tools/inline-tool-bold';
 import ItalicInlineTool from '@repo/editor/components/inline-tools/inline-tool-italic';
@@ -181,6 +182,14 @@ export default class Tools extends Module {
         },
       },
       delimiter: Delimiter,
+      attaches: {
+        class: Attaches,
+        config: {
+          endpoint: 'http://localhost:3001/storage/file/upload-by-file',
+          buttonText: 'Загрузить файл',
+          errorMessage: 'Ошибка при загрузке файла',
+        },
+      },
       stub: {
         class: Stub,
         isInternal: true,

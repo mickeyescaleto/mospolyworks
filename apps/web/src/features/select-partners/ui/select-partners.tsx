@@ -51,7 +51,7 @@ export function SelectPartners({ partners, onChange }: SelectPartnersProps) {
     });
 
     const filterFn = (user: User) => {
-      const label = `${user.surname} ${user.name} ${user.patronymic}`;
+      const label = `${user.surname} ${user.name}`;
       return label.toLowerCase().includes(inputValue.toLowerCase());
     };
 
@@ -134,7 +134,7 @@ export function SelectPartners({ partners, onChange }: SelectPartnersProps) {
                           }}
                         />
 
-                        <span className="truncate">{`${user.surname} ${user.name} ${user.patronymic}`}</span>
+                        <span className="truncate">{`${user.surname} ${user.name}`}</span>
                       </div>
 
                       <CheckIcon

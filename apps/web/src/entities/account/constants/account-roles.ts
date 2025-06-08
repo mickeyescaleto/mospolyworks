@@ -1,5 +1,4 @@
 export const ACCOUNT_ROLES = {
-  STUDENT: 'student',
-  STAFF: 'staff',
+  USER: 'user',
   ADMIN: 'admin',
 } as const;

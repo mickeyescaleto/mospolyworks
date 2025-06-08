@@ -11,9 +11,6 @@ function getConfig(): IConfig {
       app: {
         port: +Bun.env.SERVER_PORT!,
       },
-      external: {
-        endpoint: Bun.env.MOSPOLYTECH_ENDPOINT!,
-      },
       ajwt: {
         secret: Bun.env.JWT_ACCESS_SECRET!,
         expires: +Bun.env.JWT_ACCESS_EXPIRES!,
@@ -29,9 +26,6 @@ function getConfig(): IConfig {
         bucket: Bun.env.S3_BUCKET!,
         region: Bun.env.S3_REGION!,
         domain: Bun.env.S3_DOMAIN!,
-      },
-      fake: {
-        agent: Bun.env.FAKE_AGENT!,
       },
     };
 

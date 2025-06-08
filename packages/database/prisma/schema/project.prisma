@@ -1,38 +1,38 @@
 model Project {
-    id               String                @id @default(auto()) @map("_id") @db.ObjectId
-    cover            String?
-    title            String?
-    titleAlignment   ProjectTitleAlignment @default(center) @map("title_alignment")
-    content          Json[]
-    link             String?
-    views            Int                   @default(0)
-    rejectionComment String?               @map("rejection_comment")
-    publishedAt      DateTime?             @map("published_at")
-    createdAt        DateTime              @default(now()) @map("created_at")
-    status           ProjectStatus         @default(unpublished)
-    author           User                  @relation(fields: [authorId], references: [id], onUpdate: Cascade, onDelete: Cascade)
-    authorId         String                @map("author_id") @db.ObjectId
-    category         Category?             @relation(fields: [categoryId], references: [id], onUpdate: Cascade, onDelete: Cascade)
-    categoryId       String?               @map("category_id") @db.ObjectId
-    partners         ProjectPartner[]
-    tags             ProjectTag[]
-    likes            Like[]
-    reports          Report[]
+  id               String                @id @default(auto()) @map("_id") @db.ObjectId
+  cover            String?
+  title            String?
+  titleAlignment   ProjectTitleAlignment @default(center) @map("title_alignment")
+  content          Json[]
+  link             String?
+  views            Int                   @default(0)
+  rejectionComment String?               @map("rejection_comment")
+  publishedAt      DateTime?             @map("published_at")
+  createdAt        DateTime              @default(now()) @map("created_at")
+  status           ProjectStatus         @default(unpublished)
+  author           User                  @relation(fields: [authorId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  authorId         String                @map("author_id") @db.ObjectId
+  category         Category?             @relation(fields: [categoryId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  categoryId       String?               @map("category_id") @db.ObjectId
+  partners         ProjectPartner[]
+  tags             ProjectTag[]
+  likes            Like[]
+  reports          Report[]
 
-    @@map("projects")
+  @@map("projects")
 }
 
 enum ProjectTitleAlignment {
-    left
-    center
-    right
-    justify
+  left
+  center
+  right
+  justify
 }
 
 enum ProjectStatus {
-    unpublished
-    published
-    verified
-    rejected
-    corrected
+  unpublished
+  published
+  verified
+  rejected
+  corrected
 }

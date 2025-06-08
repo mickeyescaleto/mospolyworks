@@ -14,7 +14,7 @@ export const account = new Elysia()
         const payload = await ajwt.verify(cookie['access_token'].value);
 
         if (!payload) {
-          return;
+          return undefined;
         }
 
         return {
@@ -29,7 +29,7 @@ export const account = new Elysia()
         const payload = await rjwt.verify(cookie['refresh_token'].value);
 
         if (!payload) {
-          return;
+          return undefined;
         }
 
         const session = await SessionService.getSessionByToken(

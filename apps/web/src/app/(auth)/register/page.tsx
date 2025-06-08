@@ -1,12 +1,12 @@
 import { type Metadata } from 'next';
 import Link from 'next/link';
 
-import { AuthForm } from '@/widgets/auth-form';
+import { RegisterForm } from '@/widgets/auth-form';
 import { ROUTES } from '@/shared/constants/routes';
 import { Brand } from '@/shared/ui/brand';
 
 export const metadata: Metadata = {
-  title: 'вход',
+  title: 'регистрация',
 };
 
 export default function LoginPage() {
@@ -18,17 +18,16 @@ export default function LoginPage() {
             <Brand className="size-24" />
           </Link>
         </div>
-
         <p className="text-muted-foreground text-center">
-          Для авторизации используйте логин&nbsp;и&nbsp;пароль
+          Для регистрации необходимо заполнить все поля формы
         </p>
 
-        <AuthForm />
+        <RegisterForm />
 
         <p className="text-muted-foreground -mt-2 text-center text-sm">
-          Нет аккаунта?{' '}
-          <Link href="/register" className="text-foreground hover:underline">
-            Зарегистрируйтесь
+          Уже есть аккаунт?{' '}
+          <Link href="/login" className="text-foreground hover:underline">
+            Авторизуйтесь
           </Link>
         </p>
       </div>

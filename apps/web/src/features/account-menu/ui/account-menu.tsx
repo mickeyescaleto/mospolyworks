@@ -16,6 +16,7 @@ import {
 
 import { AccountLink } from '@/features/account-menu/ui/account-link';
 import { CreateProjectButton } from '@/features/account-menu/ui/create-project-button';
+import { ChangeSettings } from '@/features/account-menu/ui/change-settings';
 import { LogoutButton } from '@/features/account-menu/ui/logout-button';
 import { type Account } from '@/entities/account';
 import { getInitials } from '@/shared/utilities/get-initials';
@@ -48,6 +49,8 @@ export function AccountMenu({ account }: AccountMenuProps) {
             <AccountLink account={account} />
 
             <CreateProjectButton />
+
+            <ChangeSettings />
 
             <DropdownMenuSeparator />
 

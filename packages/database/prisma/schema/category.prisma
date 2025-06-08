@@ -1,10 +1,10 @@
 model Category {
-    id        String    @id @default(auto()) @map("_id") @db.ObjectId
-    label     String    @unique
-    isHidden  Boolean   @default(false) @map("is_hidden")
-    createdAt DateTime  @default(now()) @map("created_at")
-    tags      Tag[]
-    projects  Project[]
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  label     String    @unique
+  isHidden  Boolean   @default(false) @map("is_hidden")
+  createdAt DateTime  @default(now()) @map("created_at")
+  tags      Tag[]
+  projects  Project[]
 
-    @@map("categories")
+  @@map("categories")
 }

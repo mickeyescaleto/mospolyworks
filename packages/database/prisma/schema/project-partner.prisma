@@ -1,10 +1,10 @@
 model ProjectPartner {
-    id        String  @id @default(auto()) @map("_id") @db.ObjectId
-    partner   User    @relation(fields: [partnerId], references: [id], onUpdate: Cascade, onDelete: Cascade)
-    partnerId String  @map("partner_id") @db.ObjectId
-    project   Project @relation(fields: [projectId], references: [id], onUpdate: Cascade, onDelete: Cascade)
-    projectId String  @map("project_id") @db.ObjectId
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  partner   User    @relation(fields: [partnerId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  partnerId String  @map("partner_id") @db.ObjectId
+  project   Project @relation(fields: [projectId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  projectId String  @map("project_id") @db.ObjectId
 
-    @@unique([partnerId, projectId])
-    @@map("project_partners")
+  @@unique([partnerId, projectId])
+  @@map("project_partners")
 }

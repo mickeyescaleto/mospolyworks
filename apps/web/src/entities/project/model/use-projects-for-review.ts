@@ -14,7 +14,6 @@ export function useProjectsForReview() {
         cursor: pageParam,
         limit: PROJECTS_FETCH_LIMIT,
       }),
-    staleTime: 1000 * 60 * 10,
     initialPageParam: '',
     getNextPageParam: (lastPage) => {
       if (!(lastPage.length === PROJECTS_FETCH_LIMIT)) {

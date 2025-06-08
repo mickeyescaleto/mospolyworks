@@ -1,29 +1,22 @@
 model User {
-    id                String           @id @default(auto()) @map("_id") @db.ObjectId
-    name              String
-    surname           String
-    patronymic        String
-    avatar            String
-    login             String           @unique()
-    group             String
-    course            String
-    faculty           String
-    specialty         String
-    specialization    String
-    externalToken     String           @unique() @map("external_token")
-    createdAt         DateTime         @default(now()) @map("created_at")
-    roles             UserRole[]
-    sessions          Session[]
-    notifications     Notification[]
-    authoredProjects  Project[]
-    partneredProjects ProjectPartner[]
-    likes             Like[]
+  id                String           @id @default(auto()) @map("_id") @db.ObjectId
+  name              String
+  surname           String
+  avatar            String           @default("")
+  login             String           @unique()
+  password          String
+  createdAt         DateTime         @default(now()) @map("created_at")
+  roles             UserRole[]       @default([user])
+  sessions          Session[]
+  notifications     Notification[]
+  authoredProjects  Project[]
+  partneredProjects ProjectPartner[]
+  likes             Like[]
 
-    @@map("users")
+  @@map("users")
 }
 
 enum UserRole {
-    student
-    staff
-    admin
+  user
+  admin
 }

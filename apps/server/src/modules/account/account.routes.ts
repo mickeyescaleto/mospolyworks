@@ -12,6 +12,10 @@ import { AccountService } from '@/modules/account/account.service';
 import { SessionService } from '@/modules/session/session.service';
 import { NotificationService } from '@/modules/notification/notification.service';
 import {
+  RegisterBody,
+  RegisterResponse,
+} from '@/modules/account/schemas/routes/register';
+import {
   LoginBody,
   LoginResponse,
 } from '@/modules/account/schemas/routes/login';
@@ -43,52 +47,75 @@ export const accounts = new Elysia({
     return { setCookies };
   })
   .post(
-    '/users/auth/login',
+    '/users/auth/register',
     async ({ setCookies, body, set }) => {
       try {
-        const account = await AccountService.getAccountByLogin(body.login);
-
-        if (!account) {
-          const account = await AccountService.createAccount(body);
-
-          const token = await setCookies({
-            id: account.id,
-            roles: account.roles,
-          });
-
-          await SessionService.createSession(account.id, token);
-
-          await NotificationService.createNotification(account.id, {
-            title: 'Добро пожаловать!',
-            content:
-              'Рады видеть Вас! Спасибо, что используете это приложение!',
-            link: null,
-          });
-
-          const message = `User with ID ${account.id} has been successfully created and logged in`;
-
-          logger.info(message);
-
-          return account;
-        }
-
-        const updatedAccount = await AccountService.updateAccount(
-          account,
-          body,
-        );
+        const account = await AccountService.register(body);
 
         const token = await setCookies({
-          id: updatedAccount.id,
-          roles: updatedAccount.roles,
+          id: account.id,
+          roles: account.roles,
         });
 
-        await SessionService.createSession(updatedAccount.id, token);
+        await SessionService.createSession(account.id, token);
 
-        const message = `User with ID ${updatedAccount.id} has successfully logged in`;
+        await NotificationService.createNotification(account.id, {
+          title: 'Добро пожаловать!',
+          content: 'Рады видеть Вас! Спасибо, что используете это приложение!',
+          link: null,
+        });
+
+        const message = `User with ID ${account.id} has been successfully created`;
 
         logger.info(message);
 
-        return updatedAccount;
+        return account;
+      } catch (error) {
+        if (error instanceof BadRequestError) {
+          const message = error.message;
+
+          logger.warn(message);
+
+          set.status = 400;
+          throw new Error(message);
+        }
+
+        const message = 'An error occurred when registering the user';
+
+        logger.error(message);
+
+        set.status = 500;
+        throw new Error(message);
+      }
+    },
+    {
+      body: RegisterBody,
+      response: response(RegisterResponse),
+      detail: {
+        summary: 'Регистрация учётной записи',
+        description:
+          'Регистрирует новую учётную запись пользователя, записывает токены доступа и обновления в cookie',
+      },
+    },
+  )
+  .post(
+    '/users/auth/login',
+    async ({ setCookies, body, set }) => {
+      try {
+        const account = await AccountService.login(body);
+
+        const token = await setCookies({
+          id: account.id,
+          roles: account.roles,
+        });
+
+        await SessionService.createSession(account.id, token);
+
+        const message = `User with ID ${account.id} has successfully logged in`;
+
+        logger.info(message);
+
+        return account;
       } catch (error) {
         if (error instanceof BadRequestError) {
           const message = error.message;
@@ -103,7 +130,7 @@ export const accounts = new Elysia({
 
         logger.error(message);
 
-        set.status = 400;
+        set.status = 500;
         throw new Error(message);
       }
     },

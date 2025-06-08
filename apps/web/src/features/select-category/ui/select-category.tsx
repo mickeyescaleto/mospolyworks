@@ -52,11 +52,17 @@ export function SelectCategory({
         </SelectTrigger>
 
         <SelectContent>
-          {categories.map((category) => (
-            <SelectItem key={category.id} value={category.id}>
-              {category.label}
-            </SelectItem>
-          ))}
+          {categories.length === 0 ? (
+            <p className="text-muted-foreground py-4 text-center text-sm">
+              Категории отсутствуют
+            </p>
+          ) : (
+            categories.map((category) => (
+              <SelectItem key={category.id} value={category.id}>
+                {category.label}
+              </SelectItem>
+            ))
+          )}
         </SelectContent>
       </Select>
 

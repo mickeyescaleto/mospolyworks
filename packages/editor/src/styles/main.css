@@ -12,3 +12,34 @@
 @import './popover.css';
 @import './popover-inline.css';
 @import './placeholders.css';
+
+body .cdx-attaches {
+  &--with-file {
+    border: 1px solid var(--border);
+    background: var(--accent);
+    border-radius: calc(var(--radius) - 4px);
+
+    .cdx-attaches__download-button {
+      background: transparent;
+      border: 1px solid var(--border);
+    }
+
+    .cdx-attaches__download-button:hover {
+      background: color-mix(in oklab, var(--muted) 50%, transparent);
+    }
+
+    &__size {
+      color: var(--muted-foreground);
+    }
+  }
+
+  .cdx-attaches__button {
+    color: color-mix(in oklab, var(--muted-foreground) 80%, transparent);
+    border-radius: calc(var(--radius) - 4px);
+    font-weight: 400;
+
+    &:hover {
+      color: color-mix(in oklab, var(--muted-foreground) 100%, transparent);
+    }
+  }
+}

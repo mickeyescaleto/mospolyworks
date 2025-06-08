@@ -39,7 +39,8 @@
     "Bold": "Жирный",
     "Italic": "Курсив",
     "InlineCode": "Моноширинный",
-    "Image": "Картинка"
+    "Image": "Картинка",
+    "Attachment": "Файл"
   },
   "tools": {
     "warning": {
@@ -103,6 +104,9 @@
       "Add row above": "Добавить строку над",
       "Add row below": "Добавить строку под",
       "Delete row": "Удалить строку"
+    },
+    "attaches": {
+      "File title": "Название файла"
     },
     "convertTo": {
       "Convert to": "Преобразовать"

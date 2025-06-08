@@ -10,6 +10,7 @@
   "types": "./src/types/index.d.ts",
   "dependencies": {
     "@codexteam/ajax": "^4.2.0",
+    "@editorjs/attaches": "^1.3.0",
     "@editorjs/caret": "^1.0.1",
     "@repo/ui": "workspace:*",
     "@tailwindcss/postcss": "^4.0.6",

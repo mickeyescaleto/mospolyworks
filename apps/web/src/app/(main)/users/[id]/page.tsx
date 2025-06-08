@@ -25,7 +25,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${user.surname} ${user.name} ${user.patronymic}`,
+    title: `${user.name} ${user.surname}`,
   };
 }
 
@@ -53,22 +53,14 @@ export default async function UserPage({
           />
 
           <div className="flex flex-col items-center gap-2 sm:items-start">
-            <p className="text-xl font-medium md:text-3xl">{`${user.surname} ${user.name} ${user.patronymic}`}</p>
+            <p className="text-xl font-medium md:text-3xl">{`${user.name} ${user.surname}`}</p>
 
             <div className="flex flex-wrap justify-center gap-1 sm:justify-start">
               <Badge variant="secondary">
-                {user.roles.includes('student') ? 'Студент' : 'Сотрудник'}
+                {user.roles.includes('admin')
+                  ? 'Администратор'
+                  : 'Пользователь'}
               </Badge>
-
-              {user.faculty && (
-                <Badge variant="secondary">{user.faculty}</Badge>
-              )}
-
-              {user.specialization && (
-                <Badge variant="secondary">{user.specialization}</Badge>
-              )}
-
-              {user.group && <Badge variant="secondary">{user.group}</Badge>}
             </div>
           </div>
         </div>

@@ -1,12 +1,12 @@
 model Notification {
-    id        String   @id @default(auto()) @map("_id") @db.ObjectId
-    title     String
-    content   String
-    link      String?
-    isRead    Boolean  @default(false) @map("is_read")
-    createdAt DateTime @default(now()) @map("created_at")
-    user      User     @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
-    userId    String   @map("user_id") @db.ObjectId
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  content   String
+  link      String?
+  isRead    Boolean  @default(false) @map("is_read")
+  createdAt DateTime @default(now()) @map("created_at")
+  user      User     @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  userId    String   @map("user_id") @db.ObjectId
 
-    @@map("notifications")
+  @@map("notifications")
 }

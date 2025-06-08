@@ -11,6 +11,19 @@ export class AccountService {
     return data;
   }
 
+  static async register<
+    T extends Parameters<typeof server.accounts.users.auth.register.post>[0],
+  >(body: T) {
+    const { data, error } =
+      await server.accounts.users.auth.register.post(body);
+
+    if (error) {
+      throw error;
+    }
+
+    return data;
+  }
+
   static async login<
     T extends Parameters<typeof server.accounts.users.auth.login.post>[0],
   >(body: T) {

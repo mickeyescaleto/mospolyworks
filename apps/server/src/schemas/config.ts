@@ -4,9 +4,6 @@ export const Config = t.Object({
   app: t.Object({
     port: t.Number(),
   }),
-  external: t.Object({
-    endpoint: t.String(),
-  }),
   ajwt: t.Object({
     secret: t.String(),
     expires: t.Number(),
@@ -22,9 +19,6 @@ export const Config = t.Object({
     bucket: t.String(),
     region: t.String(),
     domain: t.String(),
-  }),
-  fake: t.Object({
-    agent: t.String(),
   }),
 });
 

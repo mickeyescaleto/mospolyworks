@@ -3,23 +3,6 @@ import { NotFoundError } from 'elysia';
 import { prisma } from '@repo/database';
 
 export class UserService {
-  static async getUsersForProject(accountId: string) {
-    return await prisma.user.findMany({
-      where: {
-        id: {
-          not: accountId,
-        },
-      },
-      select: {
-        id: true,
-        name: true,
-        surname: true,
-        patronymic: true,
-        avatar: true,
-      },
-    });
-  }
-
   static async getUserById(id: string) {
     const user = await prisma.user.findUnique({
       where: {
@@ -34,14 +17,19 @@ export class UserService {
     return user;
   }
 
-  static async getCountUsers() {
-    return await prisma.user.count();
-  }
-
-  static async getUsersBatch(skip: number, take: number) {
+  static async getUsersForProject(accountId: string) {
     return await prisma.user.findMany({
-      skip,
-      take,
+      where: {
+        id: {
+          not: accountId,
+        },
+      },
+      select: {
+        id: true,
+        name: true,
+        surname: true,
+        avatar: true,
+      },
     });
   }
 }

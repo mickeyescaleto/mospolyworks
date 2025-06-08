@@ -1,77 +1,57 @@
-import { InternalServerError, NotFoundError } from 'elysia';
+import { NotFoundError } from 'elysia';
 
 import { prisma } from '@repo/database';
 
-import { config } from '@/config';
 import { BadRequestError } from '@/errors/bad-request';
-import {
-  type IParseAccountProps,
-  type IExternalAccountCredentials,
-} from '@/modules/account/schemas/external-account';
-import { type IAccount } from '@/modules/account/schemas/account';
-import { type IUserRole } from '@/modules/user/schemas/user-role';
+import { type IRegisterBody } from '@/modules/account/schemas/routes/register';
+import { type ILoginBody } from '@/modules/account/schemas/routes/login';
 
 export class AccountService {
-  private static async parseAccount({ user, token }: IParseAccountProps) {
-    const roles: IUserRole[] =
-      user['user_status'] === 'stud' ? ['student'] : ['staff'];
+  static async register(data: IRegisterBody) {
+    const existingAccount = await prisma.user.findUnique({
+      where: {
+        login: data.login,
+      },
+    });
 
-    const account: Omit<IAccount, 'id' | 'createdAt'> = {
-      name: user.name,
-      surname: user.surname,
-      patronymic: user.patronymic,
-      login: user.login,
-      avatar: user.avatar,
-      group: user.group,
-      course: user.course,
-      faculty: user.faculty,
-      specialty: user.specialty,
-      specialization: user.specialization,
-      externalToken: token,
-      roles,
-    };
+    if (existingAccount) {
+      throw new BadRequestError(`User with login ${data.login} already exists`);
+    }
+
+    const hashedPassword = await Bun.password.hash(data.password, {
+      algorithm: 'bcrypt',
+      cost: 10,
+    });
+
+    const account = await prisma.user.create({
+      data: {
+        ...data,
+        password: hashedPassword,
+      },
+    });
 
     return account;
   }
 
-  private static async getExternalAccount(
-    credentials: IExternalAccountCredentials,
-  ) {
-    const { token } = await fetch(config.external.endpoint, {
-      method: 'POST',
-      headers: {
-        'user-agent': config.fake.agent,
+  static async login(data: ILoginBody) {
+    const account = await prisma.user.findUnique({
+      where: {
+        login: data.login,
       },
-      body: Object.entries({
-        ulogin: credentials.login,
-        upassword: credentials.password,
-      }).reduce((f, [k, v]) => (f.append(k, v), f), new FormData()),
-    }).then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-
-      if (response.status === 400) {
-        throw new BadRequestError('Invalid credentials');
-      }
-
-      throw new InternalServerError('Internal Server Error');
     });
 
-    const { user } = await fetch(
-      `${config.external.endpoint}/?getUser&token=${token}`,
-    ).then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
+    if (!account) {
+      throw new BadRequestError(`Invalid credentials`);
+    }
 
-      throw new InternalServerError('Internal Server Error');
-    });
+    const isCorrectPassword = await Bun.password.verify(
+      data.password,
+      account.password,
+    );
 
-    const account = this.parseAccount({
-      user: { ...user, ...credentials },
-      token,
-    });
+    if (!isCorrectPassword) {
+      throw new BadRequestError('Invalid credentials');
+    }
 
     return account;
   }
@@ -84,85 +64,9 @@ export class AccountService {
     });
 
     if (!account) {
-      throw new NotFoundError(`Account with the ID ${id} was not found`);
+      throw new NotFoundError(`User with the ID ${id} was not found`);
     }
 
     return account;
-  }
-
-  static async getAccountByLogin(login: string) {
-    const account = await prisma.user.findUnique({
-      where: {
-        login,
-      },
-    });
-
-    if (!account) {
-      return null;
-    }
-
-    return account;
-  }
-
-  static async createAccount(credentials: IExternalAccountCredentials) {
-    const externalAccount = await this.getExternalAccount(credentials);
-
-    return await prisma.user.create({
-      data: {
-        ...externalAccount,
-      },
-    });
-  }
-
-  static async updateAccount(
-    account: IAccount,
-    credentials: IExternalAccountCredentials,
-  ) {
-    const externalAccount = await this.getExternalAccount(credentials);
-
-    if (account.roles.includes('admin')) {
-      externalAccount.roles.push('admin');
-    }
-
-    return await prisma.user.update({
-      where: {
-        id: account.id,
-      },
-      data: {
-        ...externalAccount,
-      },
-    });
-  }
-
-  static async actualizeAccount(userId: string) {
-    const account = await this.getAccountById(userId);
-
-    const { user } = await fetch(
-      `${config.external.endpoint}/?getUser&token=${account.externalToken}`,
-    ).then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-
-      throw new InternalServerError('Internal Server Error');
-    });
-
-    const externalAccount = await this.parseAccount({
-      token: account.externalToken,
-      user,
-    });
-
-    if (account.roles.includes('admin')) {
-      externalAccount.roles.push('admin');
-    }
-
-    return await prisma.user.update({
-      where: {
-        id: userId,
-      },
-      data: {
-        ...externalAccount,
-      },
-    });
   }
 }
