@@ -16,7 +16,7 @@ export function ProjectCover({
   quality = 100,
 }: ProjectCoverProps) {
   return (
-    <div className="relative aspect-video select-none md:aspect-[16/7]">
+    <div className="border-border relative aspect-video rounded-lg border select-none md:aspect-[16/7]">
       {cover ? (
         <Image
           src={cover}

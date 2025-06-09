@@ -19,7 +19,7 @@ export function ProjectCardCover({
   quality = 100,
 }: ProjectCardCoverProps) {
   return (
-    <div className="relative aspect-video select-none">
+    <div className="border-border relative aspect-video rounded-md border select-none">
       {cover ? (
         <Image
           src={cover}
