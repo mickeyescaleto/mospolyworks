@@ -8,6 +8,7 @@ export const User = t.Object({
   surname: t.String(),
   avatar: t.String(),
   login: t.String(),
+  email: t.String(),
   password: t.String(),
   createdAt: t.Date(),
   roles: t.Array(UserRole),

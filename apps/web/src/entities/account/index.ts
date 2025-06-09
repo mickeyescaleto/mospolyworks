@@ -6,4 +6,5 @@ export { useAccount } from './model/use-account';
 export { useRegister } from './model/use-register';
 export { useLogin } from './model/use-login';
 export { useLogout } from './model/use-logout';
+export { useChangeSettings } from './model/use-change-settings';
 export { type Account } from './types/account';

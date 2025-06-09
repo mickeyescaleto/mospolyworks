@@ -81,6 +81,29 @@ export function RegisterForm() {
         </div>
 
         <div className="grid gap-1.5">
+          <Label className="sr-only" htmlFor="email">
+            Электронная почта
+          </Label>
+
+          <Input
+            id="email"
+            placeholder="Введите почту"
+            type="text"
+            autoCapitalize="none"
+            autoComplete="email"
+            autoCorrect="off"
+            disabled={isPending}
+            {...register('email')}
+          />
+
+          {errors?.email && (
+            <p className="text-destructive px-2 text-xs">
+              {errors.email.message}
+            </p>
+          )}
+        </div>
+
+        <div className="grid gap-1.5">
           <Label className="sr-only" htmlFor="login">
             Логин
           </Label>

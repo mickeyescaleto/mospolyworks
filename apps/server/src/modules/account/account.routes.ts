@@ -21,6 +21,10 @@ import {
 } from '@/modules/account/schemas/routes/login';
 import { GetAccountResponse } from '@/modules/account/schemas/routes/get-account';
 import { LogoutResponse } from '@/modules/account/schemas/routes/logout';
+import {
+  UpdateAccountBody,
+  UpdateAccountResponse,
+} from '@/modules/account/schemas/routes/update-account';
 
 const logger = getLogger('Accounts');
 
@@ -216,6 +220,35 @@ export const accounts = new Elysia({
             summary: 'Выход из учётной записи',
             description:
               'Удаляет текущую сессию, удаляет токены доступа и обновления из cookie',
+          },
+        },
+      )
+      .put(
+        '/users/settings',
+        async ({ account: { id }, body, set }) => {
+          try {
+            const account = AccountService.updateAccount(id, body);
+
+            const message = `Account with the ID ${id} has been successfully updated`;
+
+            logger.info(message);
+
+            return account;
+          } catch {
+            const message = 'An error occurred when updating the account';
+
+            logger.error(message);
+
+            set.status = 500;
+            throw new Error(message);
+          }
+        },
+        {
+          body: UpdateAccountBody,
+          response: response(UpdateAccountResponse),
+          detail: {
+            summary: 'Обновить настройки аккаунта',
+            description: 'Обновляет настройки аккаунта пользователя',
           },
         },
       ),

@@ -7,6 +7,7 @@ export const RegisterBody = t.Pick(Account, [
   'name',
   'surname',
   'login',
+  'email',
   'password',
 ]);
 

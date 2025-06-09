@@ -45,4 +45,16 @@ export class AccountService {
 
     return data;
   }
+
+  static async changeSettings(
+    body: Parameters<typeof server.accounts.users.settings.put>[0],
+  ) {
+    const { data, error } = await server.accounts.users.settings.put(body);
+
+    if (error) {
+      throw error;
+    }
+
+    return data;
+  }
 }

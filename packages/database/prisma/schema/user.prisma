@@ -4,6 +4,7 @@ model User {
   surname           String
   avatar            String           @default("")
   login             String           @unique()
+  email             String           @unique()
   password          String
   createdAt         DateTime         @default(now()) @map("created_at")
   roles             UserRole[]       @default([user])

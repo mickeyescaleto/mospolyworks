@@ -3,19 +3,21 @@ import { NotFoundError } from 'elysia';
 import { prisma } from '@repo/database';
 
 import { BadRequestError } from '@/errors/bad-request';
+import { StorageService } from '@/modules/storage/storage.service';
 import { type IRegisterBody } from '@/modules/account/schemas/routes/register';
 import { type ILoginBody } from '@/modules/account/schemas/routes/login';
+import { type IUpdateAccountBody } from '@/modules/account/schemas/routes/update-account';
 
 export class AccountService {
   static async register(data: IRegisterBody) {
-    const existingAccount = await prisma.user.findUnique({
+    const existingAccount = await prisma.user.findFirst({
       where: {
-        login: data.login,
+        OR: [{ login: data.login }, { email: data.email }],
       },
     });
 
     if (existingAccount) {
-      throw new BadRequestError(`User with login ${data.login} already exists`);
+      throw new BadRequestError(`User already exists`);
     }
 
     const hashedPassword = await Bun.password.hash(data.password, {
@@ -68,5 +70,23 @@ export class AccountService {
     }
 
     return account;
+  }
+
+  static async updateAccount(id: string, data: IUpdateAccountBody) {
+    const { name, surname, avatar } = data;
+
+    return await prisma.user.update({
+      where: {
+        id,
+      },
+      data: {
+        name,
+        surname,
+        avatar:
+          avatar instanceof File
+            ? await StorageService.save(avatar)
+            : (avatar as string),
+      },
+    });
   }
 }
